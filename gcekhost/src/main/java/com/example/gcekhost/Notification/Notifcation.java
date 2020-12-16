@@ -16,6 +16,7 @@ public class Notifcation extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference myRef;
     Button send_btn;
+    //
     EditText notification_title , notification_description;
 
     @Override

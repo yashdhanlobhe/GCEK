@@ -1,0 +1,3 @@
+include ':gcekhost'
+include ':app'
+rootProject.name = "GCEK"

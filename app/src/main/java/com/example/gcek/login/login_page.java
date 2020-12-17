@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gcek.MainActivity;
+import com.example.gcek.Notification.Notification;
 import com.example.gcek.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,7 +49,7 @@ public class login_page extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(mAuth.getCurrentUser().isEmailVerified()){
                                     pb.dismiss();
-                                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                                    startActivity(new Intent(getApplicationContext() , Notification.class));
                                 }
 
                                 else {

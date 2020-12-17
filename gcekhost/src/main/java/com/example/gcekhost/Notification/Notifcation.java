@@ -11,6 +11,9 @@ import com.example.gcekhost.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Time;
+import java.util.Calendar;
+
 
 public class Notifcation extends AppCompatActivity {
     FirebaseDatabase database;
@@ -34,10 +37,10 @@ public class Notifcation extends AppCompatActivity {
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference().child("Notices");
+                myRef = database.getReference().child("Notices").child(Calendar.getInstance().getTime().toString());
 
-                myRef.child("Notice1").child("title").setValue(notification_title.getText().toString());
-                myRef.child("Notice1").child("description").setValue(notification_description.getText().toString());
+                myRef.child("title").setValue(notification_title.getText().toString());
+                myRef.child("description").setValue(notification_description.getText().toString());
             }
         });
 

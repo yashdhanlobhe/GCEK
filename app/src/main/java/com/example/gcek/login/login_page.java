@@ -1,4 +1,4 @@
-package com.example.gcekhost.login;
+package com.example.gcek.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,25 +13,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gcekhost.MainActivity;
-import com.example.gcekhost.R;
+import com.example.gcek.MainActivity;
+import com.example.gcek.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login_page extends AppCompatActivity {
+public class login_page extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public EditText email ,password;
     public Button loginbtn;
-//    public TextView register_yourself;
+    public TextView register_yourself;
     public ProgressDialog pb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-//        register_yourself = (TextView)findViewById(R.id.register_text);
+        register_yourself = (TextView)findViewById(R.id.register_text);
         email =(EditText)findViewById(R.id.loginemail);
         password=(EditText)findViewById(R.id.login_password);
         loginbtn = (Button)findViewById(R.id.loginbtn);
@@ -51,26 +51,26 @@ public class Login_page extends AppCompatActivity {
                                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                                 }
 
-                            else {
-                                pb.dismiss();
-                                startActivity(new Intent(getApplicationContext() , Register_page.class));
-                            }}
+                                else {
+                                    pb.dismiss();
+                                    startActivity(new Intent(getApplicationContext() , register_page.class));
+                                }}
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext() ,e.getMessage() ,Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext() , Register_page.class));
+                        startActivity(new Intent(getApplicationContext() , register_page.class));
                     }
                 });
 
 
             }
         });
-//        register_yourself.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext() , Register_page.class));
-//            }
-//        });
+        register_yourself.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext() , register_page.class));
+            }
+        });
     }
 }

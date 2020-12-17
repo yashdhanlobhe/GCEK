@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
         <activity android:name=".login.Register_page"></activity>
-        <activity android:name=".login.Login_page"><intent-filter>
+        <activity android:name=".login.Login_page" ><intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter> </activity>
+        </intent-filter></activity>
         <activity android:name=".Notification.Notifcation">
 
         </activity>

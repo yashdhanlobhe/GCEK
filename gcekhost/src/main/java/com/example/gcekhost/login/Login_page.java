@@ -1,6 +1,5 @@
 package com.example.gcekhost.login;
 
-import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.gcekhost.Notification.Notifcation;
+import com.example.gcekhost.Notification.AddNotification;
 import com.example.gcekhost.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +61,7 @@ public class Login_page extends AppCompatActivity {
                                         String a = documentSnapshot.get("Password").toString();
                                         Log.d("yash", a);
                                         if(a.equals(password.getText().toString())){
-                                            startActivity(new Intent(getApplicationContext() , Notifcation.class));
+                                            startActivity(new Intent(getApplicationContext() , AddNotification.class));
                                         }else{
                                             Toast.makeText(getApplicationContext(),"incorrect password" , Toast.LENGTH_LONG).show();
                                         }

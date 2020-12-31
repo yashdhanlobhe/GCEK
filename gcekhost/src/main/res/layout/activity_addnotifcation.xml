@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notification.Notifcation">
+    tools:context=".Notification.AddNotification">
 
     <EditText
         android:id="@+id/title_notification"
@@ -55,4 +55,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_notification"
         app:layout_constraintVertical_bias="0.121" />
+
+    <Button
+        android:id="@+id/see_notifiaction_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Notifications"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_btn_notifiacaiton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

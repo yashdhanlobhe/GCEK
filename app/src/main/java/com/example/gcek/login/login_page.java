@@ -23,13 +23,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class login_page extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
     public EditText email ,password;
     public Button loginbtn;
     public TextView register_yourself;
     public ProgressDialog pb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         register_yourself = (TextView)findViewById(R.id.register_text);

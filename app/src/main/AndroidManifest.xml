@@ -13,7 +13,6 @@
         <activity android:name=".login.register_page"></activity>
         <activity android:name=".login.login_page" />
         <activity android:name=".Notification.Notification">
-
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

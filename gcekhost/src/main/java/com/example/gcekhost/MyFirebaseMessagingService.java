@@ -37,32 +37,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public String token;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        Log.d(TAG , "sTARTED");
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-                        token = task.getResult();
-                    }
-                });
-        FirebaseMessaging.getInstance().subscribeToTopic(SUBSCRIBE_TO);
-        Log.i(TAG, "onTokenRefresh completed with token: " + token);
-    }
-
-    @Override
-    public void onNewToken(@NonNull String s) {
-        super.onNewToken(s);
-        token = s;
-    }
-
-
-    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.i("started" ,"MyFirebaseMessagingService" );
         final Intent intent = new Intent(this, MainActivity.class);

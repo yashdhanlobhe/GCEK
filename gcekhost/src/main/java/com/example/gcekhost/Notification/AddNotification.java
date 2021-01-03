@@ -64,8 +64,6 @@ public class AddNotification extends AppCompatActivity {
                 myRef.child("title").setValue(notification_title.getText().toString());
                 myRef.child("description").setValue(notification_description.getText().toString());
                 myRef.child("id").setValue(id);
-
-                messenging(notification_title.getText().toString() , notification_description.getText().toString() );
             }
         });
         seeNotifiacationBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,84 +73,6 @@ public class AddNotification extends AppCompatActivity {
             }
         });
     }
-
-    private void messenging(String title , String message) {
-        TOPIC = "/topics/userABC";
-
-        JSONObject notification = new JSONObject();
-        JSONObject notifcationBody = new JSONObject();
-        try {
-            notifcationBody.put("title", NOTIFICATION_TITLE);
-            notifcationBody.put("message", NOTIFICATION_MESSAGE);
-
-            notification.put("to", TOPIC);
-            notification.put("data", notifcationBody);
-        } catch (JSONException e) {
-            Log.e(TAG, "onCreate: " + e.getMessage() );
-        }
-        sendNotification(notification);
-    }
-
-    private void sendNotification(JSONObject notification) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i(TAG, "onResponse: " + response.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i(TAG, "onErrorResponse: Didn't work");
-                    }
-                })
-        {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Authorization", serverKey);
-                params.put("Content-Type", contentType);
-                Log.i("Authorization", serverKey);
-                return params;
-
-            }
-        };
-        Log.i("debugyd","started");
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
-    }
 }
 
 
-class MySingleton {
-    private  static MySingleton instance;
-    private RequestQueue requestQueue;
-    private Context ctx;
-
-    private MySingleton(Context context) {
-        ctx = context;
-        requestQueue = getRequestQueue();
-    }
-
-    public static synchronized MySingleton getInstance(Context context) {
-        if (instance == null) {
-            instance = new MySingleton(context);
-        }
-        return instance;
-    }
-
-    public RequestQueue getRequestQueue() {
-        if (requestQueue == null) {
-
-            requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
-        }
-        Log.i("getRequestQueue" , "getRequestQueue");
-        return requestQueue;
-    }
-
-    public <T> void addToRequestQueue(Request<T> req) {
-
-        Log.i("added" , "Request queue");
-        getRequestQueue().add(req);
-    }
-}

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">GCEK Host</string>
+    <string-array name="notices">
+        <item>fy</item>
+        <item>sy</item>
+        <item>ty</item>
+        <item>finalyear</item>
+        <item>tpo</item>
+        <item>college</item>
+    </string-array>
 </resources>

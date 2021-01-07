@@ -4,23 +4,67 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/design_default_color_primary_dark">
+    android:background="@color/s1"
+    android:padding="10dp"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yash Dhanlobhe"
+        android:text="@string/g_c_e_k"
         android:textSize="25sp"
         android:textColor="@color/white"
-        android:layout_margin="5dp"
-        >
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="center">
     </TextView>
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="FY It"
-        android:layout_margin="5dp"
-        android:textSize="25sp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
         >
-    </TextView>
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/finalyear"
+
+                >
+            </ImageView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginHorizontal="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19141255"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                >
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/fy_it"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                >
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

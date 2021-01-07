@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,12 +48,12 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public  static  class ViewHolder extends RecyclerView.ViewHolder {
     public TextView title;
     public TextView description;
-    public RelativeLayout mylayout;
+    public CardView mylayout;
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
         title = (TextView)itemView.findViewById(R.id.notificaitontitle);
         description = (TextView)itemView.findViewById(R.id.notificationdescription);
-        mylayout = (RelativeLayout)itemView.findViewById(R.id.mylayout);
+        mylayout = (CardView) itemView.findViewById(R.id.mylayout);
     }
 }
 }

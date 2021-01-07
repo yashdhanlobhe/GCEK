@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
+
         navigationView = (NavigationView)findViewById(R.id.main_nav_view);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerlayout);
         frameLayout= findViewById(R.id.main_frame_layout);
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         toggleButton = new ActionBarDrawerToggle(this , drawerLayout , toolbar , R.string.open , R.string.close);
         toggleButton.syncState();
+        toggleButton.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             Fragment temp ;
             @Override

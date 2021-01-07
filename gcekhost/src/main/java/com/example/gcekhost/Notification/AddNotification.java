@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,10 +32,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class AddNotification extends AppCompatActivity {
+public class AddNotification extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     FirebaseDatabase database;
     DatabaseReference myRef;
     Button send_btn , seeNotifiacationBtn;
+    Spinner spinner;
 
     EditText notification_title , notification_description;
 
@@ -44,6 +48,7 @@ public class AddNotification extends AppCompatActivity {
     String NOTIFICATION_TITLE;
     String NOTIFICATION_MESSAGE;
     String TOPIC;
+    String NoticeClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +61,18 @@ public class AddNotification extends AppCompatActivity {
 
         notification_title = (EditText) findViewById(R.id.title_notification);
         notification_description=(EditText)findViewById(R.id.description_notification);
+        spinner = (Spinner) findViewById(R.id.spinnernotices);
+        ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(this, R.array.notices, android.R.layout.simple_spinner_item);
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setOnItemSelectedListener(this);
+
+        spinner.setAdapter(spinneradapter);
+
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String id =Calendar.getInstance().getTime().toString();
-                myRef = database.getReference().child("Notices").child(id);
+                myRef = database.getReference().child("Notices").child(NoticeClass).child(id);
                 myRef.child("title").setValue(notification_title.getText().toString());
                 myRef.child("description").setValue(notification_description.getText().toString());
                 myRef.child("id").setValue(id);
@@ -72,6 +84,16 @@ public class AddNotification extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext() , Notification.class));
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        NoticeClass = (String) parent.getItemAtPosition(position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        NoticeClass = "college";
     }
 }
 

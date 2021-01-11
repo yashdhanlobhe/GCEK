@@ -18,6 +18,7 @@ import com.example.gcek.Notification.Notification;
 import com.example.gcek.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,19 +48,20 @@ public class login_page extends AppCompatActivity {
             public void onClick(View v) {
                 pb.show();
                 mAuth.signInWithEmailAndPassword(email.getText().toString() , password.getText().toString()).
-                        addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onSuccess(AuthResult authResult) {
                                 if(mAuth.getCurrentUser().isEmailVerified()){
                                     pb.dismiss();
                                     Toast.makeText(mcontext , "Login Successful" , Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(mcontext , MainActivity.class));
                                 }
 
                                 else {
                                     pb.dismiss();
                                     Toast.makeText(mcontext , "Email is Not Verified" , Toast.LENGTH_LONG).show();
-
-                                }}
+                                }
+                            }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {

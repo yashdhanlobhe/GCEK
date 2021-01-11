@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,7 +46,6 @@ import java.util.Map;
 public class register_page extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
     EditText fullname , rollNo , email , phoneNO , password;
     FirebaseAuth mAuth;
-    Spinner branch, passout;
     ImageView imageView;
     Button sendmail;
     int PICKimg=100;
@@ -56,7 +56,8 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
     FirebaseFirestore db;
     StorageReference mStorageRef;
     Uri profileImageUri;
-
+    Spinner batchSpinner , brachSpinner;
+    String BRANCH  ,BATCH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,12 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.activity_register_page);
         mcontext = this;
         intiUi();
-
+        findViewById(R.id.haveAccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext() , login_page.class));
+            }
+        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +80,14 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         sendmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerUser();
-            }
+                if(fullname.getText().toString() == null ||rollNo.getText().toString() == null ||email.getText().toString() == null ||
+                        phoneNO.getText().toString() == null ||password.getText().toString() == null ||uri==null){
+                    Toast.makeText(mcontext , "Enter All Data Correctly" ,Toast.LENGTH_LONG).show();
+                }
+                else {
+                    registerUser();
+                }
+                }
         });
     }
 
@@ -91,8 +103,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                             public void onSuccess(Void aVoid) {
                                 UploadImageToFireStore(uri);
                                 pb.dismiss();
-                                Log.d(tag , "ADDED USER SUCCESSFULLY");
-                                Toast.makeText(mcontext , "Registration successful plese Verify Your mail" , Toast.LENGTH_LONG).show();
+
                             }
                         });
                     }
@@ -143,6 +154,8 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         user.put("GCEKID", rollNo.getText().toString());
         user.put("PhoneNo", phoneNO.getText().toString());
         user.put("ProfileImage" , profileImageUri.toString());
+        user.put("batch", batchSpinner.getSelectedItem().toString());
+        user.put("branch" , brachSpinner.getSelectedItem().toString());
 
         db.collection("StudentUsers").document(email.getText().toString())
                 .set(user)
@@ -150,6 +163,9 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("yd22", "DocumentSnapshot added with ID: ");
+                        Log.d(tag , "ADDED USER SUCCESSFULLY");
+                        Toast.makeText(mcontext , "Registration successful plese Verify Your mail" , Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext() , login_page.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -168,12 +184,45 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         rollNo = (EditText)findViewById(R.id.idregister);
         phoneNO = (EditText)findViewById(R.id.phoneregister);
         password = (EditText)findViewById(R.id.passwordregister);
-        branch=(Spinner)findViewById(R.id.registerspinner);
-        passout=(Spinner)findViewById(R.id.passoutregister);
         imageView=(ImageView)findViewById(R.id.imgregisterlay);
         sendmail = (Button)findViewById(R.id.buttonRegister);
         mAuth =  FirebaseAuth.getInstance();
         pb = new ProgressDialog(mcontext);
+
+        batchSpinner = (Spinner) findViewById(R.id.passoutspinnerregister);
+        ArrayAdapter<CharSequence> batchSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.Batches, android.R.layout.simple_spinner_item);
+        batchSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        batchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                BRANCH = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        batchSpinner.setAdapter(batchSpinnerAdapter);
+        batchSpinner.setPrompt("Select your Batch");
+
+        brachSpinner =(Spinner)findViewById(R.id.brachspinnerregister);
+        ArrayAdapter<CharSequence> branchSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.Branches, android.R.layout.simple_spinner_item);
+        branchSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        brachSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                BATCH = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        brachSpinner.setAdapter(branchSpinnerAdapter);
+        batchSpinner.setPrompt("Select your Brach");
+
     }
 
     private void OpenGallery() {

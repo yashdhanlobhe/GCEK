@@ -28,6 +28,7 @@ public class login_page extends AppCompatActivity {
     public Button loginbtn;
     public TextView register_yourself;
     public ProgressDialog pb;
+    Context mcontext ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,6 +39,7 @@ public class login_page extends AppCompatActivity {
         password=(EditText)findViewById(R.id.login_password);
         loginbtn = (Button)findViewById(R.id.loginbtn);
         pb = new ProgressDialog(this);
+        mcontext = this;
         Context context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -50,18 +52,18 @@ public class login_page extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(mAuth.getCurrentUser().isEmailVerified()){
                                     pb.dismiss();
-                                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                                    Toast.makeText(mcontext , "Login Successful" , Toast.LENGTH_LONG).show();
                                 }
 
                                 else {
                                     pb.dismiss();
-                                    startActivity(new Intent(getApplicationContext() , register_page.class));
+                                    Toast.makeText(mcontext , "Email is Not Verified" , Toast.LENGTH_LONG).show();
+
                                 }}
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext() ,e.getMessage() ,Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext() , register_page.class));
                     }
                 });
 

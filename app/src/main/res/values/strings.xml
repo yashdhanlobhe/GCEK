@@ -29,4 +29,10 @@
         <item>ENTC</item>
         <item>ELECTRICAL</item>
     </string-array>
+    <string-array name="Batches">
+        <item>2020-21</item>
+        <item>2021-22</item>
+        <item>2022-23</item>
+        <item>2023-24</item>
+    </string-array>
 </resources>

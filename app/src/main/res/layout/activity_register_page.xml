@@ -20,7 +20,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imgregisterlay"
-                android:src="@drawable/barcode"
+                android:src="@drawable/addtoclickimgae"
                 android:layout_margin="10dp"
                 android:layout_centerHorizontal="true"
                 />
@@ -64,27 +64,30 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/phoneregister"
                 android:textSize="18sp"
-                android:id="@+id/registerspinner"
+                android:id="@+id/brachspinnerregister"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
+                android:elevation="10dp"
+
                 />
             <androidx.appcompat.widget.AppCompatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/registerspinner"
-            android:textSize="18sp"
-            android:id="@+id/passoutregister"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/brachspinnerregister"
+                android:textSize="18sp"
+                android:id="@+id/passoutspinnerregister"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:elevation="10dp"
             />
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/passoutregister"
+                android:layout_below="@+id/passoutspinnerregister"
                 android:id="@+id/emailregister"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
-                android:hint="Enter Phone NO"
+                android:hint="Enter Email ID"
                 android:textSize="18sp"
                 android:inputType="textEmailAddress"
                 />
@@ -109,6 +112,15 @@
                 android:text="Send Verification Mail"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/passwordregister"
+                />
+            <TextView
+                android:id="@+id/haveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Have account ?"
+                android:layout_below="@+id/buttonRegister"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
                 />
 
         </RelativeLayout>

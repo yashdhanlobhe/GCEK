@@ -1,14 +1,23 @@
 package com.example.gcek.login;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,28 +28,43 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class register_page extends AppCompatActivity {
-    EditText email , password , confirmpassword ;
-    TextView haveaccount;
-    Button register_btn ;
+public class register_page extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
+    EditText fullname , rollNo , email , phoneNO , password;
     FirebaseAuth mAuth;
-    ProgressDialog pb;
+    Spinner branch, passout;
+    ImageView imageView;
+    Button sendmail;
+    int PICKimg=100;
+    Uri uri ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
-        haveaccount = (TextView)findViewById(R.id.haveaccounttext);
-        register_btn = (Button) findViewById(R.id.register_btn);
-        email = (EditText)findViewById(R.id.registering_email);
-        password = (EditText)findViewById(R.id.registering_password);
-        confirmpassword = (EditText)findViewById(R.id.confirm_registering_password);
-        pb =new ProgressDialog(this );
-        register_btn.setOnClickListener(new View.OnClickListener() {
+        fullname = (EditText)findViewById(R.id.fullnameregister);
+        email = (EditText)findViewById(R.id.emailregister);
+        rollNo = (EditText)findViewById(R.id.idregister);
+        phoneNO = (EditText)findViewById(R.id.phoneregister);
+        password = (EditText)findViewById(R.id.passwordregister);
+        branch=(Spinner)findViewById(R.id.registerspinner);
+        passout=(Spinner)findViewById(R.id.passoutregister);
+        imageView=(ImageView)findViewById(R.id.imgregisterlay);
+        sendmail = (Button)findViewById(R.id.buttonRegister);
+
+        mAuth =  FirebaseAuth.getInstance();
+        ProgressDialog pb = new ProgressDialog(getApplicationContext());
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenGallery();
+            }
+        });
+
+        sendmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth = FirebaseAuth.getInstance();
-//                if(password.getText().toString() == confirmpassword.getText().toString()){
-                pb.show();
+//                pb.show();
                 mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -48,28 +72,44 @@ public class register_page extends AppCompatActivity {
                                 mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        pb.dismiss();
+//                                        pb.dismiss();
                                         startActivity(new Intent(getApplicationContext() , login_page.class));
+                                        Log.d("yd22" , "ADDED USER SUCCESSFULLY");
+
                                     }
                                 });
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext() , e.getMessage() , Toast.LENGTH_SHORT).show();
+                       Log.d("yd22" , e.getMessage());
                     }
                 });
-//                }
-//                else {
-//                    Toast.makeText(getApplicationContext() ,"password is not same" , Toast.LENGTH_SHORT).show();
-//                }
             }
         });
-        haveaccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext() , login_page.class));
-            }
-        });
+    }
+
+    private void OpenGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK , MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery , PICKimg);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==PICKimg && requestCode == PICKimg){
+            uri = data.getData();
+            imageView.setImageURI(uri);
+        }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

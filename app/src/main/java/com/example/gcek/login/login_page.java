@@ -50,7 +50,7 @@ public class login_page extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(mAuth.getCurrentUser().isEmailVerified()){
                                     pb.dismiss();
-                                    startActivity(new Intent(getApplicationContext() , Notification.class));
+                                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
                                 }
 
                                 else {

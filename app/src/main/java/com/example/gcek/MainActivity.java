@@ -19,6 +19,7 @@ import android.widget.Toolbar;
 
 import com.example.gcek.maindrawer.HomeFragment;
 import com.example.gcek.maindrawer.Notification_fragment;
+import com.example.gcek.maindrawer.Showid;
 import com.example.gcek.maindrawer.settingfragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -61,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_setting:
                         temp = new settingfragment();
                         break;
+                    case R.id.nav_showid:
+                        temp = new Showid();
+                        break;
+
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , temp).commit();
                 drawerLayout.closeDrawer(GravityCompat.START);

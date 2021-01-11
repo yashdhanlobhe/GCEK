@@ -5,82 +5,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login.register_page">
-    <EditText
-        android:id="@+id/registering_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
 
-    <EditText
-        android:id="@+id/registering_password"
-        android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registering_email"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imgregisterlay"
+                android:src="@drawable/barcode"
+                android:layout_margin="10dp"
+                android:layout_centerHorizontal="true"
+                />
 
-    <EditText
-        android:id="@+id/confirm_registering_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registering_email"
-        app:layout_constraintVertical_bias="0.186" />
+            <EditText
+                android:layout_width="match_parent"
+                android:id="@+id/fullnameregister"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgregisterlay"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Full Name"
+                android:textSize="18sp"
+                android:textAllCaps="true"
+                android:inputType="textCapWords"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fullnameregister"
+                android:id="@+id/idregister"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter GCEK ID"
+                android:textSize="18sp"
+                android:inputType="number"
+                />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idregister"
+                android:id="@+id/phoneregister"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Phone NO"
+                android:textSize="18sp"
+                android:inputType="phone"
+                android:maxLength="10"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phoneregister"
+                android:textSize="18sp"
+                android:id="@+id/registerspinner"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                />
+            <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/registerspinner"
+            android:textSize="18sp"
+            android:id="@+id/passoutregister"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passoutregister"
+                android:id="@+id/emailregister"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Phone NO"
+                android:textSize="18sp"
+                android:inputType="textEmailAddress"
+                />
 
-    <Button
-        android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_registering_password"
-        app:layout_constraintVertical_bias="0.096" />
 
-    <TextView
-        android:id="@+id/haveaccounttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Have Account ?"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_btn"
-        app:layout_constraintVertical_bias="0.134" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailregister"
+                android:id="@+id/passwordregister"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="Password"
+                android:textSize="18sp"
+                android:inputType="textEmailAddress"
+                />
+            <Button
+                android:id="@+id/buttonRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Send Verification Mail"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/passwordregister"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

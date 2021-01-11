@@ -28,16 +28,6 @@ public class Notification_fragment extends Fragment {
     public Notification_fragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Notification_fragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Notification_fragment newInstance(String param1, String param2) {
         Notification_fragment fragment = new Notification_fragment();
         Bundle args = new Bundle();
@@ -60,12 +50,14 @@ public class Notification_fragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_notification_fragment, container, false);
+
         CardView college = root.findViewById(R.id.collegeNotificationCARD);
         CardView fy = root.findViewById(R.id.fycardview);
         CardView sy = root.findViewById(R.id.sycardview);
         CardView ty = root.findViewById(R.id.tycardview);
         CardView finalyear = root.findViewById(R.id.finalyearcardview);
         CardView tpo = root.findViewById(R.id.tpocardview);
+
         college.setTag("college");
         fy.setTag("fy");
         sy.setTag("sy");
@@ -86,9 +78,6 @@ public class Notification_fragment extends Fragment {
         ty.setOnClickListener(onClickListener);
         finalyear.setOnClickListener(onClickListener);
         tpo.setOnClickListener(onClickListener);
-
-
-
         return root;
     }
 

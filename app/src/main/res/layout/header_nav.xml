@@ -32,6 +32,7 @@
             android:gravity="center"
             >
             <ImageView
+                android:id="@+id/HeaderViewProfileImage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/finalyear"
@@ -45,19 +46,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/HeaderViewId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="19141255"
+                android:text="NA"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 >
             </TextView>
+
             <TextView
+                android:id="@+id/HeaderViewClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="@string/fy_it"
+                android:text="NA"
                 android:layout_marginStart="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"

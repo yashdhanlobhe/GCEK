@@ -23,16 +23,17 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/college"
+                android:src="@drawable/lodingicon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/userBarcodeId"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
+                android:padding="10dp"
                 android:src="@drawable/barcode"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,14 +60,14 @@
                 android:text="Full Name"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/userBarcodeId" />
 
             <TextView
                 android:id="@+id/FullNameID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="asdf asdf asdf"
+                android:text="NA"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -87,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="141255"
+                android:text="NA"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/idid"
@@ -109,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="2022-2023"
+                android:text="NA"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/idclass"
@@ -130,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="IT"
+                android:text="NA"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/IDBranch"
@@ -141,22 +142,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="DOB"
+                android:text="Phone"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="@+id/passoutId"
                 app:layout_constraintTop_toBottomOf="@+id/passoutId" />
 
             <TextView
-                android:id="@+id/DobId"
+                android:id="@+id/PhoneNumberID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="30-09-2001"
+                android:text="NA"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/IDdob"
                 app:layout_constraintTop_toBottomOf="@+id/IDdob" />
 
+            <TextView
+                android:id="@+id/PhoneNumberIDtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Email"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="@+id/BrachID"
+                app:layout_constraintTop_toBottomOf="@+id/BrachID" />
+
+            <TextView
+                android:id="@+id/EmailID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="NA"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/PhoneNumberIDtext"
+                app:layout_constraintTop_toBottomOf="@+id/PhoneNumberIDtext" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

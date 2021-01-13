@@ -158,7 +158,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         user.put("Name", fullname.getText().toString());
         user.put("GCEKID", rollNo.getText().toString());
         user.put("PhoneNo", phoneNO.getText().toString());
-        user.put("ProfileImage" , profileImageUri);
+        user.put("ProfileImage" , profileImageUri.toString());
         user.put("batch", batchSpinner.getSelectedItem().toString());
         user.put("branch" , brachSpinner.getSelectedItem().toString());
 

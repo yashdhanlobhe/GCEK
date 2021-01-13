@@ -62,11 +62,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/FullNameID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="YASH ARUN DHANLOBHE"
+                android:text="asdf asdf asdf"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -79,15 +79,15 @@
                 android:layout_marginTop="10dp"
                 android:text="ID"
                 android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintStart_toStartOf="@+id/FullNameID"
+                app:layout_constraintTop_toBottomOf="@+id/FullNameID" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/gcekID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="19141255"
+                android:text="141255"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/idid"
@@ -102,10 +102,10 @@
                 android:text="Batch"
                 android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@+id/idid"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/FullNameID" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/passoutId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -122,11 +122,11 @@
                 android:layout_marginTop="10dp"
                 android:text="Branch"
                 android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintStart_toStartOf="@+id/gcekID"
+                app:layout_constraintTop_toBottomOf="@+id/gcekID" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/BrachID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -143,10 +143,11 @@
                 android:layout_marginTop="10dp"
                 android:text="DOB"
                 android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintStart_toStartOf="@+id/passoutId"
+                app:layout_constraintTop_toBottomOf="@+id/passoutId" />
 
             <TextView
+                android:id="@+id/DobId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

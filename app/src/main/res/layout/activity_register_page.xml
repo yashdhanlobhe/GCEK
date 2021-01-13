@@ -17,12 +17,21 @@
             android:layout_height="wrap_content"
             >
             <ImageView
+                android:elevation="10dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imgregisterlay"
                 android:src="@drawable/addtoclickimgae"
                 android:layout_margin="10dp"
                 android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgregisterlay"
+                android:layout_centerHorizontal="true"
+                android:text="*less than 100kb"
+                android:id="@+id/ImageSize"
                 />
 
             <EditText

@@ -1,17 +1,9 @@
 package com.example.gcek.login;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -25,15 +17,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gcek.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,6 +34,9 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.gcek.FileInfo.getFileSizeFromUriInKb;
+
 
 public class register_page extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
     EditText fullname , rollNo , email , phoneNO , password;
@@ -52,13 +47,13 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
     Uri uri ;
     Context mcontext;
     ProgressDialog pb;
-    String tag = "RegisterPAGE";
+    String ProfileImageStorageRef,tag = "RegisterPAGE";
     FirebaseFirestore db;
     StorageReference mStorageRef;
     Uri profileImageUri;
     Spinner batchSpinner , brachSpinner;
     String BRANCH  ,BATCH;
-
+    int sizeOfUploadingImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,13 +80,20 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                     Toast.makeText(mcontext , "Enter All Data Correctly" ,Toast.LENGTH_LONG).show();
                 }
                 else {
+                    if(sizeOfUploadingImage<100){
                     registerUser();
+                    }
+                    else {
+                        Toast.makeText(mcontext , "Size Of Image Should be less Than 100kb" ,Toast.LENGTH_LONG).show();
+
+                    }
                 }
                 }
         });
     }
 
     private void registerUser() {
+        Log.d("ydcheack" , "entering register User");
         mAuth = FirebaseAuth.getInstance();
         pb.show();
         mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString())
@@ -100,10 +102,9 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                     public void onSuccess(AuthResult authResult) {
                         mAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(Void aVoid) {
+                            public void onSuccess(Void Void) {
+                                Log.d("ydcheack" , "User Created and going to upload image");
                                 UploadImageToFireStore(uri);
-                                pb.dismiss();
-
                             }
                         });
                     }
@@ -118,14 +119,14 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
     }
 
     private void UploadImageToFireStore(Uri uri) {
-
+        ProfileImageStorageRef = "images/UsersProfile/"+email.getText().toString()+".jpg";
         StorageReference profileImageRef = mStorageRef.child("images/UsersProfile/"+email.getText().toString()+".jpg");
-
         profileImageRef.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // Get a URL to the uploaded content
+                        Log.d("ydcheack" , "uploaded image");
 
                         profileImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
@@ -133,6 +134,8 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                                 profileImageUri = uri;
                                 Log.d(tag , uri.toString());
                                 uploadData();
+                                Log.d("ydcheack" , "Updloaded data");
+
                             }
                         });
 
@@ -145,7 +148,9 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                         // ...
                     }
                 });
+
     }
+
 
     private void uploadData() {
         // Create a new user with a first and last name
@@ -153,7 +158,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         user.put("Name", fullname.getText().toString());
         user.put("GCEKID", rollNo.getText().toString());
         user.put("PhoneNo", phoneNO.getText().toString());
-        user.put("ProfileImage" , profileImageUri.toString());
+        user.put("ProfileImage" , profileImageUri);
         user.put("batch", batchSpinner.getSelectedItem().toString());
         user.put("branch" , brachSpinner.getSelectedItem().toString());
 
@@ -164,6 +169,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                     public void onSuccess(Void aVoid) {
                         Log.d("yd22", "DocumentSnapshot added with ID: ");
                         Log.d(tag , "ADDED USER SUCCESSFULLY");
+                        pb.dismiss();
                         Toast.makeText(mcontext , "Registration successful plese Verify Your mail" , Toast.LENGTH_LONG).show();
                         startActivity(new Intent(getApplicationContext() , login_page.class));
                     }
@@ -172,6 +178,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("yd22", "Error adding document", e);
+                        pb.dismiss();
                     }
                 });
     }
@@ -204,7 +211,6 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
             }
         });
         batchSpinner.setAdapter(batchSpinnerAdapter);
-        batchSpinner.setPrompt("Select your Batch");
 
         brachSpinner =(Spinner)findViewById(R.id.brachspinnerregister);
         ArrayAdapter<CharSequence> branchSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.Branches, android.R.layout.simple_spinner_item);
@@ -236,6 +242,10 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
         if(requestCode==PICKimg && requestCode == PICKimg){
             uri = data.getData();
             imageView.setImageURI(uri);
+            String sizeInString = getFileSizeFromUriInKb(mcontext , uri);
+            sizeOfUploadingImage = Integer.parseInt(sizeInString);
+            TextView sizeOfImage = findViewById(R.id.ImageSize);
+            sizeOfImage.setText("" +sizeInString + " kb");
         }
     }
 

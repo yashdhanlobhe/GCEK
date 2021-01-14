@@ -19,8 +19,12 @@ import java.util.List;
 
 public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public List<NotificationData> notificationlist;
-    public MyAdapter(List<NotificationData> notificationlist) {
+    public OnNotifiacaitonClick onNotifiacaitonClick;
+
+    public MyAdapter(List<NotificationData> notificationlist, OnNotifiacaitonClick onNotifiacaitonClick) {
         this.notificationlist = notificationlist;
+        this.onNotifiacaitonClick = onNotifiacaitonClick;
+
     }
     @NonNull
     @Override
@@ -45,7 +49,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return notificationlist.size();
     }
 
-    public  static  class ViewHolder extends RecyclerView.ViewHolder {
+   class ViewHolder extends RecyclerView.ViewHolder {
     public TextView title;
     public TextView description;
     public CardView mylayout;
@@ -54,6 +58,19 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
         title = (TextView)itemView.findViewById(R.id.notificaitontitle);
         description = (TextView)itemView.findViewById(R.id.notificationdescription);
         mylayout = (CardView) itemView.findViewById(R.id.mylayout);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNotifiacaitonClick.OnClickListner(notificationlist.get(getAdapterPosition()));
+            }
+        });
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                onNotifiacaitonClick.OnLongClickListner(notificationlist.get(getAdapterPosition()));
+                return false;
+            }
+        });
     }
 }
 }

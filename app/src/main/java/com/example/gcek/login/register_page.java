@@ -82,10 +82,13 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                 else {
                     if(sizeOfUploadingImage<100){
                     registerUser();
+                        pb.setCancelable(false);
+                        pb.setTitle("Creating Profile");
+                        pb.show();
+
                     }
                     else {
                         Toast.makeText(mcontext , "Size Of Image Should be less Than 100kb" ,Toast.LENGTH_LONG).show();
-
                     }
                 }
                 }
@@ -95,7 +98,6 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
     private void registerUser() {
         Log.d("ydcheack" , "entering register User");
         mAuth = FirebaseAuth.getInstance();
-        pb.show();
         mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString())
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -144,6 +146,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
+                        pb.dismiss();
                         // Handle unsuccessful uploads
                         // ...
                     }

@@ -42,17 +42,9 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
     Button send_btn , seeNotifiacationBtn ,selectIMGbtn;
     Spinner spinner;
     ImageView imageView;
-    EditText notification_title , notification_description;
+    EditText notification_title , notification_description , authority ;
     ProgressDialog pd;
 
-    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    final private String serverKey = "key=" + "AAAAok9YObw:APA91bHgUXyZVXACilf2LCI0qb7SrBz22HLmIK0dzkw-GkO4i8rGGady1FSHy1Tm9NpW2t3C1dOHg_pJsguwWYrXFiel2mBbxWo5r0ChOlcdK-w6bg2xd3GgARyxxYkKA9vkx8YqNHE3";
-    final private String contentType = "application/json";
-    final String TAG = "NOTIFICATION TAG";
-
-    String NOTIFICATION_TITLE;
-    String NOTIFICATION_MESSAGE;
-    String TOPIC = "college";
     String NoticeClass;
     private static final int  PICKimg = 100;
     Uri uri ; String DownloadURI ;
@@ -60,11 +52,37 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addnotifcation);
-        Log.i("add notification" , "add");
         database = FirebaseDatabase.getInstance();
         mStorageRef = FirebaseStorage.getInstance().getReference().child("Notices");
-         pd= new ProgressDialog(this);
 
+        intiUi();
+        selectIMGbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenGallery();
+            }
+        });
+        send_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd.setTitle("Uploading...!");
+                pd.setCancelable(false);
+                pd.show();
+                String id =Calendar.getInstance().getTime().toString();
+                uploadDataAndImage(id);
+            }
+        });
+        seeNotifiacationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext() , Notification.class));
+            }
+        });
+    }
+
+    private void intiUi() {
+
+        pd= new ProgressDialog(this);
         send_btn = (Button)findViewById(R.id.send_btn_notifiacaiton);
         seeNotifiacationBtn = (Button)findViewById(R.id.see_notifiaction_btn);
         imageView = findViewById(R.id.uploadingimage);
@@ -80,39 +98,10 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
         spinner.setAdapter(spinneradapter);
 
 
-        selectIMGbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenGallery();
-            }
-        });
-        send_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id =Calendar.getInstance().getTime().toString();
-                uploadImage(id);
-                myRef = database.getReference().child("Notices").child(NoticeClass).child(id);
-                myRef.child("title").setValue(notification_title.getText().toString());
-                myRef.child("description").setValue(notification_description.getText().toString());
-                myRef.child("id").setValue(id);
-                myRef.child("noticeURI").setValue(DownloadURI);
-
-            }
-        });
-        seeNotifiacationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext() , Notification.class));
-            }
-        });
     }
 
-    private void uploadImage(String name ) {
-        StorageReference mStorage = mStorageRef.child(""+NoticeClass+"/" + name + ".jpg");
-//        UploadTask uploadTask = mStorage.putFile(uri);
-        
-        pd.show();
-
+    private void uploadDataAndImage(String id ) {
+        StorageReference mStorage = mStorageRef.child(""+NoticeClass+"/" + id + ".jpg");
         mStorage.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -121,7 +110,14 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
                             @Override
                             public void onSuccess(Uri uri) {
                                 DownloadURI = uri.toString();
-                                Toast.makeText(getApplicationContext() , uri.toString() , Toast.LENGTH_LONG).toString();
+                                myRef = database.getReference().child("Notices").child(NoticeClass).child(id);
+                                myRef.child("title").setValue(notification_title.getText().toString());
+                                myRef.child("description").setValue(notification_description.getText().toString());
+                                myRef.child("id").setValue(id);
+                                myRef.child("noticeURI").setValue(DownloadURI);
+                                pd.dismiss();
+                                notification_title.setText("");
+                                notification_description.setText("");
                             }
                         });
                     }
@@ -131,11 +127,11 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
                     public void onFailure(@NonNull Exception exception) {
                         // Handle unsuccessful uploads
                         // ...
+                        pd.dismiss();
                     }
                 });
             pd.dismiss();
     }
-
 
     private void OpenGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK , MediaStore.Images.Media.INTERNAL_CONTENT_URI);

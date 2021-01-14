@@ -4,14 +4,7 @@ public class NotificationData {
     public String title;
     public String description;
     public String id;
-
-    public NotificationData() {
-    }
-
-    public NotificationData(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
+    public String noticeURI;
 
     public String getTitle() {
         return title;
@@ -27,5 +20,31 @@ public class NotificationData {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public NotificationData() {
+    }
+
+    public String getNoticeURI() {
+        return noticeURI;
+    }
+
+    public void setNoticeURI(String noticeURI) {
+        this.noticeURI = noticeURI;
+    }
+
+    public NotificationData(String title, String description, String id , String noticeURI) {
+        this.title = title;
+        this.description = description;
+        this.id = id;
+        this.noticeURI=noticeURI;
     }
 }

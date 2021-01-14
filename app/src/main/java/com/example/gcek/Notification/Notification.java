@@ -1,6 +1,7 @@
 package com.example.gcek.Notification;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Notification extends AppCompatActivity {
+public class Notification extends AppCompatActivity implements OnNotifiacaitonClick {
     public List<NotificationData> notificationlist;
     public RecyclerView recyclerView;
     public MyAdapter myAdapter;
@@ -33,6 +34,8 @@ public class Notification extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
         ID =  getIntent().getStringExtra("class");
         firebaseDatabase = FirebaseDatabase.getInstance();
+        OnNotifiacaitonClick onNotifiacaitonClick = this;
+
 
         recyclerView = (RecyclerView)findViewById(R.id.mrecyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -51,7 +54,7 @@ public class Notification extends AppCompatActivity {
             }
         });
 
-        DatabaseReference data =getData(ID);
+        DatabaseReference data = getData(ID);
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,7 +63,7 @@ public class Notification extends AppCompatActivity {
                     NotificationData nd =db.getValue(NotificationData.class);
                     notificationlist.add(nd);
                 }
-                myAdapter = new MyAdapter(notificationlist);
+                myAdapter = new MyAdapter(notificationlist , onNotifiacaitonClick);
                 recyclerView.setAdapter(myAdapter);
             }
 
@@ -72,21 +75,16 @@ public class Notification extends AppCompatActivity {
     }
 
     private DatabaseReference getData(String id) {
-    switch (ID){
-        case "college":
-            return firebaseDatabase.getReference().child("Notices").child("college").getRef();
-        case "fy":
-            return firebaseDatabase.getReference().child("Notices").child("fy").getRef();
-        case "sy":
-            return firebaseDatabase.getReference().child("Notices").child("sy").getRef();
-        case "ty":
-            return firebaseDatabase.getReference().child("Notices").child("ty").getRef();
-        case "finalyear":
-            return firebaseDatabase.getReference().child("Notices").child("finalyear").getRef();
-        case "tpo":
-            return firebaseDatabase.getReference().child("Notices").child("tpo").getRef();
-        default:
-            return firebaseDatabase.getReference().child("Notices").child("college").getRef();
+        return firebaseDatabase.getReference().child("Notices").child(ID).getRef();
     }
+
+    @Override
+    public void OnClickListner(NotificationData nd) {
+        startActivity(new Intent(this , SeeNotificationImage.class).putExtra("NoticeUrl" , nd.noticeURI));
+    }
+
+    @Override
+    public void OnLongClickListner(NotificationData nd) {
+
     }
 }

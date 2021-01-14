@@ -24,7 +24,7 @@ public class Notification extends AppCompatActivity implements OnNotifiacaitonCl
     public List<NotificationData> notificationlist;
     public RecyclerView recyclerView;
     public MyAdapter myAdapter;
-    public ProgressDialog pd ;
+    ProgressDialog pd ;
     FirebaseDatabase firebaseDatabase ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

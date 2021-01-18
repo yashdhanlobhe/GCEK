@@ -2,16 +2,11 @@ package com.example.gcek;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,25 +16,26 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.gcek.maindrawer.AboutFragment;
+import com.example.gcek.maindrawer.ClubsFragment;
+import com.example.gcek.maindrawer.ContributeFragment;
 import com.example.gcek.maindrawer.HomeFragment;
+import com.example.gcek.maindrawer.LoginFragment;
 import com.example.gcek.maindrawer.Notification_fragment;
 import com.example.gcek.maindrawer.Showid;
+import com.example.gcek.maindrawer.UpcomingFragment;
 import com.example.gcek.maindrawer.settingfragment;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.example.gcek.GetBarcode.getBarcodeFromString;
+import static com.example.gcek.resources.GetBarcode.getBarcodeFromString;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -72,11 +68,23 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_notifications:
                         temp = new Notification_fragment();
                         break;
-                    case R.id.nav_setting:
-                        temp = new settingfragment();
-                        break;
                     case R.id.nav_showid:
                         temp = new Showid();
+                        break;
+                    case R.id.nav_about:
+                        temp = new AboutFragment();
+                        break;
+                    case R.id.nav_login:
+                        temp = new LoginFragment();
+                        break;
+                    case R.id.nav_club:
+                        temp = new ClubsFragment();
+                        break;
+                    case R.id.nav_event:
+                        temp = new UpcomingFragment();
+                        break;
+                    case R.id.nav_contribute:
+                        temp = new ContributeFragment();
                         break;
 
                 }

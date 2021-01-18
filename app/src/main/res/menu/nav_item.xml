@@ -9,15 +9,35 @@
     <item
         android:title="Show ID"
         android:id="@+id/nav_showid"
-        android:icon="@drawable/ic_baseline_account_circle_24"/>
+        android:icon="@drawable/ic_baseline_account_circle_24"/>.
+    <item
+        android:title="About"
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_about"/>
+    <item
+        android:title="Logins"
+        android:id="@+id/nav_login"
+        android:icon="@drawable/ic_login"/>
     <item
         android:title="Notifications"
         android:id="@+id/nav_notifications"
         android:icon="@drawable/ic_baseline_notifications_active_24"/>
     <item
+        android:title="Clubs"
+        android:id="@+id/nav_club"
+        android:icon="@drawable/ic_study"/>
+    <item
+        android:title="Events"
+        android:id="@+id/nav_event"
+        android:icon="@drawable/ic_event24"/>
+    <item
         android:title="Setting"
         android:id="@+id/nav_setting"
         android:icon="@drawable/ic_baseline_settings_24"/>
+    <item
+        android:title="Contribute"
+        android:id="@+id/nav_contribute"
+        android:icon="@drawable/ic_baseline_people_24"/>
 
 
 </menu>

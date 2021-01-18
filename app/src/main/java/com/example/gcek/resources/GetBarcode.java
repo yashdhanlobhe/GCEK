@@ -1,4 +1,4 @@
-package com.example.gcek;
+package com.example.gcek.resources;
 
 import android.graphics.Bitmap;
 

@@ -31,11 +31,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.gcek.FileInfo.getFileSizeFromUriInKb;
+import static com.example.gcek.resources.FileInfo.getFileSizeFromUriInKb;
 
 
 public class register_page extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {

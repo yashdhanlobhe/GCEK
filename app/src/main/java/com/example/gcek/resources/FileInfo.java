@@ -1,4 +1,4 @@
-package com.example.gcek;
+package com.example.gcek.resources;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -16,16 +16,16 @@ public class UploadImageToFireStore {
     public static String uploadImageToFirestore(Uri UploadLocalUri , String uploadPathInFireStorewithExtention ){
         mStorageRef = FirebaseStorage.getInstance().getReference();
         StorageReference mStorage = mStorageRef.child(uploadPathInFireStorewithExtention);
+        mStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                DownloadURI  = uri.toString();
+            }
+        });
         mStorage.putFile(UploadLocalUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        mStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                DownloadURI  = uri.toString();
-                            }
-                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -34,6 +34,6 @@ public class UploadImageToFireStore {
                         DownloadURI = null ;
                     }
                 });
-        return DownloadURI;
+        return  DownloadURI;
     }
 }

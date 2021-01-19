@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="itDepartmentBasicInfo">
+        <item>Information Technology</item>
+        <item>It Hod Name</item>
+        <item>model</item>
+        <item>Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy.</item>
+        <item>To provide value based high quality IT education by empowering every student to be innovative and employable IT professional. </item>
+        <item>elonmusk</item>
+    </string-array>
+    <string-array name="entcDepartmentBasicInfo">
+        <item>Entc</item>
+        <item>Entc Hod Name</item>
+        <item>model</item>
+        <item>Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy.</item>
+        <item>To provide value based high quality IT education by empowering every student to be innovative and employable IT professional. </item>
+        <item>elonmusk</item>
+    </string-array>
+    <string-array name="civilDepartmentBasicInfo">
+        <item>Civil</item>
+        <item>civil Hod Name</item>
+        <item>model</item>
+        <item>Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy.</item>
+        <item>To provide value based high quality IT education by empowering every student to be innovative and employable IT professional. </item>
+        <item>elonmusk</item>
+    </string-array>
+    <string-array name="electricalDepartmentBasicInfo">
+        <item>Electrical</item>
+        <item>electrical Hod Name</item>
+        <item>model</item>
+        <item>Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy.</item>
+        <item>To provide value based high quality IT education by empowering every student to be innovative and employable IT professional. </item>
+        <item>elonmusk</item>
+    </string-array>
+    <string-array name="mechDepartmentBasicInfo">
+        <item>Mechanical</item>
+        <item>mech Hod Name</item>
+        <item>model</item>
+        <item>Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy.</item>
+        <item>To provide value based high quality IT education by empowering every student to be innovative and employable IT professional. </item>
+        <item>elonmusk</item>
+    </string-array>
+
+
+
+
+</resources>

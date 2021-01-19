@@ -15,19 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".Notification.SeeNotificationImage">
+        <activity android:name=".FirstActivityWto"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".Notification.SeeNotificationImage"></activity>
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".login.register_page" />
+        <activity android:name=".login.login_page">
 
         </activity>
-        <activity android:name=".SplashScreen" />
-        <activity android:name=".login.register_page"></activity>
-        <activity android:name=".login.login_page">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".Notification.Notification" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

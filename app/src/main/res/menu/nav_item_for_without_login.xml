@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Login"
+        android:id="@+id/nav_Login_wto"
+        android:icon="@drawable/ic_login"/>
+    <item
+        android:title="Home"
+        android:id="@+id/nav_home_wto"
+        android:icon="@drawable/ic_baseline_home_24"/>
+    <item
+        android:title="About"
+        android:id="@+id/nav_about_wto"
+        android:icon="@drawable/ic_about"/>
+    <item
+        android:title="Clubs"
+        android:id="@+id/nav_club_wto"
+        android:icon="@drawable/ic_study"/>
+    <item
+        android:title="Events"
+        android:id="@+id/nav_event_wto"
+        android:icon="@drawable/ic_event24"/>
+</menu>

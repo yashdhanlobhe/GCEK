@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.gcek.AppData;
 import com.example.gcek.R;
 import com.squareup.picasso.Picasso;
 
@@ -24,6 +25,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.xml.transform.Result;
+
+import static com.example.gcek.AppData.PosterBitmapList;
 
 
 public class SliderAdapter extends PagerAdapter {
@@ -56,10 +59,14 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = layoutInflater.inflate(R.layout.carditemhometabviewpager,container,false);
-        ImageView imageView = (ImageView)view.findViewById(R.id.homeviewpagerimageview);
-        TextView textView = (TextView)view.findViewById(R.id.homeviewpagerTextview);
-        new SetImage(posterData.get(position).getNoticeURI() , imageView , position).execute();
+        ImageView imageView = view.findViewById(R.id.homeviewpagerimageview);
+        TextView textView = view.findViewById(R.id.homeviewpagerTextview);
         textView.setText(posterData.get(position).getTitle());
+        try{
+            imageView.setImageBitmap(PosterBitmapList.get(position));
+        }catch (Exception e){
+
+        }
         container.addView(view);
         return  view;
     }

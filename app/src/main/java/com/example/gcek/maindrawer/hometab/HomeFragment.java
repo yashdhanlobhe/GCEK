@@ -15,51 +15,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.gcek.Notification.MyAdapter;
-import com.example.gcek.Notification.NotificationData;
 import com.example.gcek.R;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import static com.example.gcek.AppData.PosterList;
 
 public class HomeFragment extends Fragment {
 
-    List<PosterData> PosterList;
+    View root;
+    @Override
+    public void onResume() {
+        super.onResume();
+        HorizontalInfiniteCycleViewPager pager =root.findViewById(R.id.HomeTabViewPager);
+        try{
+            SliderAdapter sliderAdapter = new SliderAdapter(PosterList, getActivity().getBaseContext());
+            pager.setAdapter(sliderAdapter);
+        }catch (Exception e){
+
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        View root =  inflater.inflate(R.layout.fragment_home, container, false);
+         root =  inflater.inflate(R.layout.fragment_home, container, false);
+        try{
+            HorizontalInfiniteCycleViewPager pager =root.findViewById(R.id.HomeTabViewPager);
+            SliderAdapter sliderAdapter = new SliderAdapter(PosterList, getActivity().getBaseContext());
+            pager.setAdapter(sliderAdapter);
+        }catch (Exception e){
 
-        DatabaseReference data = firebaseDatabase.getReference().child("HomePoster").getRef();
-        data.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                PosterList = new ArrayList<>();
-                for(DataSnapshot db : snapshot.getChildren()){
-                    PosterData nd =db.getValue(PosterData.class);
-                    PosterList.add(nd);
-                }
-                HorizontalInfiniteCycleViewPager pager = (HorizontalInfiniteCycleViewPager) root.findViewById(R.id.HomeTabViewPager);
-                try
-                {
-                    SliderAdapter sliderAdapter = new SliderAdapter(PosterList, getActivity().getBaseContext());
-                    pager.setAdapter(sliderAdapter);
-                }catch (Exception e){
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }
 
         View.OnClickListener socialmediaonclicklistner = new View.OnClickListener() {
             @Override

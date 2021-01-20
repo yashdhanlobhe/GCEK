@@ -3,222 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".maindrawer.LoginFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".maindrawer.VariousCollegeLoginFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
+        <androidx.gridlayout.widget.GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/MistextLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MIS Login"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/MistextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/misLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline1"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/misLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
+            android:layout_height="match_parent"
+            app:rowCount="4"
+            app:columnCount="2">
+            <androidx.cardview.widget.CardView
+                android:layout_margin="20dp"
+                android:layout_height="80dp"
+                android:layout_width="150dp"
+                app:layout_column="0"
+                app:layout_row="0"
+                app:layout_rowWeight="1"
+                app:layout_gravity="center">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/gradientbtncolor3"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MIS Login"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click Here"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/blue"
+                    />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_margin="20dp"
+                android:layout_height="80dp"
+                android:layout_width="150dp"
+                app:layout_column="1"
+                app:layout_row="0"
+                app:layout_rowWeight="1"
+                app:layout_gravity="center">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/gradientbtncolor3"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Faculty Login"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click Here"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/blue"
+                    />
+            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:layout_below="@id/dottedline1"
-                android:id="@+id/FacultytextLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Faculty/Staff Login"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/FacultytextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/FacultyLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline2"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/FacultyLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
 
-            <TextView
-                android:layout_below="@id/dottedline2"
-                android:id="@+id/MoodletextLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Moodle Login"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/MoodletextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/moodleLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline3"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/moodleLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
 
-            <TextView
-                android:layout_below="@id/dottedline3"
-                android:id="@+id/InternetGatewaytextLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Internet Gateway Login"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/InternetGatewaytextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/InternetGatewayLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline4"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/InternetGatewayLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
-
-            <TextView
-            android:layout_below="@id/dottedline4"
-            android:id="@+id/virtualLabtextLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Virtual Lab Login"
-            android:layout_margin="10dp"
-            android:textStyle="bold"
-            android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/virtualLabtextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/VirtualLabLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline5"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/VirtualLabLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
-
-            <TextView
-                android:layout_below="@id/dottedline5"
-                android:id="@+id/downloadcenterLabtextLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GCEK Download Corner"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/downloadcenterLabtextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/GCEKDownloadCornerLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline6"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/GCEKDownloadCornerLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
-
-            <TextView
-                android:layout_below="@id/dottedline6"
-                android:id="@+id/DigitalLibrarytextLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Digital Library Login"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <Button
-                android:textColor="@color/white"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/DigitalLibrarytextLogin"
-                android:layout_centerHorizontal="true"
-                android:text="Login"
-                android:elevation="15dp"
-                android:textSize="15dp"
-                android:id="@+id/DigitalLibraryLoginbtn"
-                android:background="@drawable/gradientbtncolor1"/>
-            <View
-                android:id="@+id/dottedline8"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_below="@+id/DigitalLibraryLoginbtn"
-                android:background="@drawable/dottedline"
-                android:layerType="software" />
-        </RelativeLayout>
+        </androidx.gridlayout.widget.GridLayout>
     </ScrollView>
+
 </FrameLayout>

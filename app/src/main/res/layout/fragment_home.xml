@@ -9,50 +9,29 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
-            android:background="@color/black"
-            android:layout_marginVertical="5dp"
-            android:id="@+id/socialMediaTab"
+        <ImageView
+            android:scaleType="centerCrop"
+            android:foreground="@drawable/gradientbtncolor4"
+            android:src="@drawable/mainclgpic"
+            android:id="@+id/hometabamainclgpic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp">
+        </ImageView>
+        <RelativeLayout
+            android:id="@+id/collgeNameLogo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-            <Button
-                android:id="@+id/instalogocontactcard"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:background="@drawable/instalogo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <Button
-                android:id="@+id/facebooklogocontactcard"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/facebooklogo"
-                app:layout_constraintStart_toEndOf="@+id/instalogocontactcard"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <Button
-                android:id="@+id/twitterlogocontactcard"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/linkedinglogo"
-                app:layout_constraintStart_toEndOf="@+id/facebooklogocontactcard"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-        </LinearLayout>
+            android:background="@color/black"
+            android:layout_below="@id/hometabamainclgpic">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clgnamelogo"
+                android:layout_margin="10dp"/>
+        </RelativeLayout>
         <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
-            android:layout_below="@id/socialMediaTab"
+            android:layout_below="@id/collgeNameLogo"
             android:id="@+id/HomeTabViewPager"
             android:layout_width="match_parent"
             android:layout_height="300dp"
@@ -63,6 +42,64 @@
             app:icvp_min_page_scale="0.55"
             app:icvp_min_page_scale_offset="5dp"
             app:icvp_scroll_duration="400" />
+
+        <RelativeLayout
+            android:id="@+id/aboutcollgeHome"
+            android:gravity="center"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_below="@id/HomeTabViewPager"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/abouttextHometab"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textColor="@color/white"/>
+            <TextView
+                android:textSize="15sp"
+                android:layout_below="@id/abouttextHometab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="The Government of Maharashtra with the aim and vision to spread Technical Education in rural and tribal areas of the state of Maharashtra founded Government College Of Engineering, Karad in 1960.The College is affiliated to Shivaji University, Kolhapur and is acting as a vital education center for many years. Over the years the college has produced about 7200 engineers and more than 300 computer professionals through Master of Computer Application course which is unique in Engineering faculty under Shivaji University. "/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/socialMediaTab"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/aboutcollgeHome"
+            android:background="@color/black"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/instalogocontactcard"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/instalogo" />
+
+            <Button
+                android:id="@+id/facebooklogocontactcard"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/facebooklogo" />
+
+            <Button
+                android:id="@+id/twitterlogocontactcard"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/linkedinglogo" />
+        </LinearLayout>
     </RelativeLayout>
 
 </FrameLayout>

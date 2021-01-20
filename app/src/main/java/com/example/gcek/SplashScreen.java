@@ -37,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(getApplicationContext() , FirstActivityWto.class));
             }
-        }, 3000);
+        }, 2000);
     }
 
     private class GetStartingDataOfUser extends AsyncTask<Void, Void, Void> {

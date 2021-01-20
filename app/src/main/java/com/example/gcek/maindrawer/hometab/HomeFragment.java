@@ -31,7 +31,6 @@ public class HomeFragment extends Fragment {
             SliderAdapter sliderAdapter = new SliderAdapter(PosterList, getActivity().getBaseContext());
             pager.setAdapter(sliderAdapter);
         }catch (Exception e){
-
         }
     }
 

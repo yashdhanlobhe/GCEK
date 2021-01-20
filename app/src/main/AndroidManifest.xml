@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen"
+            android:noHistory="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,7 +27,7 @@
         <activity android:name=".FirstActivityWto" />
         <activity android:name=".Notification.SeeNotificationImage" />
         <activity android:name=".login.register_page" />
-        <activity android:name=".login.login_page" />
+        <activity android:name=".login.login_page"/>
         <activity android:name=".Notification.Notification" />
         <activity android:name=".MainActivity" />
     </application>

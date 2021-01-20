@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.gcek.MainActivity;
 import com.example.gcek.Notification.Notification;
@@ -24,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class login_page extends AppCompatActivity {
-    public FirebaseAuth mAuth;
+    public  FirebaseAuth mAuth;
     public EditText email ,password;
     public Button loginbtn;
     public TextView register_yourself;
@@ -37,7 +38,11 @@ public class login_page extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser()!= null && mAuth.getCurrentUser().isEmailVerified()){
-            startActivity(new Intent(getApplicationContext() , MainActivity.class).putExtra("email" , mAuth.getCurrentUser().getEmail()));
+            Toast.makeText(getApplicationContext() , mAuth.getCurrentUser().getEmail() + "  Loged In",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext() , MainActivity.class).
+                    putExtra("email" , mAuth.getCurrentUser().getEmail()).
+                    setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
         }
         register_yourself = (TextView)findViewById(R.id.register_text);
         email =(EditText)findViewById(R.id.loginemail);
@@ -56,8 +61,10 @@ public class login_page extends AppCompatActivity {
                             public void onSuccess(AuthResult authResult) {
                                 if(mAuth.getCurrentUser().isEmailVerified()){
                                     pb.dismiss();
-                                    Toast.makeText(mcontext , "Login Successful" , Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext() , MainActivity.class).putExtra("email" , mAuth.getCurrentUser().getEmail()));
+                                    Toast.makeText(getApplicationContext() , email.getText().toString() + "  Loged In",Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(getApplicationContext() , MainActivity.class)
+                                            .putExtra("email" , mAuth.getCurrentUser().getEmail())
+                                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                                 }
 
                                 else {

@@ -18,10 +18,11 @@ import androidx.fragment.app.Fragment;
 import com.example.gcek.maindrawer.About.AboutFragment;
 import com.example.gcek.maindrawer.ContributeFragment;
 import com.example.gcek.maindrawer.hometab.HomeFragment;
-import com.example.gcek.maindrawer.LoginFragment;
+import com.example.gcek.maindrawer.VariousCollegeLoginFragment;
 import com.example.gcek.maindrawer.Notification_fragment;
 import com.example.gcek.maindrawer.Showid;
 import com.example.gcek.maindrawer.UpcomingFragment;
+import com.example.gcek.maindrawer.settingfragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -70,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                         temp = new AboutFragment();
                         break;
                     case R.id.nav_login:
-                        temp = new LoginFragment();
+                        temp = new VariousCollegeLoginFragment();
                         break;
-//                    case R.id.nav_club:
-//                        temp = new ClubsFragment();
-//                        break;
+                    case R.id.nav_setting:
+                        temp = new settingfragment();
+                        break;
                     case R.id.nav_event:
                         temp = new UpcomingFragment();
                         break;

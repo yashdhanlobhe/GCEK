@@ -7,8 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.gcek.maindrawer.AboutFragment;
-import com.example.gcek.maindrawer.ClubsFragment;
+import com.example.gcek.maindrawer.About.AboutFragment;
 import com.example.gcek.maindrawer.LoginFragmentWTO;
 import com.example.gcek.maindrawer.UpcomingFragment;
 import com.example.gcek.maindrawer.hometab.HomeFragment;

@@ -1,4 +1,4 @@
-package com.example.gcek;
+package com.example.gcek.maindrawer.About;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.List;
+import com.example.gcek.R;
+
 
 public class DepartmentActivity extends AppCompatActivity {
 TextView Departmentname, name   , degree, vision ,about;

@@ -37,7 +37,7 @@ public class login_page extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser()!= null && mAuth.getCurrentUser().isEmailVerified()){
-            startActivity(new Intent(getApplicationContext() , MainActivity.class).putExtra("email" , mAuth.getCurrentUser().getEmail().toString()  ));
+            startActivity(new Intent(getApplicationContext() , MainActivity.class).putExtra("email" , mAuth.getCurrentUser().getEmail()));
         }
         register_yourself = (TextView)findViewById(R.id.register_text);
         email =(EditText)findViewById(R.id.loginemail);
@@ -57,7 +57,7 @@ public class login_page extends AppCompatActivity {
                                 if(mAuth.getCurrentUser().isEmailVerified()){
                                     pb.dismiss();
                                     Toast.makeText(mcontext , "Login Successful" , Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext() , MainActivity.class).putExtra("email" , mAuth.getCurrentUser().getEmail().toString()  ));
+                                    startActivity(new Intent(getApplicationContext() , MainActivity.class).putExtra("email" , mAuth.getCurrentUser().getEmail()));
                                 }
 
                                 else {

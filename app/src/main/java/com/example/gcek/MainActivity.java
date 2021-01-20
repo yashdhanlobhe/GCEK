@@ -1,7 +1,6 @@
 package com.example.gcek;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,8 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import com.example.gcek.maindrawer.AboutFragment;
-import com.example.gcek.maindrawer.ClubsFragment;
+import com.example.gcek.maindrawer.About.AboutFragment;
 import com.example.gcek.maindrawer.ContributeFragment;
 import com.example.gcek.maindrawer.hometab.HomeFragment;
 import com.example.gcek.maindrawer.LoginFragment;
@@ -28,11 +26,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import static com.example.gcek.resources.GetBarcode.getBarcodeFromString;
 
@@ -103,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 userData =  documentSnapshot.toObject(UserData.class);
                 BarcodeImage = getBarcodeFromString(userData.getGCEKID());
                 setHeaderViewData();
-                new DownloadFilesTask().execute();
+                new DownloadImageTask().execute();
             }
         });
 
@@ -126,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         email = getIntent().getStringExtra("email");
 
-        navigationView = (NavigationView)findViewById(R.id.main_nav_view);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawerlayout);
+        navigationView =findViewById(R.id.main_nav_view);
+        drawerLayout = findViewById(R.id.drawerlayout);
         frameLayout= findViewById(R.id.main_frame_layout);
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
         navigationView.setCheckedItem(R.id.nav_home);
@@ -140,31 +136,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class DownloadFilesTask extends AsyncTask<Void, Void, Void> {
+    private class DownloadImageTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
             Log.d("UserImage" , "Starting Downloading");
-             userImage=getBitmapFromURL(userData.getProfileImage());
-             Log.d("UserImage" , "Downloaded");
-            return null;
-        }
-
-    }
-
-
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            // Log exception
+            try {
+                userImage= Picasso.get().load(userData.getProfileImage()).get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d("UserImage" , "Downloaded");
             return null;
         }
     }
-
 }

@@ -38,14 +38,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         root =  inflater.inflate(R.layout.fragment_home, container, false);
-        try{
-            HorizontalInfiniteCycleViewPager pager =root.findViewById(R.id.HomeTabViewPager);
-            SliderAdapter sliderAdapter = new SliderAdapter(PosterList, getActivity().getBaseContext());
-            pager.setAdapter(sliderAdapter);
-        }catch (Exception e){
-
-        }
+        root =  inflater.inflate(R.layout.fragment_home, container, false);
 
         View.OnClickListener socialmediaonclicklistner = new View.OnClickListener() {
             @Override

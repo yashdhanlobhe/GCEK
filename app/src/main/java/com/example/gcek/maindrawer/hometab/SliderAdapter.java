@@ -59,10 +59,10 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = layoutInflater.inflate(R.layout.carditemhometabviewpager,container,false);
-        ImageView imageView = view.findViewById(R.id.homeviewpagerimageview);
-        TextView textView = view.findViewById(R.id.homeviewpagerTextview);
-        textView.setText(posterData.get(position).getTitle());
         try{
+            ImageView imageView = view.findViewById(R.id.homeviewpagerimageview);
+            TextView textView = view.findViewById(R.id.homeviewpagerTextview);
+            textView.setText(posterData.get(position).getTitle());
             imageView.setImageBitmap(PosterBitmapList.get(position));
         }catch (Exception e){
 

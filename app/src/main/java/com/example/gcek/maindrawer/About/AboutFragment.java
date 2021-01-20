@@ -1,18 +1,14 @@
-package com.example.gcek.maindrawer;
+package com.example.gcek.maindrawer.About;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 
-import com.example.gcek.DepartmentActivity;
 import com.example.gcek.R;
 
 import java.util.Locale;

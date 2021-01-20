@@ -4,13 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 
-import com.example.gcek.maindrawer.LoginFragment;
 import com.example.gcek.maindrawer.hometab.PosterData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +20,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.gcek.AppData.PosterBitmapList;
 import static com.example.gcek.AppData.PosterList;
@@ -33,15 +31,24 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        getHomePosterData();
-
-
-        startActivity(new Intent(getApplicationContext() , FirstActivityWto.class));
-
+        new GetStartingDataOfUser().execute();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getApplicationContext() , FirstActivityWto.class));
+            }
+        }, 3000);
     }
 
+    private class GetStartingDataOfUser extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            getHomePosterData();
+            return null;
+        }
+    }
     private void getHomePosterData() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference data = firebaseDatabase.getReference().child("HomePoster").getRef();
         data.addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,7 +59,7 @@ public class SplashScreen extends AppCompatActivity {
                     PosterList.add(nd);
                     Log.d("YDCH" , "downloadedDATA");
                 }
-                DonwloadPosterPics();
+                DownloadPosterPics();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -60,8 +67,7 @@ public class SplashScreen extends AppCompatActivity {
             }
         });
     }
-
-    private void DonwloadPosterPics() {
+    private void DownloadPosterPics() {
         PosterBitmapList = new ArrayList<>();
         for(PosterData posterData : PosterList ){
             String DownloadingUri = posterData.getNoticeURI();
@@ -71,9 +77,6 @@ public class SplashScreen extends AppCompatActivity {
         Log.d("YDCH" , "PICS");
         Log.d("YDCH" , String.valueOf(PosterBitmapList.size()));
     }
-
-
-
     private static class DownloadImage extends AsyncTask<Void, Void, Void> {
         String uri;
         public DownloadImage(String uri) {

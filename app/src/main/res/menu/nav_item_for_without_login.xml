@@ -12,10 +12,10 @@
         android:title="About"
         android:id="@+id/nav_about_wto"
         android:icon="@drawable/ic_about"/>
-    <item
-        android:title="Clubs"
-        android:id="@+id/nav_club_wto"
-        android:icon="@drawable/ic_study"/>
+<!--    <item-->
+<!--        android:title="Clubs"-->
+<!--        android:id="@+id/nav_club_wto"-->
+<!--        android:icon="@drawable/ic_study"/>-->
     <item
         android:title="Events"
         android:id="@+id/nav_event_wto"

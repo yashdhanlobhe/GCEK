@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_login:
                         temp = new LoginFragment();
                         break;
-                    case R.id.nav_club:
-                        temp = new ClubsFragment();
-                        break;
+//                    case R.id.nav_club:
+//                        temp = new ClubsFragment();
+//                        break;
                     case R.id.nav_event:
                         temp = new UpcomingFragment();
                         break;

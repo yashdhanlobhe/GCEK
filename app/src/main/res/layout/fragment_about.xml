@@ -17,6 +17,7 @@
                 android:layout_height="200dp"
                 android:background="@drawable/collegedideview"
                 >
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -26,14 +27,13 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    ></TextView>
+                    android:layout_centerVertical="true" />
             </RelativeLayout>
             <TextView
                 android:id="@+id/infotextaboutfragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:text="Info"
                 android:layout_below="@+id/discoverPhotoRelativeLayout"
                 android:textColor="@color/black"
@@ -59,7 +59,7 @@
                         android:layout_marginStart="15dp"
                         android:elevation="10dp"
                         android:backgroundTint="@color/backgroundcardcolor1"
-                        android:layout_height="match_parent">>
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:textSize="18dp"
@@ -87,23 +87,7 @@
                             android:text="Location"
                             android:layout_gravity="center"/>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/ConnectCardView"
-                        android:layout_toEndOf="@+id/LocaitonCardView"
-                        android:backgroundTint="@color/backgroundcardcolor3"
-                        android:layout_marginStart="20dp"
-                        android:elevation="10dp"
-                        android:layout_width="160dp"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:textSize="18dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Connect"
-                            android:layout_gravity="center"/>
-                    </androidx.cardview.widget.CardView>
+
                 </RelativeLayout>
             </HorizontalScrollView>
             <TextView
@@ -199,22 +183,24 @@
                             android:text="Electrical"
                             android:layout_gravity="center"/>
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CIVILCardViewDiscover"
+                        android:layout_width="160dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="23dp"
                         android:layout_toEndOf="@+id/ElectricalCardViewDiscover"
                         android:backgroundTint="@color/backgroundcardcolor3"
-                        android:layout_marginStart="20dp"
-                        android:layout_width="160dp"
-                        android:elevation="10dp"
-                        android:layout_height="match_parent">
+                        android:elevation="10dp">
+
                         <TextView
-                            android:textSize="18dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="CIVIL"
-                            android:layout_gravity="center"/>
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
             </HorizontalScrollView>

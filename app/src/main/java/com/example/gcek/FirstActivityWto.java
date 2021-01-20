@@ -30,9 +30,9 @@ public class FirstActivityWto extends AppCompatActivity {
                     case R.id.nav_about_wto:
                         fragment = new AboutFragment();
                         break;
-                    case R.id.nav_club_wto:
-                        fragment = new ClubsFragment();
-                        break;
+//                    case R.id.nav_club_wto:
+//                        fragment = new ClubsFragment();
+//                        break;
                     case R.id.nav_home_wto:
                         fragment = new HomeFragment();
                         break;

@@ -6,15 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".maindrawer.hometab.HomeFragment"
     >
-    <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:icvp_scroll_duration="400"
-        app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
-        android:id="@+id/HomeTabViewPager"
-        app:icvp_center_page_scale_offset="5dp"
-        app:icvp_min_page_scale_offset="5dp"
-        app:icvp_max_page_scale="0.8"
-        app:icvp_min_page_scale="0.55"
-        app:icvp_medium_scaled="false"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@color/black"
+            android:layout_marginVertical="5dp"
+            android:id="@+id/socialMediaTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <Button
+                android:id="@+id/instalogocontactcard"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:background="@drawable/instalogo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <Button
+                android:id="@+id/facebooklogocontactcard"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/facebooklogo"
+                app:layout_constraintStart_toEndOf="@+id/instalogocontactcard"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <Button
+                android:id="@+id/twitterlogocontactcard"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/linkedinglogo"
+                app:layout_constraintStart_toEndOf="@+id/facebooklogocontactcard"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        </LinearLayout>
+        <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+            android:layout_below="@id/socialMediaTab"
+            android:id="@+id/HomeTabViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:icvp_center_page_scale_offset="5dp"
+            app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+            app:icvp_max_page_scale="0.8"
+            app:icvp_medium_scaled="false"
+            app:icvp_min_page_scale="0.55"
+            app:icvp_min_page_scale_offset="5dp"
+            app:icvp_scroll_duration="400" />
+    </RelativeLayout>
+
 </FrameLayout>

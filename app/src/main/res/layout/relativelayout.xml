@@ -6,32 +6,69 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="10dp"
+    android:background="@color/white"
+    android:elevation="15dp"
     >
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
+        <ImageView
+            android:id="@+id/NoticelogoIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_baseline_notifications_active_24"/>
         <TextView
+            android:textColor="@color/s1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Notice"
+            android:textSize="15sp"
+            android:layout_toEndOf="@+id/NoticelogoIcon"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:textColor="@color/black"
             android:id="@+id/notificaitontitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:marqueeRepeatLimit="10"
+            android:maxLines="2"
             android:text="TextView"
+            android:layout_below="@+id/NoticelogoIcon"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_margin="5dp"
+            android:layout_marginStart="15dp"
             />
 
         <TextView
+            android:layout_marginStart="15dp"
             android:id="@+id/notificationdescription"
             android:layout_width="match_parent"
+            android:maxLines="5"
             android:layout_height="wrap_content"
             android:layout_below="@+id/notificaitontitle"
-            android:layout_margin="5dp"
             android:text="TextView"
             android:textSize="16sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ClicktextNotificationAdapter"
+            android:layout_below="@id/notificationdescription"
+            android:text ="Click for More Info"
+            android:layout_marginEnd="15dp"
+            android:gravity="right"
+            android:textColor="@color/blue"/>
+        <TextView
+            android:id="@+id/NotificationDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ClicktextNotificationAdapter"
+            android:text ="Time"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="right"
+            android:textColor="@color/s1"/>
 
-    </LinearLayout>
+
+    </RelativeLayout>
     </androidx.cardview.widget.CardView>

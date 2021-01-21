@@ -3,6 +3,7 @@ package com.example.gcek.Notification;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 
 import com.example.gcek.R;
 import com.jsibbold.zoomage.ZoomageView;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,27 +24,15 @@ import java.net.URL;
 public class SeeNotificationImage extends AppCompatActivity {
     String downloadImageUri;
     Bitmap NotificationImage;
-    Toolbar toolbarIMG;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_notification_image);
-
-        toolbarIMG = findViewById(R.id.ShowImageNotice);
-        toolbarIMG.setTitle("Notice");
-        setSupportActionBar(toolbarIMG);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        toolbarIMG.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
+        pd = new ProgressDialog(this);
+        pd.setCancelable(false);
+        pd.show();
         downloadImageUri = getIntent().getStringExtra("NoticeUrl");
         new DownloadFilesTask().execute();
 
@@ -51,13 +41,18 @@ public class SeeNotificationImage extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             Log.d("UserImage" , "Starting Downloading");
-            NotificationImage=getBitmapFromURL(downloadImageUri);
+            try {
+                NotificationImage=getBitmapFromURL(downloadImageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             Log.d("UserImage" , "Downloaded");
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            pd.dismiss();
             ZoomageView imageView =findViewById(R.id.NotificationImageView);
             imageView.setPadding(0 ,0 ,0 ,0);
             imageView.setZoomable(true);
@@ -67,18 +62,7 @@ public class SeeNotificationImage extends AppCompatActivity {
     }
 
 
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            return null;
-        }
+    public static Bitmap getBitmapFromURL(String src) throws IOException {
+       return Picasso.get().load(src).get();
     }
-
 }

@@ -41,7 +41,15 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
         NotificationData notification = notificationlist.get(position);
         holder.title.setText(notification.title);
         holder.description.setText(notification.description);
+        holder.time.setText(getDateOfnotification(notification.id));
 
+    }
+
+    private String getDateOfnotification(String id) {
+        String date = null;
+        String dateArray[] = id.split(" ");
+        date = dateArray[1]+ " " + dateArray[2]+" " + dateArray[0];
+        return date;
     }
 
     @Override
@@ -50,7 +58,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
    class ViewHolder extends RecyclerView.ViewHolder {
-    public TextView title;
+    public TextView title , time;
     public TextView description;
     public CardView mylayout;
     public ViewHolder(@NonNull View itemView) {
@@ -58,6 +66,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
         title = (TextView)itemView.findViewById(R.id.notificaitontitle);
         description = (TextView)itemView.findViewById(R.id.notificationdescription);
         mylayout = (CardView) itemView.findViewById(R.id.mylayout);
+        time = (TextView)itemView.findViewById(R.id.NotificationDateText);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

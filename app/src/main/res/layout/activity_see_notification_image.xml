@@ -3,20 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Notification.SeeNotificationImage">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/ShowImageNotice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/s1"
-        app:titleTextColor="@color/white"
-        ></androidx.appcompat.widget.Toolbar>
-    <com.jsibbold.zoomage.ZoomageView
+    android:layout_height="match_parent">
+       <com.jsibbold.zoomage.ZoomageView
         android:id="@+id/NotificationImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/lodingicon"
         android:padding="100dp"
         app:zoomage_restrictBounds="true"
         app:zoomage_animateOnReset="true"

@@ -1,10 +1,13 @@
 package com.example.gcek.Notification;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,15 +30,19 @@ public class Notification extends AppCompatActivity implements OnNotifiacaitonCl
     public Toolbar toolbar;
     FirebaseDatabase firebaseDatabase ;
     public String ID;
+    Context mcontext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+        mcontext= this;
+        pd = new ProgressDialog(mcontext);
+        pd.show();
+        pd.setCancelable(false);
         ID =  getIntent().getStringExtra("class");
         firebaseDatabase = FirebaseDatabase.getInstance();
         OnNotifiacaitonClick onNotifiacaitonClick = this;
-
 
         recyclerView = (RecyclerView)findViewById(R.id.mrecyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -43,7 +50,6 @@ public class Notification extends AppCompatActivity implements OnNotifiacaitonCl
 
         toolbar = findViewById(R.id.clgNotification_toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("College Notifications");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -64,6 +70,7 @@ public class Notification extends AppCompatActivity implements OnNotifiacaitonCl
                     notificationlist.add(nd);
                 }
                 myAdapter = new MyAdapter(notificationlist , onNotifiacaitonClick);
+                pd.dismiss();
                 recyclerView.setAdapter(myAdapter);
             }
 
@@ -73,18 +80,18 @@ public class Notification extends AppCompatActivity implements OnNotifiacaitonCl
             }
         });
     }
-
     private DatabaseReference getData(String id) {
         return firebaseDatabase.getReference().child("Notices").child(ID).getRef();
     }
-
     @Override
     public void OnClickListner(NotificationData nd) {
+        if (nd.noticeURI==null || nd.noticeURI == ""){
+            Toast.makeText(mcontext , "Notice Not Available" , Toast.LENGTH_LONG).show();
+            return;
+        }
         startActivity(new Intent(this , SeeNotificationImage.class).putExtra("NoticeUrl" , nd.noticeURI));
     }
-
     @Override
     public void OnLongClickListner(NotificationData nd) {
-
     }
 }

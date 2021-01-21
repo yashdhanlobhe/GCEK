@@ -6,100 +6,119 @@
     android:layout_height="match_parent"
     tools:context=".maindrawer.hometab.HomeFragment"
     >
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:scaleType="centerCrop"
-            android:foreground="@drawable/gradientbtncolor4"
-            android:src="@drawable/mainclgpic"
-            android:id="@+id/hometabamainclgpic"
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
-        </ImageView>
         <RelativeLayout
-            android:id="@+id/collgeNameLogo"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:background="@color/black"
-            android:layout_below="@id/hometabamainclgpic">
+            android:layout_height="match_parent">
             <ImageView
+                android:scaleType="centerCrop"
+                android:foreground="@drawable/gradientbtncolor4"
+                android:src="@drawable/mainclgpic"
+                android:id="@+id/hometabamainclgpic"
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+            </ImageView>
+            <RelativeLayout
+                android:id="@+id/collgeNameLogo"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:background="@color/black"
+                android:layout_below="@id/hometabamainclgpic">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/clgnamelogo"
+                    android:layout_marginHorizontal="10dp"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/somethingnewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/clgnamelogo"
-                android:layout_margin="10dp"/>
-        </RelativeLayout>
-        <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
-            android:layout_below="@id/collgeNameLogo"
-            android:id="@+id/HomeTabViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:icvp_center_page_scale_offset="5dp"
-            app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
-            app:icvp_max_page_scale="0.8"
-            app:icvp_medium_scaled="false"
-            app:icvp_min_page_scale="0.55"
-            app:icvp_min_page_scale_offset="5dp"
-            app:icvp_scroll_duration="400" />
-
-        <RelativeLayout
-            android:id="@+id/aboutcollgeHome"
-            android:gravity="center"
-            android:background="@color/black"
-            android:layout_width="match_parent"
-            android:layout_below="@id/HomeTabViewPager"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:id="@+id/abouttextHometab"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="About"
-                android:textColor="@color/white"/>
-            <TextView
-                android:textSize="15sp"
-                android:layout_below="@id/abouttextHometab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:text=" Something New "
+                android:padding="2dp"
                 android:textColor="@color/white"
+                android:background="@color/s1"
+                android:textSize="18sp"
+                android:layout_below="@+id/collgeNameLogo"
+                android:layout_marginVertical="10dp"/>
+            <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+                android:layout_below="@id/somethingnewText"
+                android:id="@+id/HomeTabViewPager"
+                android:layout_width="match_parent"
+                android:autofillHints="l"
+                android:layout_height="300dp"
+                app:icvp_center_page_scale_offset="5dp"
+                app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+                app:icvp_max_page_scale="0.8"
+                app:icvp_medium_scaled="false"
+                app:icvp_min_page_scale="0.55"
+                app:icvp_min_page_scale_offset="5dp"
+                app:icvp_scroll_duration="400" />
+            <RelativeLayout
+                android:id="@+id/aboutcollgeHome"
                 android:gravity="center"
-                android:text="The Government of Maharashtra with the aim and vision to spread Technical Education in rural and tribal areas of the state of Maharashtra founded Government College Of Engineering, Karad in 1960.The College is affiliated to Shivaji University, Kolhapur and is acting as a vital education center for many years. Over the years the college has produced about 7200 engineers and more than 300 computer professionals through Master of Computer Application course which is unique in Engineering faculty under Shivaji University. "/>
+                android:layout_width="match_parent"
+                android:layout_below="@id/HomeTabViewPager"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/abouttextHometab"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About"
+                    />
+                <TextView
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:layout_below="@id/abouttextHometab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="The Government of Maharashtra with the aim and vision to spread Technical Education in rural and tribal areas of the state of Maharashtra founded Government College Of Engineering, Karad in 1960.The College is affiliated to Shivaji University, Kolhapur and is acting as a vital education center for many years. Over the years the college has produced about 7200 engineers and more than 300 computer professionals through Master of Computer Application course which is unique in Engineering faculty under Shivaji University. "/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/socialMediaTab"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/aboutcollgeHome"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/instalogocontactcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="70dp"
+                    android:background="@drawable/instalogo"
+                    />
+
+                <Button
+                    android:id="@+id/facebooklogocontactcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/facebooklogo"
+
+                  />
+
+                <Button
+                    android:layout_marginLeft="70dp"
+                    android:id="@+id/twitterlogocontactcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/linkedinglogo"
+                  />
+            </LinearLayout>
         </RelativeLayout>
+    </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/socialMediaTab"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@id/aboutcollgeHome"
-            android:background="@color/black"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/instalogocontactcard"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="60dp"
-                android:background="@drawable/instalogo" />
-
-            <Button
-                android:id="@+id/facebooklogocontactcard"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="60dp"
-                android:background="@drawable/facebooklogo" />
-
-            <Button
-                android:id="@+id/twitterlogocontactcard"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="60dp"
-                android:background="@drawable/linkedinglogo" />
-        </LinearLayout>
-    </RelativeLayout>
 
 </FrameLayout>

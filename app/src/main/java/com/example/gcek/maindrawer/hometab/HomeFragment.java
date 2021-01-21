@@ -22,13 +22,19 @@ import static com.example.gcek.AppData.PosterList;
 
 public class HomeFragment extends Fragment {
 
-    View root;
+    static View root;
+    public static SliderAdapter sliderAdapter;
+    public static HorizontalInfiniteCycleViewPager pager;
+
     @Override
     public void onResume() {
         super.onResume();
-        HorizontalInfiniteCycleViewPager pager =root.findViewById(R.id.HomeTabViewPager);
+        setPosters();
+    }
+    public static void setPosters(){
+        pager = root.findViewById(R.id.HomeTabViewPager);
         try{
-            SliderAdapter sliderAdapter = new SliderAdapter(PosterList, getActivity().getBaseContext());
+            sliderAdapter = new SliderAdapter(PosterList, pager.getContext());
             pager.setAdapter(sliderAdapter);
         }catch (Exception e){
         }
@@ -38,6 +44,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root =  inflater.inflate(R.layout.fragment_home, container, false);
+
 
         View.OnClickListener socialmediaonclicklistner = new View.OnClickListener() {
             @Override

@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-
 import com.example.gcek.maindrawer.hometab.PosterData;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import static com.example.gcek.AppData.PosterBitmapList;
 import static com.example.gcek.AppData.PosterList;
+import static com.example.gcek.maindrawer.hometab.HomeFragment.setPosters;
 
 public class SplashScreen extends AppCompatActivity {
     public static FirebaseDatabase firebaseDatabase;
@@ -59,6 +60,11 @@ public class SplashScreen extends AppCompatActivity {
                     PosterList.add(nd);
                     Log.d("YDCH" , "downloadedDATA");
                 }
+                try {
+                    setPosters();
+                }catch (Exception e){
+                    Log.e("ERROR POSTER DATA" , e.getMessage());
+                }
                 DownloadPosterPics();
             }
             @Override
@@ -75,7 +81,6 @@ public class SplashScreen extends AppCompatActivity {
             Log.d("YDCH" , "Downloaded" + posterData.getTitle() + "pic");
         }
         Log.d("YDCH" , "PICS");
-        Log.d("YDCH" , String.valueOf(PosterBitmapList.size()));
     }
     private static class DownloadImage extends AsyncTask<Void, Void, Void> {
         String uri;

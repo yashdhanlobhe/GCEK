@@ -16,7 +16,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="G    C    E    K"
+            android:text="G   C   E   K"
             android:textColor="@color/white"
             android:textSize="24dp"
             android:textStyle="bold"/>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -148,6 +149,17 @@ public class MainActivity extends AppCompatActivity {
             }
             Log.d("UserImage" , "Downloaded");
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                ImageView userImage = findViewById(R.id.imageView);
+                userImage.setImageBitmap(MainActivity.userImage);
+            }catch (Exception e){
+
+            }
         }
     }
 }

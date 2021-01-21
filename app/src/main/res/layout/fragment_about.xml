@@ -15,9 +15,13 @@
                 android:id="@+id/discoverPhotoRelativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="@drawable/collegedideview"
                 >
-
+                <ImageView
+                    android:foreground="@drawable/gradientbtncolor7"
+                    android:background="@drawable/collegepicfromdrone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,20 +41,19 @@
                 android:text="Info"
                 android:layout_below="@+id/discoverPhotoRelativeLayout"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_margin="10dp"
                 android:textStyle="bold"/>
             <HorizontalScrollView
+                android:id="@+id/HorizontalScrollInfoDiscover"
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
                 android:background="@color/white"
                 android:elevation="5dp"
-                android:id="@+id/HorizontalScrollInfoDiscover"
+                android:padding="15dp"
                 android:scrollbars="none"
-                android:layout_margin="5dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
                 android:layout_below="@+id/infotextaboutfragment"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:padding="5dp">
+                >
                 <RelativeLayout
                     android:gravity="center"
                     android:layout_width="match_parent"
@@ -59,11 +62,14 @@
                         android:id="@+id/officialWebsiteCardView"
                         android:layout_width="160dp"
                         app:cardCornerRadius="10dp"
-                        android:layout_marginStart="15dp"
                         android:elevation="10dp"
-                        android:backgroundTint="@color/backgroundcardcolor1"
-                        android:layout_height="100dp">
-
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/collegewebpng"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor6"/>
                         <TextView
                             android:textSize="18dp"
                             android:textStyle="bold"
@@ -77,11 +83,17 @@
                         android:id="@+id/LocaitonCardView"
                         app:cardCornerRadius="10dp"
                         android:layout_toEndOf="@+id/officialWebsiteCardView"
-                        android:backgroundTint="@color/backgroundcardcolor2"
                         android:layout_marginStart="20dp"
+                        android:layout_marginEnd="50dp"
                         android:elevation="10dp"
                         android:layout_width="160dp"
-                        android:layout_height="100dp">
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/collegemapback"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor7"/>
                         <TextView
                             android:textSize="18dp"
                             android:textStyle="bold"
@@ -91,7 +103,6 @@
                             android:text="Location"
                             android:layout_gravity="center"/>
                     </androidx.cardview.widget.CardView>
-
                 </RelativeLayout>
             </HorizontalScrollView>
             <TextView
@@ -102,22 +113,19 @@
                 android:text="Departments"
                 android:layout_below="@+id/HorizontalScrollInfoDiscover"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_margin="10dp"
                 android:textStyle="bold"/>
             <HorizontalScrollView
                 android:background="@color/white"
                 android:elevation="5dp"
                 android:id="@+id/HorizontalScrollDepartmentsDiscover"
                 android:scrollbars="none"
-                android:layout_margin="5dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
                 android:layout_below="@+id/Departmentstextaboutfragment"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="130dp"
-                android:padding="5dp">
+                android:padding="15dp">
                 <RelativeLayout
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -125,13 +133,16 @@
                         android:id="@+id/ITCardViewDiscover"
                         app:cardCornerRadius="10dp"
                         android:layout_width="160dp"
-                        android:layout_marginStart="15dp"
                         android:elevation="10dp"
-                        android:backgroundTint="@color/backgroundcardcolor4"
-                        android:layout_height="100dp">>
-
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/itbackimage"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor1"/>
                         <TextView
-                            android:textSize="18dp"
+                            android:textSize="22dp"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -143,11 +154,16 @@
                         android:id="@+id/EntcCardViewDiscover"
                         app:cardCornerRadius="10dp"
                         android:layout_toEndOf="@+id/ITCardViewDiscover"
-                        android:backgroundTint="@color/backgroundcardcolor5"
                         android:layout_marginStart="20dp"
                         android:layout_width="160dp"
                         android:elevation="10dp"
-                        android:layout_height="100dp">
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/entcbackimage"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor2"/>
                         <TextView
                             android:textSize="18dp"
                             android:padding="5dp"
@@ -162,11 +178,16 @@
                         android:id="@+id/MECHCardViewDiscover"
                         app:cardCornerRadius="10dp"
                         android:layout_toEndOf="@+id/EntcCardViewDiscover"
-                        android:backgroundTint="@color/backgroundcardcolor1"
                         android:layout_marginStart="20dp"
                         android:elevation="10dp"
                         android:layout_width="160dp"
-                        android:layout_height="100dp">
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/mechbackimg"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor3"/>
                         <TextView
                             android:textSize="18dp"
                             android:textStyle="bold"
@@ -179,12 +200,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/ElectricalCardViewDiscover"
                         android:layout_toEndOf="@+id/MECHCardViewDiscover"
-                        android:backgroundTint="@color/backgroundcardcolor2"
                         android:layout_marginStart="20dp"
                         app:cardCornerRadius="10dp"
                         android:elevation="10dp"
                         android:layout_width="160dp"
-                        android:layout_height="100dp">
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/electricalbackimg"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor4"/>
                         <TextView
                             android:textSize="18dp"
                             android:textStyle="bold"
@@ -194,17 +220,21 @@
                             android:text="Electrical"
                             android:layout_gravity="center"/>
                     </androidx.cardview.widget.CardView>
-
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CIVILCardViewDiscover"
                         android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         app:cardCornerRadius="10dp"
-                        android:layout_marginStart="23dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="50dp"
                         android:layout_toEndOf="@+id/ElectricalCardViewDiscover"
-                        android:backgroundTint="@color/backgroundcardcolor3"
                         android:elevation="10dp">
-
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/civilbackimg"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor5"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -224,17 +254,18 @@
                 android:text="Other"
                 android:layout_below="@+id/HorizontalScrollDepartmentsDiscover"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_margin="10dp"
                 android:textStyle="bold"/>
             <HorizontalScrollView
+                android:layout_marginBottom="70dp"
+                android:background="@color/white"
+                android:layout_marginStart="15dp"
+                android:elevation="5dp"
                 android:scrollbars="none"
-                android:layout_margin="5dp"
-                android:layout_marginStart="10dp"
                 android:layout_below="@+id/Othertextaboutfragment"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="130dp"
-                android:padding="5dp">
+                android:padding="15dp">
                 <RelativeLayout
                     android:gravity="center"
                     android:layout_width="match_parent"
@@ -243,9 +274,14 @@
                         android:id="@+id/LibraryCardView"
                         android:layout_width="160dp"
                         android:elevation="10dp"
-                        android:layout_marginStart="15dp"
-                        android:backgroundTint="@color/backgroundcardcolor3"
-                        android:layout_height="match_parent">>
+                        app:cardCornerRadius="10dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/booksbackimg"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor9"/>
 
                         <TextView
                             android:textSize="18dp"
@@ -259,11 +295,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/TPOCardView"
                         android:layout_toEndOf="@+id/LibraryCardView"
-                        android:backgroundTint="@color/backgroundcardcolor1"
                         android:layout_marginStart="20dp"
                         android:layout_width="160dp"
                         android:elevation="10dp"
+                        app:cardCornerRadius="10dp"
                         android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/tpobackimg"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor4"/>
                         <TextView
                             android:textSize="18dp"
                             android:textStyle="bold"
@@ -276,11 +318,18 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/hostelCardView"
                         android:layout_toEndOf="@+id/TPOCardView"
-                        android:backgroundTint="@color/backgroundcardcolor5"
                         android:layout_marginStart="20dp"
+                        android:layout_marginEnd="50dp"
                         android:elevation="10dp"
                         android:layout_width="160dp"
+                        app:cardCornerRadius="10dp"
                         android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/hostelbackimg"
+                            android:scaleType="centerCrop"
+                            android:foreground="@color/backgroundcardcolor5"/>
                         <TextView
                             android:textSize="18dp"
                             android:textStyle="bold"

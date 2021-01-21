@@ -22,6 +22,8 @@
     <string name="yash_dhanlobhe">Yash Dhanlobhe</string>
     <string name="fy_it">FY IT</string>
     <string name="todo">TODO</string>
+    <string name="discover">Discover</string>
+    <string name="info">Info</string>
     <string-array name="Branches">
         <item>IT</item>
         <item>MECH</item>

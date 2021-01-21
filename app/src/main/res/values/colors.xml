@@ -12,11 +12,15 @@
     <color name="s1">#7f0000</color>
 
     <color name="PrimaryRed">#7f0000</color>
-    <color name="backgroundcardcolor1">#8FB9A8</color>
-    <color name="backgroundcardcolor2">#F1828D</color>
-    <color name="backgroundcardcolor3">#765D69</color>
-    <color name="backgroundcardcolor4">#475C7A</color>
-    <color name="backgroundcardcolor5">#305F72 </color>
+    <color name="backgroundcardcolor1">#BB827717</color>
+    <color name="backgroundcardcolor2">#BB00796b</color>
+    <color name="backgroundcardcolor3">#BB765D69</color>
+    <color name="backgroundcardcolor4">#BB424242</color>
+    <color name="backgroundcardcolor5">#BB305F72 </color>
+    <color name="backgroundcardcolor6">#BB90a4ae</color>
+    <color name="backgroundcardcolor7">#BBb39ddb </color>
+    <color name="backgroundcardcolor8">#BB81d4fa </color>
+    <color name="backgroundcardcolor9">#BB81c784 </color>
 
 
 </resources>

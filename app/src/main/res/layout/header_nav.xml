@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/s1"
-    android:padding="10dp"
+    android:layout_height="150dp"
     >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/headerpic"
+        android:scaleType="centerCrop"
+        android:foreground="@drawable/gradientbtncolor8"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +25,6 @@
         android:layout_marginStart="20dp"
         android:layout_gravity="center">
     </TextView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,17 +32,17 @@
         android:layout_gravity="center"
         >
         <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             >
             <ImageView
                 android:id="@+id/HeaderViewProfileImage"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/finalyear"
-
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/gcekofficaiallogo"
+                android:layout_marginStart="10dp"
                 >
             </ImageView>
         </LinearLayout>
@@ -44,13 +50,14 @@
             android:layout_marginHorizontal="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/HeaderViewId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NA"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_marginStart="10dp"
                 >
@@ -68,7 +75,6 @@
                 >
             </TextView>
         </LinearLayout>
-
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

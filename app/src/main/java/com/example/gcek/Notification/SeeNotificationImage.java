@@ -25,11 +25,19 @@ public class SeeNotificationImage extends AppCompatActivity {
     String downloadImageUri;
     Bitmap NotificationImage;
     ProgressDialog pd;
+    ImageView backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_notification_image);
+        backbtn = findViewById(R.id.showimagebackbutton);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         pd = new ProgressDialog(this);
         pd.setCancelable(false);
         pd.show();

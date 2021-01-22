@@ -97,5 +97,15 @@ public class SplashScreen extends AppCompatActivity {
             }
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                setPosters();
+            }catch (Exception e){
+                Log.e("ERROR POSTER DATA" , e.getMessage());
+            }
+        }
     }
 }

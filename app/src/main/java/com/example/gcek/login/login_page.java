@@ -89,5 +89,24 @@ public class login_page extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext() , register_page.class));
             }
         });
+        email.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //make the view scroll down to the bottom
+                findViewById(R.id.LoginscreenScrollview).scrollTo(0, findViewById(R.id.LoginscreenScrollview).getBottom());
+
+            }
+        });
+        password.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //make the view scroll down to the bottom
+                findViewById(R.id.LoginscreenScrollview).scrollTo(0, findViewById(R.id.LoginscreenScrollview).getBottom());
+
+            }
+        });
     }
+
 }

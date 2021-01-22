@@ -1,67 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.login_page">
-    <EditText
-        android:id="@+id/loginemail"
-        android:layout_width="0dp"
+    tools:context=".login.login_page"
+    android:background="@color/s1"
+    android:id="@+id/LoginscreenScrollview">
+
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="center"
+        android:elevation="15dp"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:hint="Enter your Registered Email"
-        android:inputType="textEmailAddress"
+        android:background="@color/white"
+        android:foregroundGravity="center"
+        app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:inputType="textEmailAddress"
+                android:id="@+id/loginemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emailbackground"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="10dp"
+                android:hint="Enter email"
+                />
+            <EditText
+                android:inputType="textPassword"
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emailbackground"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="10dp"
+                android:hint="Enter password"
+                />
+            <TextView
+                android:id="@+id/ForgotPasswordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forgot password ?"
+                android:textAlignment="viewEnd"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/blue"
+                />
+            <Button
+                android:id="@+id/loginbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/loginbackground"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="Login"
+                android:elevation="15dp"
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/register_text"
+                android:layout_marginHorizontal="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/loginbackground"
+                android:layout_marginBottom="10dp"
+                android:text="Sign up"
+                android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/loginbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginemail"
-        app:layout_constraintVertical_bias="0.359" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/login_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textPersonName|textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/loginbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginemail"
-        app:layout_constraintVertical_bias="0.4" />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/register_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register Yourself"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

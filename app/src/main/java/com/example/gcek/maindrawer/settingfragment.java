@@ -23,7 +23,9 @@ public class settingfragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity().getApplicationContext() , FirstActivityWto.class));
+                startActivity(new Intent(getActivity().getApplicationContext() , FirstActivityWto.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
             }
         });
         return root;

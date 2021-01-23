@@ -26,6 +26,7 @@ import com.example.gcek.maindrawer.UpcomingFragment;
 import com.example.gcek.maindrawer.settingfragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUserData() {
-        db.collection("StudentUsers").document(email)
+        db.collection("StudentUsers").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

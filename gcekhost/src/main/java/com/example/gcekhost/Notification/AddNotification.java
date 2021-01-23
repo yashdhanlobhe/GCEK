@@ -34,6 +34,8 @@ import com.google.firebase.storage.UploadTask;
 import java.net.URI;
 import java.util.Calendar;
 
+import static com.example.gcekhost.serviceNotifiaciton.SendNotifiaction.SendNotifiacionToDevices;
+
 
 public class AddNotification extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     FirebaseDatabase database;
@@ -101,6 +103,7 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
     }
 
     private void uploadDataAndImage(String id ) {
+        SendNotifiacionToDevices(getApplication().getApplicationContext() , notification_title.getText().toString() , notification_description.getText().toString());
         StorageReference mStorage = mStorageRef.child(""+NoticeClass+"/" + id + ".jpg");
         mStorage.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -118,6 +121,7 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
                                 pd.dismiss();
                                 notification_title.setText("");
                                 notification_description.setText("");
+
                             }
                         });
                     }

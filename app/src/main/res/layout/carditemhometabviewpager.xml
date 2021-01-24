@@ -16,10 +16,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:id="@+id/homeviewpagerimageview"
-                android:scaleType="centerCrop"
                 />
             <TextView
+                android:background="@color/s1"
                 android:text="Loading"
+                android:textColor="@color/white"
                 android:textSize="17dp"
                 android:padding="5dp"
                 android:layout_gravity="center"

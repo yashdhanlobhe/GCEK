@@ -3,6 +3,7 @@ package com.example.gcek.login;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -248,6 +249,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
             sizeOfUploadingImage = Integer.parseInt(sizeInString);
             TextView sizeOfImage = findViewById(R.id.ImageSize);
             sizeOfImage.setText("" +sizeInString + " kb");
+            sizeOfImage.setTextColor(Color.RED);
         }
     }
 

@@ -70,7 +70,7 @@ public class login_page extends AppCompatActivity {
 
                                 else {
                                     pb.dismiss();
-                                    Toast.makeText(mcontext , "Email is Not Verified" , Toast.LENGTH_LONG).show();
+                                    Toast.makeText(mcontext , "By using link sent on your email please verify your email" , Toast.LENGTH_LONG).show();
                                 }
                             }
                         }).addOnFailureListener(new OnFailureListener() {

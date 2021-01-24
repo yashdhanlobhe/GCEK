@@ -116,8 +116,10 @@ public class MainActivity extends AppCompatActivity {
     private void setHeaderViewData() {
         TextView headerViewid = findViewById(R.id.HeaderViewId);
         TextView headerClass = findViewById(R.id.HeaderViewClass);
+        TextView headername = findViewById(R.id.HeaderViewnName);
 
         try {
+            headername.setText(userData.getName());
             headerViewid.setText(userData.getGCEKID());
             headerClass.setText(userData.getBranch());
         } catch (Exception e) {

@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import com.example.gcek.FirstActivityWto;
 import com.example.gcek.MainActivity;
 import com.example.gcek.R;
+import com.example.gcek.login.ChangePassword;
+import com.example.gcek.login.login_page;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class settingfragment extends Fragment implements View.OnClickListener {
@@ -39,7 +41,7 @@ public class settingfragment extends Fragment implements View.OnClickListener {
                 ((MainActivity) getActivity()).replaceFragment(new NotifiacationSubscribedTopic());
                 break;
             case R.id.changepasswordsetting :
-
+                startActivity(new Intent(getActivity().getApplicationContext(), ChangePassword.class));
                 break;
 
         }

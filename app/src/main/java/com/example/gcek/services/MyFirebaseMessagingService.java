@@ -20,6 +20,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.gcek.MainActivity;
 import com.example.gcek.R;
+import com.example.gcek.SplashScreen;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -55,7 +56,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.d("sendnotifi" , "MyFirebaseMessagingServic");
 
         super.onMessageReceived(remoteMessage);
-        final Intent intent = new Intent(this, MainActivity.class);
+        final Intent intent = new Intent(this, SplashScreen.class);
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationID = new Random().nextInt(3000);
 
@@ -66,35 +67,24 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this , 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
-
-        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(),
-                R.drawable.ic_launcher_background);
-
         Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setLargeIcon(largeIcon)
-                .setContentTitle(remoteMessage.getData().get("title"))
-                .setContentText(remoteMessage.getData().get("message"))
+                .setSmallIcon(R.drawable.gcekofficaiallogo)
+                .setContentTitle("From "+remoteMessage.getData().get("class"))
+                .setContentText(remoteMessage.getData().get("title"))
                 .setAutoCancel(true)
                 .setSound(notificationSoundUri)
                 .setContentIntent(pendingIntent);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            notificationBuilder.setColor(getResources().getColor(R.color.black));
-        }
         notificationManager.notify(notificationID, notificationBuilder.build());
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupChannels(NotificationManager notificationManager){
-        CharSequence adminChannelName = "New notification";
-        String adminChannelDescription = "Device to devie notification";
-
+        CharSequence adminChannelName = "Notifications";
+        String adminChannelDescription = "You can change priority of notification from app";
         NotificationChannel adminChannel;
         adminChannel = new NotificationChannel(ADMIN_CHANNEL_ID, adminChannelName, NotificationManager.IMPORTANCE_HIGH);
         adminChannel.setDescription(adminChannelDescription);
         adminChannel.enableLights(true);
-        adminChannel.setLightColor(Color.RED);
         adminChannel.enableVibration(true);
         if (notificationManager != null) {
             notificationManager.createNotificationChannel(adminChannel);

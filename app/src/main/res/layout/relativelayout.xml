@@ -44,7 +44,7 @@
             android:layout_marginStart="15dp"
             android:id="@+id/notificationdescription"
             android:layout_width="match_parent"
-            android:maxLines="5"
+            android:maxLines="10"
             android:layout_height="wrap_content"
             android:layout_below="@+id/notificaitontitle"
             android:text="TextView"

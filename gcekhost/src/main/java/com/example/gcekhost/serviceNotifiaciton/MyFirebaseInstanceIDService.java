@@ -14,9 +14,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         Log.d("sendnotifi" , "MyFirebaseInstanceIDService");
 
-        String token = FirebaseInstanceId.getInstance().getToken();
 
-        FirebaseMessaging.getInstance().subscribeToTopic("FY");
-        Log.i(TAG, "onTokenRefresh completed with token: " + token);
     }
 }

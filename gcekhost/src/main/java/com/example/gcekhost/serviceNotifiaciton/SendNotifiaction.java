@@ -18,13 +18,14 @@ import java.util.Map;
 
 public class SendNotifiaction {
     public static void SendNotifiacionToDevices(Context mcontext, String noticeclass ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
-        String TOPIC = "/topics/"+getTopic(noticeclass); //topic has to match what the receiver subscribed to
+        String TopicClass = getTopic(noticeclass);
+        String TOPIC = "/topics/"+TopicClass; //topic has to match what the receiver subscribed to
         JSONObject notification = new JSONObject();
         JSONObject notifcationBody = new JSONObject();
         try {
             notifcationBody.put("title", NOTIFICATION_TITLE);
             notifcationBody.put("message", NOTIFICATION_MESSAGE);
-
+            notifcationBody.put("class" , TopicClass);
             notification.put("to", TOPIC);
             notification.put("data", notifcationBody);
             Log.d("Notify", "1");
@@ -73,18 +74,13 @@ public class SendNotifiaction {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("Notify", "3");
                         Log.i("checkNotificaion", "onResponse: " + notification.toString());
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Notify", "4");
-
-                        Log.i(tag, "onErrorResponse: Didn't work");
                     }
-
                 }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

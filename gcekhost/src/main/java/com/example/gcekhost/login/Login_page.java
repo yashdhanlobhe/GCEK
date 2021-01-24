@@ -42,7 +42,6 @@ public class Login_page extends AppCompatActivity {
         pb = new ProgressDialog(this);
         Context context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
-        FirebaseMessaging.getInstance().subscribeToTopic("FY");
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

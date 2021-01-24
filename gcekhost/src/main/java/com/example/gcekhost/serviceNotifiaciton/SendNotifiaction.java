@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class SendNotifiaction {
     public static void SendNotifiacionToDevices(Context mcontext, String noticeclass ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
-        String TOPIC = getTopic(noticeclass); //topic has to match what the receiver subscribed to
+        String TOPIC = "/topics/"+getTopic(noticeclass); //topic has to match what the receiver subscribed to
         JSONObject notification = new JSONObject();
         JSONObject notifcationBody = new JSONObject();
         try {

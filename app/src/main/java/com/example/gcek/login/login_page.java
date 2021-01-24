@@ -38,7 +38,6 @@ public class login_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseMessaging.getInstance().subscribeToTopic("FY");
         if(mAuth.getCurrentUser()!= null && mAuth.getCurrentUser().isEmailVerified()){
             Toast.makeText(getApplicationContext() , mAuth.getCurrentUser().getEmail() + "  Loged In",Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext() , MainActivity.class).

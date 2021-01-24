@@ -43,7 +43,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if(preferences.getBoolean("SY" , true)){subTopics.add("SY");}
         if(preferences.getBoolean("TY" , true)){subTopics.add("TY");}
         if(preferences.getBoolean("FinalYear" , true)){subTopics.add("FinalYear");}
-        FirebaseMessaging firebaseMessaging = FirebaseMessaging.getInstance();
         for(String topic : subTopics){
             editor.putBoolean(topic , true);
             FirebaseMessaging.getInstance().subscribeToTopic(topic);

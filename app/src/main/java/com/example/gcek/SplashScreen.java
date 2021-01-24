@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 
 import com.example.gcek.maindrawer.hometab.PosterData;
 
@@ -21,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.gcek.AppData.PosterBitmapList;
 import static com.example.gcek.AppData.PosterList;
@@ -78,23 +82,27 @@ public class SplashScreen extends AppCompatActivity {
     }
     private void DownloadPosterPics() {
         PosterBitmapList = new ArrayList<>();
+        List<String> picsUri = new ArrayList<>();
         for(PosterData posterData : PosterList ){
             String DownloadingUri = posterData.getNoticeURI();
-            new DownloadImage(DownloadingUri).execute();
+            picsUri.add(DownloadingUri);
             Log.d("YDCH" , "Downloaded" + posterData.getTitle() + "pic");
         }
+        new DownloadImages(picsUri).execute();
         Log.d("YDCH" , "PICS");
     }
-    private static class DownloadImage extends AsyncTask<Void, Void, Void> {
-        String uri;
-        public DownloadImage(String uri) {
+    private static class DownloadImages extends AsyncTask<Void, Void, Void> {
+        List<String> uri;
+        public DownloadImages(List uri) {
             this.uri = uri;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                PosterBitmapList.add(Picasso.get().load(uri).get());
+                for (String uriOfIMAGE : uri){
+                    PosterBitmapList.add(Picasso.get().load(uriOfIMAGE).get());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

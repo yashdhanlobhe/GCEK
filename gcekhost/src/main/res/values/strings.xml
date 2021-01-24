@@ -7,5 +7,6 @@
         <item>finalyear</item>
         <item>tpo</item>
         <item>college</item>
+        <item>other</item>
     </string-array>
 </resources>

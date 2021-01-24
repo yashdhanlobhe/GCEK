@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class login_page extends AppCompatActivity {
     public  FirebaseAuth mAuth;
@@ -37,6 +38,7 @@ public class login_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         mAuth = FirebaseAuth.getInstance();
+        FirebaseMessaging.getInstance().subscribeToTopic("FY");
         if(mAuth.getCurrentUser()!= null && mAuth.getCurrentUser().isEmailVerified()){
             Toast.makeText(getApplicationContext() , mAuth.getCurrentUser().getEmail() + "  Loged In",Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext() , MainActivity.class).

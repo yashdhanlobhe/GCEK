@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Login_page extends AppCompatActivity {
     public EditText email, password;
@@ -41,7 +42,7 @@ public class Login_page extends AppCompatActivity {
         pb = new ProgressDialog(this);
         Context context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
-
+        FirebaseMessaging.getInstance().subscribeToTopic("FY");
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

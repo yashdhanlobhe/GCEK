@@ -36,9 +36,8 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseMessaging.getInstance().subscribeToTopic("userABC");
-
         setContentView(R.layout.activity_splash_screen);
+        FirebaseMessaging.getInstance().subscribeToTopic("FY");
         new GetStartingDataOfUser().execute();
         new Handler().postDelayed(new Runnable() {
             @Override

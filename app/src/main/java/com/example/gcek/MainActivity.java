@@ -23,7 +23,7 @@ import com.example.gcek.maindrawer.VariousCollegeLoginFragment;
 import com.example.gcek.maindrawer.Notification_fragment;
 import com.example.gcek.maindrawer.Showid;
 import com.example.gcek.maindrawer.UpcomingFragment;
-import com.example.gcek.maindrawer.settingfragment;
+import com.example.gcek.maindrawer.setting.settingfragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,13 +85,18 @@ public class MainActivity extends AppCompatActivity {
                         temp = new ContributeFragment();
                         break;
 
+
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , temp).commit();
+                replaceFragment(temp);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return false;
             }
         });
 
+    }
+
+    public void replaceFragment(Fragment temp) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , temp).commit();
     }
 
     private void getUserData() {

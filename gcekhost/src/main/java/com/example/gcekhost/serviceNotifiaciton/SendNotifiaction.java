@@ -17,11 +17,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SendNotifiaction {
-    public static void SendNotifiacionToDevices(Context mcontext ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
-        String TOPIC = "/topics/userABC"; //topic has to match what the receiver subscribed to
+    public static void SendNotifiacionToDevices(Context mcontext, String noticeclass ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
+        String TOPIC = getTopic(noticeclass); //topic has to match what the receiver subscribed to
         JSONObject notification = new JSONObject();
         JSONObject notifcationBody = new JSONObject();
-        FirebaseMessaging.getInstance().subscribeToTopic("userABC");
         try {
             notifcationBody.put("title", NOTIFICATION_TITLE);
             notifcationBody.put("message", NOTIFICATION_MESSAGE);
@@ -37,6 +36,34 @@ public class SendNotifiaction {
         SendNotificationToDevices(notification , mcontext);
     }
 
+    private static String getTopic(String noticeclass) {
+        String str ;
+        switch (noticeclass){
+            case "fy":
+                str  ="FY";
+                break;
+            case "sy":
+                str  ="SY";
+                break;
+            case "ty":
+                str = "TY";
+                break;
+            case "finalyear":
+                str  ="FinalYear";
+                break;
+            case "tpo":
+                str  ="TPO";
+                break;
+            case "other":
+                str  ="Other";
+                break;
+            default:
+                str="College";
+                break;
+        }
+        return str ;
+    }
+
     public static void SendNotificationToDevices(JSONObject notification , Context mcontext) {
         String tag = "NotifiytoDevices";
         String FCM_API = "https://fcm.googleapis.com/fcm/send";
@@ -47,8 +74,7 @@ public class SendNotifiaction {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("Notify", "3");
-
-                        Log.i(tag, "onResponse: " + response.toString());
+                        Log.i("checkNotificaion", "onResponse: " + notification.toString());
                     }
                 },
                 new Response.ErrorListener() {

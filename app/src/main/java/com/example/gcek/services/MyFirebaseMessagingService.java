@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -19,13 +20,37 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.gcek.MainActivity;
 import com.example.gcek.R;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private final String ADMIN_CHANNEL_ID ="admin_channel";
+
+    @Override
+    public void onNewToken(@NonNull String s) {
+        super.onNewToken(s);
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("NotificationSubscribedTopic" , MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        List<String> subTopics = new ArrayList<>();
+        if(preferences.getBoolean("College" , true)){subTopics.add("College");}
+        if(preferences.getBoolean("TPO" , true)){subTopics.add("TPO");}
+        if(preferences.getBoolean("FY" , true)){subTopics.add("FY");}
+        if(preferences.getBoolean("SY" , true)){subTopics.add("SY");}
+        if(preferences.getBoolean("TY" , true)){subTopics.add("TY");}
+        if(preferences.getBoolean("FinalYear" , true)){subTopics.add("FinalYear");}
+        FirebaseMessaging firebaseMessaging = FirebaseMessaging.getInstance();
+        for(String topic : subTopics){
+            editor.putBoolean(topic , true);
+            FirebaseMessaging.getInstance().subscribeToTopic(topic);
+        }
+        editor.apply();
+    }
+
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         Log.d("sendnotifi" , "MyFirebaseMessagingServic");

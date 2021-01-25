@@ -25,7 +25,7 @@ public class SendPrivateNotifiaction extends AppCompatActivity {
         findViewById(R.id.sendprivatenotifiactionbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendNotifiacionToDevices(mcontext ,topic.getText().toString() , from.getText().toString() ,title.getText().toString() ,des.getText().toString()  );
+                    SendNotifiacionToDevices(mcontext , topic.getText().toString() , from.getText().toString() ,title.getText().toString() ,des.getText().toString());
             }
         });
     }

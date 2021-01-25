@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_gcek_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".login.ChangePassword"></activity>
+        <activity android:name=".ShowNoticeActivity"></activity>
+        <activity android:name=".login.ChangePassword" />
         <activity
             android:name=".SplashScreen"
             android:noHistory="true">

@@ -29,6 +29,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -51,8 +52,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         initUI();
         getUserData();
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             Fragment temp ;
@@ -105,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 userData =  documentSnapshot.toObject(UserData.class);
+                FirebaseMessaging.getInstance().subscribeToTopic(userData.getGCEKID());
                 BarcodeImage = getBarcodeFromString(userData.getGCEKID());
                 setHeaderViewData();
                 new DownloadImageTask().execute();

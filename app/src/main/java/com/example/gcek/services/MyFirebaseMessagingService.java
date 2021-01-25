@@ -20,6 +20,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.gcek.MainActivity;
 import com.example.gcek.R;
+import com.example.gcek.ShowNoticeActivity;
 import com.example.gcek.SplashScreen;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -56,7 +57,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.d("sendnotifi" , "MyFirebaseMessagingServic");
 
         super.onMessageReceived(remoteMessage);
-        final Intent intent = new Intent(this, SplashScreen.class);
+
+        String fromandtitle[] = remoteMessage.getData().get("fromandtitle").split("fromandtitle");
+
+        final Intent intent = new Intent(this, ShowNoticeActivity.class)
+                .putExtra("from" , fromandtitle[0])
+                .putExtra("title" , fromandtitle[1])
+                .putExtra("message" , remoteMessage.getData().get("message"));
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationID = new Random().nextInt(3000);
 
@@ -70,8 +77,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
                 .setSmallIcon(R.drawable.gcekofficaiallogo)
-                .setContentTitle("From "+remoteMessage.getData().get("from"))
-                .setContentText(remoteMessage.getData().get("title"))
+                .setContentTitle("From "+fromandtitle[0])
+                .setContentText( fromandtitle[1])
                 .setAutoCancel(true)
                 .setSound(notificationSoundUri)
                 .setContentIntent(pendingIntent);

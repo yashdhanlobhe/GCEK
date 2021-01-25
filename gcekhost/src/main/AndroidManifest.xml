@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/gcek_host_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".functions.DeleteUser"></activity>
+        <activity android:name=".functions.SendPrivateNotifiaction"></activity>
+        <activity android:name=".functions.DeleteUser" />
         <activity android:name=".Notification.AddPosterHomeTab" />
 
         <service android:name=".serviceNotifiaciton.MyFirebaseInstanceIDService">
@@ -40,8 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Notification.AddNotification"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Notification.AddNotification" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

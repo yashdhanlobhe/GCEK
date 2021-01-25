@@ -103,7 +103,7 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
     }
 
     private void uploadDataAndImage(String id ) {
-        SendNotifiacionToDevices(getApplication().getApplicationContext(), NoticeClass , notification_title.getText().toString() , notification_description.getText().toString());
+        SendNotifiacionToDevices(getApplication().getApplicationContext(), NoticeClass , NoticeClass , notification_title.getText().toString() , notification_description.getText().toString());
         StorageReference mStorage = mStorageRef.child(""+NoticeClass+"/" + id + ".jpg");
         mStorage.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

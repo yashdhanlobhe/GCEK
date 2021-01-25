@@ -17,15 +17,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SendNotifiaction {
-    public static void SendNotifiacionToDevices(Context mcontext, String noticeclass ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
+    public static void SendNotifiacionToDevices(Context mcontext, String noticeclass , String from ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
         String TopicClass = getTopic(noticeclass);
         String TOPIC = "/topics/"+TopicClass; //topic has to match what the receiver subscribed to
         JSONObject notification = new JSONObject();
         JSONObject notifcationBody = new JSONObject();
         try {
+            notifcationBody.put("from" , from);
             notifcationBody.put("title", NOTIFICATION_TITLE);
-            notifcationBody.put("message", NOTIFICATION_MESSAGE);
-            notifcationBody.put("class" , TopicClass);
+//            notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
             notification.put("to", TOPIC);
             notification.put("data", notifcationBody);
             Log.d("Notify", "1");

@@ -70,7 +70,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
                 .setSmallIcon(R.drawable.gcekofficaiallogo)
-                .setContentTitle("From "+remoteMessage.getData().get("class"))
+                .setContentTitle("From "+remoteMessage.getData().get("from"))
                 .setContentText(remoteMessage.getData().get("title"))
                 .setAutoCancel(true)
                 .setSound(notificationSoundUri)

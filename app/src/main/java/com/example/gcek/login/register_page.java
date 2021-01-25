@@ -249,7 +249,7 @@ public class register_page extends AppCompatActivity implements AdapterView.OnIt
             sizeOfUploadingImage = Integer.parseInt(sizeInString);
             TextView sizeOfImage = findViewById(R.id.ImageSize);
             sizeOfImage.setText("" +sizeInString + " kb");
-            sizeOfImage.setTextColor(Color.RED);
+            if(sizeOfUploadingImage>=100){sizeOfImage.setTextColor(Color.RED);}
         }
     }
 

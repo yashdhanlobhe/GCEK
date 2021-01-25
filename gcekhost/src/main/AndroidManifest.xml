@@ -14,15 +14,14 @@
         android:roundIcon="@mipmap/gcek_host_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".Notification.AddPosterHomeTab"></activity>
+        <activity android:name=".functions.DeleteUser"></activity>
+        <activity android:name=".Notification.AddPosterHomeTab" />
 
-        <service
-            android:name=".serviceNotifiaciton.MyFirebaseInstanceIDService">
+        <service android:name=".serviceNotifiaciton.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".serviceNotifiaciton.MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -34,19 +33,15 @@
 
         <activity android:name=".Notification.Notification" />
         <activity android:name=".login.Register_page" />
-        <activity android:name=".login.Login_page" >
+        <activity android:name=".login.Login_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Notification.AddNotification">
-
-        </activity>
-        <activity android:name=".MainActivity" >
-
-        </activity>
+        <activity android:name=".Notification.AddNotification"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

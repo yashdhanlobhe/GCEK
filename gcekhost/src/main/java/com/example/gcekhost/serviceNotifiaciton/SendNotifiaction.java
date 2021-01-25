@@ -40,6 +40,9 @@ public class SendNotifiaction {
     private static String getTopic(String noticeclass) {
         String str ;
         switch (noticeclass){
+            case "college":
+                str  ="College";
+                break;
             case "fy":
                 str  ="FY";
                 break;
@@ -59,7 +62,7 @@ public class SendNotifiaction {
                 str  ="Other";
                 break;
             default:
-                str="College";
+                str=noticeclass;
                 break;
         }
         return str ;

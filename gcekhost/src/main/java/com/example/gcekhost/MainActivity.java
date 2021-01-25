@@ -6,10 +6,10 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
 
 import com.example.gcekhost.Notification.AddNotification;
 import com.example.gcekhost.Notification.AddPosterHomeTab;
+import com.example.gcekhost.functions.DeleteUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     CardView notifiactionADD , noficationPosterHomeTab;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         noficationPosterHomeTab = findViewById(R.id.AddHomePosterNoticecardView);
         notifiactionADD.setOnClickListener(this);
         noficationPosterHomeTab.setOnClickListener(this);
+        findViewById(R.id.deleteDataFromUser).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.AddNotificationcardView:
                 startActivity(new Intent(this , AddNotification.class));
                 break;
+            case R.id.deleteDataFromUser:
+                startActivity(new Intent(this , DeleteUser.class));
         }
     }
 }

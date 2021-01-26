@@ -35,7 +35,7 @@ public class FaqAdd extends Fragment {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
                         .child("faq")
                         .child("unanswered")
-                        .child(""+userData.getGCEKID()+ "  time  " + date);
+                        .child(date);
 
                 databaseReference.child("title").setValue(title.getText().toString());
                 databaseReference.child("description").setValue(des.getText().toString());

@@ -9,4 +9,13 @@
         <item>college</item>
         <item>other</item>
     </string-array>
+    <string-array name="faqtype">
+        <item>college</item>
+        <item>exam</item>
+        <item>hostel</item>
+        <item>admission</item>
+        <item>scholarship</item>
+        <item>tpo</item>
+        <item>other</item>
+    </string-array>
 </resources>

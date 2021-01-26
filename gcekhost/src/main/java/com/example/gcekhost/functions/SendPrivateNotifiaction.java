@@ -21,7 +21,7 @@ public class SendPrivateNotifiaction extends AppCompatActivity {
         Context mcontext  = this;
         ProgressDialog pd= new ProgressDialog(mcontext);
         pd.setCancelable(false);
-        pd.show();
+
         EditText topic = findViewById(R.id.topicprivatemessage);
         EditText title = findViewById(R.id.titleprivatemessage);
         EditText des = findViewById(R.id.descprivatemessage);
@@ -29,6 +29,8 @@ public class SendPrivateNotifiaction extends AppCompatActivity {
         findViewById(R.id.sendprivatenotifiactionbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pd.show();
+
                     SendNotifiacionToDevices(mcontext , topic.getText().toString() , from.getText().toString() ,title.getText().toString() ,des.getText().toString());
                     pd.dismiss();
             }

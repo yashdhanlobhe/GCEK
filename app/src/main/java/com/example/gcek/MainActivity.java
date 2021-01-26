@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.gcek.maindrawer.About.AboutFragment;
 import com.example.gcek.maindrawer.ContributeFragment;
+import com.example.gcek.maindrawer.faqfragment.FAQfragment;
 import com.example.gcek.maindrawer.hometab.HomeFragment;
 import com.example.gcek.maindrawer.VariousCollegeLoginFragment;
 import com.example.gcek.maindrawer.Notification_fragment;
@@ -53,10 +54,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initUI();
         getUserData();
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             Fragment temp ;
@@ -88,17 +87,16 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_contribute:
                         temp = new ContributeFragment();
                         break;
-
-
+                    case R.id.nav_faq:
+                        temp = new FAQfragment();
+                        break;
                 }
                 replaceFragment(temp);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return false;
             }
         });
-
     }
-
     public void replaceFragment(Fragment temp) {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , temp).commit();
     }

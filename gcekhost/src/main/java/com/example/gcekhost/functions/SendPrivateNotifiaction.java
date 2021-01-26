@@ -2,6 +2,7 @@ package com.example.gcekhost.functions;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,9 @@ public class SendPrivateNotifiaction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_private_notifiaction);
         Context mcontext  = this;
+        ProgressDialog pd= new ProgressDialog(mcontext);
+        pd.setCancelable(false);
+        pd.show();
         EditText topic = findViewById(R.id.topicprivatemessage);
         EditText title = findViewById(R.id.titleprivatemessage);
         EditText des = findViewById(R.id.descprivatemessage);
@@ -26,6 +30,7 @@ public class SendPrivateNotifiaction extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     SendNotifiacionToDevices(mcontext , topic.getText().toString() , from.getText().toString() ,title.getText().toString() ,des.getText().toString());
+                    pd.dismiss();
             }
         });
     }

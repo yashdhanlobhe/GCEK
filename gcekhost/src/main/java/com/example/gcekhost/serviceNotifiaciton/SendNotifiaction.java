@@ -1,5 +1,6 @@
 package com.example.gcekhost.serviceNotifiaciton;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,7 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SendNotifiaction {
+
     public static void SendNotifiacionToDevices(Context mcontext, String topic , String from ,String NOTIFICATION_TITLE,String NOTIFICATION_MESSAGE ){
+
         String TopicClass = getTopic(topic);
         String TOPIC = "/topics/"+TopicClass; //topic has to match what the receiver subscribed to
         JSONObject notification = new JSONObject();

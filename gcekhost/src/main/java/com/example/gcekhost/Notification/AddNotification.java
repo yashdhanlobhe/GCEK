@@ -129,8 +129,7 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
+
                         pd.dismiss();
                     }
                 });

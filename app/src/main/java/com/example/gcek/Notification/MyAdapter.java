@@ -31,7 +31,6 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        // Inflate the layout view you have created for the list rows here
         View view = layoutInflater.inflate(R.layout.relativelayout, parent, false);
         return new ViewHolder(view);
     }

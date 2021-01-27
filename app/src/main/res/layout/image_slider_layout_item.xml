@@ -8,7 +8,7 @@
         android:id="@+id/iv_auto_image_slider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitXY" />
     <FrameLayout
         android:id="@+id/fl_shadow_container"
         android:layout_width="match_parent"

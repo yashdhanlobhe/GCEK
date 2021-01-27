@@ -24,6 +24,8 @@ public class tpomain extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setTitle("TPO");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,5 +45,7 @@ public class tpomain extends AppCompatActivity {
         SliderView sliderView = findViewById(R.id.imageSlidertpo);
         SliderAdapter adapter = new SliderAdapter(this , sliderItems);
         sliderView.setSliderAdapter(adapter);
+        sliderView.startAutoCycle();
+        sliderView.setSliderAnimationDuration(1000);
     }
 }

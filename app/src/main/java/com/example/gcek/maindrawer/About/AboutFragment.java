@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gcek.R;
+import com.example.gcek.TPO.tpomain;
 
 import java.util.Locale;
 
@@ -46,6 +47,9 @@ public class AboutFragment extends Fragment {
                     case R.id.officialWebsiteCardView:
                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.gcekarad.ac.in/"));
                         break;
+                    case R.id.TPOCardView:
+                        intent = new Intent(getActivity().getApplicationContext() , tpomain.class);
+                        break;
                 }
                 try {
                     startActivity(intent);
@@ -61,6 +65,7 @@ public class AboutFragment extends Fragment {
         view.findViewById(R.id.ElectricalCardViewDiscover).setOnClickListener(DepartmentClickListner);
         view.findViewById(R.id.LocaitonCardView).setOnClickListener(DepartmentClickListner);
         view.findViewById(R.id.officialWebsiteCardView).setOnClickListener(DepartmentClickListner);
+        view.findViewById(R.id.TPOCardView).setOnClickListener(DepartmentClickListner);
 
         return view;
     }

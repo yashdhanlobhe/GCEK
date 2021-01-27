@@ -33,10 +33,15 @@ public class tpomain extends AppCompatActivity {
 
 
         List<SliderItem> sliderItems = new ArrayList<>();
-        SliderItem s1 = new SliderItem()
+        sliderItems.add(new SliderItem(R.drawable.tpoposter1 , "Placement" ));
+        sliderItems.add(new SliderItem(R.drawable.tpoposter2 , "Placement" ));
+        sliderItems.add(new SliderItem(R.drawable.tpoposter3 , "Placement" ));
+        sliderItems.add(new SliderItem(R.drawable.tpoposter4 , "Placement" ));
+        sliderItems.add(new SliderItem(R.drawable.tpoposter5 , "Placement" ));
+
 
         SliderView sliderView = findViewById(R.id.imageSlidertpo);
-        SliderAdapter adapter = new SliderAdapter(this);
+        SliderAdapter adapter = new SliderAdapter(this , sliderItems);
         sliderView.setSliderAdapter(adapter);
     }
 }

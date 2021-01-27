@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_gcek_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".maindrawer.faqfragment.FAQShowingActivity"></activity>
+        <activity android:name=".TPO.tpomain"></activity>
+        <activity android:name=".maindrawer.faqfragment.FAQShowingActivity" />
         <activity android:name=".ShowNoticeActivity" />
         <activity android:name=".login.ChangePassword" />
         <activity

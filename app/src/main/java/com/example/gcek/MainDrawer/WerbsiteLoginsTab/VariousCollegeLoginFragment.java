@@ -18,8 +18,8 @@ import com.example.gcek.R;
 public class VariousCollegeLoginFragment extends Fragment implements View.OnClickListener {
     Context context;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_login, container, false);
         context = container.getContext();
 

@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.example.gcek.MainDrawer.DiscoverCollegeTab.AboutFragment;
 import com.example.gcek.MainDrawer.WithouLogin.LoginFragmentWTO;
-import com.example.gcek.MainDrawer.WithouLogin.MainNoticeWto;
+import com.example.gcek.MainDrawer.WithouLogin.CollegeNoticeWithoutLogin;
 import com.example.gcek.MainDrawer.EventsTab.UpcomingFragment;
 import com.example.gcek.MainDrawer.MainHomeTab.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,7 +32,7 @@ public class MainActivityWithoutLogin extends AppCompatActivity {
                         fragment = new AboutFragment();
                         break;
                     case R.id.nav_Notification_wto:
-                        fragment = new MainNoticeWto();
+                        fragment = new CollegeNoticeWithoutLogin();
                         break;
                     case R.id.nav_home_wto:
                         fragment = new HomeFragment();

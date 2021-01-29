@@ -11,12 +11,13 @@
         android:background="@color/s1"
         app:titleTextColor="@color/white"
         ></androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/clgNotification_toolbar"
         android:id="@+id/mrecyclerview"
-        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clgNotification_toolbar"
+        android:scrollbars="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

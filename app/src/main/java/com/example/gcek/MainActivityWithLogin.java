@@ -1,5 +1,6 @@
 package com.example.gcek;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -22,6 +23,7 @@ import com.example.gcek.MainDrawer.DiscoverCollegeTab.AboutFragment;
 import com.example.gcek.MainDrawer.ContributeTab.ContributeFragment;
 import com.example.gcek.MainDrawer.FAQTab.MainFAQFragment;
 import com.example.gcek.MainDrawer.MainHomeTab.HomeFragment;
+import com.example.gcek.MainDrawer.PrivateMessages.PrivateMessagesFragment;
 import com.example.gcek.MainDrawer.WerbsiteLoginsTab.VariousCollegeLoginFragment;
 import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
 import com.example.gcek.MainDrawer.ShowIDTab.ShowID;
@@ -42,7 +44,7 @@ import static com.example.gcek.Services.GetBarcode.getBarcodeFromString;
 
 public class MainActivityWithLogin extends AppCompatActivity {
     public  static  UserData userData;
-
+    public Context  mcontext;
     DrawerLayout drawerLayout ;
     public  static Bitmap userImage ,BarcodeImage;
     ActionBarDrawerToggle toggleButton ;
@@ -58,6 +60,8 @@ public class MainActivityWithLogin extends AppCompatActivity {
 
         initUI();
         getUserData();
+
+        mcontext = this ;
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             Fragment temp ;
@@ -91,6 +95,9 @@ public class MainActivityWithLogin extends AppCompatActivity {
                         break;
                     case R.id.nav_faq:
                         temp = new MainFAQFragment();
+                        break;
+                    case R.id.nav_private_notifications:
+                        temp = new PrivateMessagesFragment();
                         break;
                 }
                 replaceFragment(temp);
@@ -178,12 +185,12 @@ public class MainActivityWithLogin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(getBaseContext())
+        new AlertDialog.Builder(mcontext)
                 .setMessage("Do you want to exit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        onBackPressed();
+                        MainActivityWithLogin.super.onBackPressed();
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override

@@ -22,6 +22,10 @@
         android:title="Notifications"
         android:id="@+id/nav_notifications"
         android:icon="@drawable/ic_baseline_notifications_active_24"/>
+    <item
+        android:title="Private"
+        android:id="@+id/nav_private_notifications"
+        android:icon="@drawable/ic_baseline_notifications_active_24"/>
 <!--    <item-->
 <!--        android:title="Clubs"-->
 <!--        android:id="@+id/nav_club"-->

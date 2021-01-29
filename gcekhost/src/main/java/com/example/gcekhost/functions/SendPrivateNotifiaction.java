@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.gcekhost.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 import static com.example.gcekhost.serviceNotifiaciton.SendNotifiaction.SendNotifiacionToDevices;
 
@@ -30,9 +34,13 @@ public class SendPrivateNotifiaction extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pd.show();
-
-                    SendNotifiacionToDevices(mcontext , topic.getText().toString() , from.getText().toString() ,title.getText().toString() ,des.getText().toString());
-                    pd.dismiss();
+                SendNotifiacionToDevices(mcontext , topic.getText().toString() , from.getText().toString() ,title.getText().toString() ,des.getText().toString());
+                DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("privatemessage").child(topic.getText().toString()).child(Calendar.getInstance().getTime().toString());
+                myRef.child("title").setValue(title.getText().toString());
+                myRef.child("description").setValue(des.getText().toString());
+                myRef.child("id").setValue(Calendar.getInstance().getTime().toString());
+                myRef.child("noticeURI").setValue(null);
+                pd.dismiss();
             }
         });
     }

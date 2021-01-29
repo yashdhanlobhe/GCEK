@@ -47,7 +47,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 
     private void confirmsignout() {
         new AlertDialog.Builder(getContext())
-                .setTitle("Do you want to sign out ?")
+                .setMessage("Do you want to sign out ?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

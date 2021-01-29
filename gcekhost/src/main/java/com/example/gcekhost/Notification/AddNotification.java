@@ -104,36 +104,47 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
 
     private void uploadDataAndImage(String id ) {
         SendNotifiacionToDevices(getApplication().getApplicationContext(), NoticeClass , NoticeClass , notification_title.getText().toString() , notification_description.getText().toString());
-        StorageReference mStorage = mStorageRef.child(""+NoticeClass+"/" + id + ".jpg");
-        mStorage.putFile(uri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        mStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                DownloadURI = uri.toString();
-                                myRef = database.getReference().child("Notices").child(NoticeClass).child(id);
-                                myRef.child("title").setValue(notification_title.getText().toString());
-                                myRef.child("description").setValue(notification_description.getText().toString());
-                                myRef.child("id").setValue(id);
-                                myRef.child("noticeURI").setValue(DownloadURI);
-                                pd.dismiss();
-                                notification_title.setText("");
-                                notification_description.setText("");
-
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-
-                        pd.dismiss();
-                    }
-                });
+        if(uri != null){
+            StorageReference mStorage = mStorageRef.child("" + NoticeClass + "/" + id + ".jpg");
+            mStorage.putFile(uri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            mStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    DownloadURI = uri.toString();
+                                    myRef = database.getReference().child("Notices").child(NoticeClass).child(id);
+                                    myRef.child("title").setValue(notification_title.getText().toString());
+                                    myRef.child("description").setValue(notification_description.getText().toString());
+                                    myRef.child("id").setValue(id);
+                                    myRef.child("noticeURI").setValue(DownloadURI);
+                                    pd.dismiss();
+                                    notification_title.setText("");
+                                    notification_description.setText("");
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            pd.dismiss();
+                        }
+                    });
+        }
+        else {
+            myRef = database.getReference().child("Notices").child(NoticeClass).child(id);
+            myRef.child("title").setValue(notification_title.getText().toString());
+            myRef.child("description").setValue(notification_description.getText().toString());
+            myRef.child("id").setValue(id);
+            myRef.child("noticeURI").setValue(null);
             pd.dismiss();
+            notification_title.setText("");
+            notification_description.setText("");
+            pd.dismiss();
+        }
+
     }
 
     private void OpenGallery() {

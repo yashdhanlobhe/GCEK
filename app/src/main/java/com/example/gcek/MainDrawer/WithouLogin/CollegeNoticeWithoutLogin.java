@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainNoticeWto extends Fragment implements OnNotifiacaitonClick
+public class CollegeNoticeWithoutLogin extends Fragment implements OnNotifiacaitonClick
 {
     public List<NotificationDataClass> notificationlist;
     public RecyclerView recyclerView;

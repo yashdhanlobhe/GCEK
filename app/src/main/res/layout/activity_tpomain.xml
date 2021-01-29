@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TPO.tpomain">
+    tools:context=".TPO.TPOMain">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginBottom="50dp"
         android:layout_width="match_parent"

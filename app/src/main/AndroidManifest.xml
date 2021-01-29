@@ -15,12 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_gcek_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".TPO.tpomain"></activity>
-        <activity android:name=".maindrawer.faqfragment.FAQShowingActivity" />
-        <activity android:name=".ShowNoticeActivity" />
-        <activity android:name=".login.ChangePassword" />
+        <activity android:name=".MainDrawer.SettingTab.SettingTabExtraActivity"></activity>
+        <activity android:name=".TPO.TPOMain" />
+        <activity android:name=".MainDrawer.FAQTab.FAQShowingActivity" />
+        <activity android:name=".ShowPersonalNoticeActivity" />
+        <activity android:name=".LoginServices.ChangePasswordActivity" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashScreenActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,16 +29,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".maindrawer.About.DepartmentActivity" />
-        <activity android:name=".FirstActivityWto" />
-        <activity android:name=".Notification.SeeNotificationImage" />
-        <activity android:name=".login.register_page" />
-        <activity android:name=".login.login_page" />
-        <activity android:name=".Notification.Notification" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainDrawer.DiscoverCollegeTab.DepartmentActivity" />
+        <activity android:name=".MainActivityWithoutLogin" />
+        <activity android:name=".Notification.SeeNoticeImageActivity" />
+        <activity android:name=".LoginServices.RegisterPageActivity" />
+        <activity android:name=".LoginServices.LoginPageActivity" />
+        <activity android:name=".Notification.MainNotificationRecyclerView" />
+        <activity android:name=".MainActivityWithLogin" />
 
         <service
-            android:name=".services.MyFirebaseMessagingService"
+            android:name=".Services.MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

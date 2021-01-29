@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.register_page"
+    tools:context=".LoginServices.RegisterPageActivity"
     android:background="@color/s1"
     >
     <androidx.cardview.widget.CardView
@@ -135,7 +135,7 @@
                     android:inputType="textPassword"
                     />
                 <Button
-                    android:background="@drawable/loginbackground"
+                    android:background="@drawable/loginbtnbackground"
                     android:id="@+id/buttonRegister"
                     android:layout_width="match_parent"
                     android:textColor="@color/white"
@@ -146,7 +146,7 @@
                     android:layout_marginHorizontal="30dp"
                     />
                 <Button
-                    android:background="@drawable/loginbackground"
+                    android:background="@drawable/loginbtnbackground"
                     android:layout_marginHorizontal="30dp"
                     android:id="@+id/haveAccount"
                     android:layout_width="match_parent"

@@ -4,39 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".maindrawer.About.DepartmentActivity">
+    tools:context=".MainDrawer.DiscoverCollegeTab.DepartmentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/DepartmentActivityToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/s1"
+        app:title="Department"
+        app:titleTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/DepartmentActivityBackButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_arrow_back_24" />
-
-            <TextView
-                android:id="@+id/DepartmentActivityTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Department Name"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView

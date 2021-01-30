@@ -127,7 +127,6 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
                         Log.d("ydcheack" , "uploaded image");
 
                         profileImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -137,7 +136,6 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                                 Log.d(tag , uri.toString());
                                 uploadData();
                                 Log.d("ydcheack" , "Updloaded data");
-
                             }
                         });
 
@@ -250,6 +248,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
             TextView sizeOfImage = findViewById(R.id.ImageSize);
             sizeOfImage.setText("" +sizeInString + " kb");
             if(sizeOfUploadingImage>=100){sizeOfImage.setTextColor(Color.RED);}
+            else{sizeOfImage.setTextColor(Color.BLACK);}
         }
     }
 

@@ -88,7 +88,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                         pb.setCancelable(false);
                         pb.setTitle("Creating Profile");
                         pb.show();
-
+                        pb.setMessage("Adding email");
 //                    }
 //                    else {
 //                        Toast.makeText(mcontext , "Size Of Image Should be less Than 200kb" ,Toast.LENGTH_LONG).show();
@@ -105,9 +105,11 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+                        pb.setMessage("sending verification mail");
                         mAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void Void) {
+                                pb.setMessage("Compressing image");
                                 Log.d("ydcheack" , "User Created and going to upload image");
                                 try {
                                     UploadImageToFireStore(uri);
@@ -133,7 +135,9 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
 
         ProfileImageStorageRef = "images/UsersProfile/"+email.getText().toString()+".jpg";
         StorageReference profileImageRef = mStorageRef.child("images/UsersProfile/"+email.getText().toString()+".jpg");
-        profileImageRef.putBytes(compressimage(mcontext , uri , getContentResolver()))
+        byte[] uploadbytearray = compressimage(mcontext , uri , getContentResolver());
+        pb.setMessage("Uploading Image");
+        profileImageRef.putBytes(uploadbytearray)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -142,6 +146,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                         profileImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
+                                pb.setMessage("Uploading User Data");
                                 profileImageUri = uri;
                                 Log.d(tag , uri.toString());
                                 uploadData();

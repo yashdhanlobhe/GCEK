@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gcek.R;
+import com.example.gcek.Services.CompressImage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -32,9 +33,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.gcek.Services.CompressImage.compressimage;
 import static com.example.gcek.Services.GetFileInfo.getFileSizeFromUriInKb;
 
 
@@ -80,7 +85,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                     Toast.makeText(mcontext , "Enter All Data Correctly" ,Toast.LENGTH_LONG).show();
                 }
                 else {
-                    if(sizeOfUploadingImage<100){
+                    if(sizeOfUploadingImage<200){
                     registerUser();
                         pb.setCancelable(false);
                         pb.setTitle("Creating Profile");
@@ -88,7 +93,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
 
                     }
                     else {
-                        Toast.makeText(mcontext , "Size Of Image Should be less Than 100kb" ,Toast.LENGTH_LONG).show();
+                        Toast.makeText(mcontext , "Size Of Image Should be less Than 200kb" ,Toast.LENGTH_LONG).show();
                     }
                 }
                 }
@@ -106,7 +111,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                             @Override
                             public void onSuccess(Void Void) {
                                 Log.d("ydcheack" , "User Created and going to upload image");
-                                UploadImageToFireStore(uri);
+                                    UploadImageToFireStore(uri);
                             }
                         });
                     }
@@ -241,13 +246,15 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==PICKimg && requestCode == PICKimg){
+
             uri = data.getData();
+            data.getDataString();
             imageView.setImageURI(uri);
             String sizeInString = getFileSizeFromUriInKb(mcontext , uri);
             sizeOfUploadingImage = Integer.parseInt(sizeInString);
             TextView sizeOfImage = findViewById(R.id.ImageSize);
             sizeOfImage.setText("" +sizeInString + " kb");
-            if(sizeOfUploadingImage>=100){sizeOfImage.setTextColor(Color.RED);}
+            if(sizeOfUploadingImage>=200){sizeOfImage.setTextColor(Color.RED);}
             else{sizeOfImage.setTextColor(Color.BLACK);}
         }
     }

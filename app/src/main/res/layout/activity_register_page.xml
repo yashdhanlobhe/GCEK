@@ -31,13 +31,13 @@
                     android:layout_margin="10dp"
                     android:layout_centerHorizontal="true"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imgregisterlay"
-                    android:text="Click to Add Image\n(lesss than 200kb)"
-                    android:id="@+id/ImageSize"
-                    />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/imgregisterlay"-->
+<!--                    android:text="Click to Add Image\n(lesss than 200kb)"-->
+<!--                    android:id="@+id/ImageSize"-->
+<!--                    />-->
 
                 <EditText
                     android:drawablePadding="10dp"

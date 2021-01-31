@@ -1,34 +1,29 @@
 package com.example.gcek.Services;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 
-import com.tinify.Options;
-import com.tinify.Source;
-import com.tinify.Tinify;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.net.URISyntaxException;
 
-import id.zelory.compressor.Compressor;
 
 public class CompressImage {
 
-    public static String compressimage(Context context , File file) throws IOException {
+    public static byte[] compressimage(Context context, Uri uri, ContentResolver contentResolver) throws IOException, URISyntaxException {
 
-        File compressedImage = new Compressor(context)
-                .setMaxWidth(640)
-                .setMaxHeight(480)
-                .setQuality(75)
-                .setCompressFormat(Bitmap.CompressFormat.WEBP)
-                .setDestinationDirectoryPath(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_PICTURES).getAbsolutePath())
-                .compressToFile(file);
+        Bitmap bmp = MediaStore.Images.Media.getBitmap(contentResolver, uri);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 10 , baos);
+        byte[] data = baos.toByteArray();
 
-        return compressedImage.getAbsolutePath();
+        return  data;
     }
 }

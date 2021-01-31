@@ -3,6 +3,8 @@ package com.example.gcek;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +46,7 @@ import static com.example.gcek.Services.GetBarcode.getBarcodeFromString;
 
 public class MainActivityWithLogin extends AppCompatActivity {
     public  static  UserData userData;
+    public  static Drawable userimagedrawable;
     public Context  mcontext;
     DrawerLayout drawerLayout ;
     public  static Bitmap userImage ,BarcodeImage;
@@ -164,6 +167,8 @@ public class MainActivityWithLogin extends AppCompatActivity {
             Log.d("UserImage" , "Starting Downloading");
             try {
                 userImage= Picasso.get().load(userData.getProfileImage()).get();
+                userimagedrawable = new BitmapDrawable(getResources(), userImage);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -174,12 +179,12 @@ public class MainActivityWithLogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            try {
-                ImageView userImage = findViewById(R.id.imageView);
-                userImage.setImageBitmap(MainActivityWithLogin.userImage);
-            }catch (Exception e){
-
-            }
+//            try {
+//                ImageView userImage = findViewById(R.id.imageView);
+//                userImage.setImageBitmap(MainActivityWithLogin.userImage);
+//            }catch (Exception e){
+//
+//            }
         }
     }
 

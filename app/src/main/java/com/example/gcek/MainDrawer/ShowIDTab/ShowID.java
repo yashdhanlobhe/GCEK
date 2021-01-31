@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import com.example.gcek.MainActivityWithLogin;
 import com.example.gcek.R;
+import com.squareup.picasso.Picasso;
 
 import static com.example.gcek.MainActivityWithLogin.email;
 import static com.example.gcek.MainActivityWithLogin.userData;
+import static com.example.gcek.MainActivityWithLogin.userimagedrawable;
 
 public class ShowID extends Fragment {
     @Override
@@ -43,7 +45,9 @@ public class ShowID extends Fragment {
             userBarcode.setImageBitmap(MainActivityWithLogin.BarcodeImage);
 
             ImageView userImage = root.findViewById(R.id.imageView);
-            userImage.setImageBitmap(MainActivityWithLogin.userImage);
+//            Picasso.get().load(userData.getProfileImage()).centerCrop().into(userImage);
+            userImage.setImageDrawable(userimagedrawable);
+//            userImage.setImageBitmap(MainActivityWithLogin.userImage);
         } catch (Exception e) {
             e.printStackTrace();
         }

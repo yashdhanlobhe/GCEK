@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_gcek_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".MainDrawer.SettingTab.SettingTabExtraActivity"></activity>
+        <activity android:name=".Services.TestingActivity">
+
+        </activity>
+        <activity android:name=".MainDrawer.SettingTab.SettingTabExtraActivity" />
         <activity android:name=".TPO.TPOMain" />
         <activity android:name=".MainDrawer.FAQTab.FAQShowingActivity" />
         <activity android:name=".ShowPersonalNoticeActivity" />

@@ -23,7 +23,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gcek.R;
-import com.example.gcek.Services.CompressImage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -33,9 +32,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +56,7 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
     Uri profileImageUri;
     Spinner batchSpinner , brachSpinner;
     String BRANCH  ,BATCH;
-    int sizeOfUploadingImage;
+//    int sizeOfUploadingImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,16 +83,16 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                     Toast.makeText(mcontext , "Enter All Data Correctly" ,Toast.LENGTH_LONG).show();
                 }
                 else {
-                    if(sizeOfUploadingImage<200){
-                    registerUser();
+//                    if(sizeOfUploadingImage<20000){
+                        registerUser();
                         pb.setCancelable(false);
                         pb.setTitle("Creating Profile");
                         pb.show();
 
-                    }
-                    else {
-                        Toast.makeText(mcontext , "Size Of Image Should be less Than 200kb" ,Toast.LENGTH_LONG).show();
-                    }
+//                    }
+//                    else {
+//                        Toast.makeText(mcontext , "Size Of Image Should be less Than 200kb" ,Toast.LENGTH_LONG).show();
+//                    }
                 }
                 }
         });
@@ -111,7 +109,13 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
                             @Override
                             public void onSuccess(Void Void) {
                                 Log.d("ydcheack" , "User Created and going to upload image");
+                                try {
                                     UploadImageToFireStore(uri);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (URISyntaxException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                     }
@@ -125,10 +129,11 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
         });
     }
 
-    private void UploadImageToFireStore(Uri uri) {
+    private void UploadImageToFireStore(Uri uri) throws IOException, URISyntaxException {
+
         ProfileImageStorageRef = "images/UsersProfile/"+email.getText().toString()+".jpg";
         StorageReference profileImageRef = mStorageRef.child("images/UsersProfile/"+email.getText().toString()+".jpg");
-        profileImageRef.putFile(uri)
+        profileImageRef.putBytes(compressimage(mcontext , uri , getContentResolver()))
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -248,14 +253,14 @@ public class RegisterPageActivity extends AppCompatActivity implements AdapterVi
         if(requestCode==PICKimg && requestCode == PICKimg){
 
             uri = data.getData();
-            data.getDataString();
+//            data.getDataString();
             imageView.setImageURI(uri);
-            String sizeInString = getFileSizeFromUriInKb(mcontext , uri);
-            sizeOfUploadingImage = Integer.parseInt(sizeInString);
-            TextView sizeOfImage = findViewById(R.id.ImageSize);
-            sizeOfImage.setText("" +sizeInString + " kb");
-            if(sizeOfUploadingImage>=200){sizeOfImage.setTextColor(Color.RED);}
-            else{sizeOfImage.setTextColor(Color.BLACK);}
+//            String sizeInString = getFileSizeFromUriInKb(mcontext , uri);
+//            sizeOfUploadingImage = Integer.parseInt(sizeInString);
+//            TextView sizeOfImage = findViewById(R.id.ImageSize);
+//            sizeOfImage.setText("" +sizeInString + " kb");
+//            if(sizeOfUploadingImage>=200){sizeOfImage.setTextColor(Color.RED);}
+//            else{sizeOfImage.setTextColor(Color.BLACK);}
         }
     }
 

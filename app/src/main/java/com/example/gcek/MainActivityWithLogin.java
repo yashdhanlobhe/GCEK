@@ -168,6 +168,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
     private void initUI() {
         androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+
         email = getIntent().getStringExtra("email");
 
         navigationView =findViewById(R.id.main_nav_view);

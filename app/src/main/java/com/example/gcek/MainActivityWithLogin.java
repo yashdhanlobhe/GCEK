@@ -2,6 +2,7 @@ package com.example.gcek;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -74,37 +76,58 @@ public class MainActivityWithLogin extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.nav_home:
                         temp = new HomeFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_notifications:
                         temp = new NotificationFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_showid:
                         temp = new ShowID();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_about:
                         temp = new AboutFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_login:
                         temp = new VariousCollegeLoginFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_setting:
                         temp = new SettingFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_event:
                         temp = new UpcomingFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_contribute:
                         temp = new ContributeFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_faq:
                         temp = new MainFAQFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_private_notifications:
                         temp = new PrivateMessagesFragment();
+                        replaceFragment(temp);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.nav_Signout:
+                        confirmsignout();
                         break;
                 }
-                replaceFragment(temp);
-                drawerLayout.closeDrawer(GravityCompat.START);
                 return false;
             }
         });
@@ -157,6 +180,13 @@ public class MainActivityWithLogin extends AppCompatActivity {
         toggleButton.syncState();
         toggleButton.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new HomeFragment());
+            }
+        });
+
         db = FirebaseFirestore.getInstance();
 
     }
@@ -201,6 +231,22 @@ public class MainActivityWithLogin extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+            }
+        }).show();
+    }
+    private void confirmsignout() {
+        new android.app.AlertDialog.Builder(mcontext)
+                .setMessage("Do you want to sign out ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(mcontext , MainActivityWithoutLogin.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
             }
         }).show();
     }

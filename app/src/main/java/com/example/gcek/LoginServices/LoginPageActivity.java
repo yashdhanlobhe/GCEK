@@ -52,6 +52,7 @@ public class LoginPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pb.show();
+                pb.setTitle("Logging In");
                 mAuth.signInWithEmailAndPassword(email.getText().toString() , password.getText().toString()).
                         addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override

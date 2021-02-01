@@ -7,7 +7,7 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_baseline_home_24"/>
     <item
-        android:title="Show ID"
+        android:title="Profile"
         android:id="@+id/nav_showid"
         android:icon="@drawable/ic_baseline_account_circle_24"/>.
     <item
@@ -46,6 +46,11 @@
         android:title="Contribute"
         android:id="@+id/nav_contribute"
         android:icon="@drawable/ic_baseline_people_24"/>
+    <item
+        android:title="Sign Out"
+        android:id="@+id/nav_Signout"
+        android:icon="@drawable/ic_baseline_login_24"/>
+
 
 
 </menu>

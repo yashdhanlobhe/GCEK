@@ -20,15 +20,15 @@ public class MainFAQFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_f_a_qfragment, container, false);
          mcontext= getActivity().getBaseContext();
-        root.findViewById(R.id.floatingbtntoaddfaq).setOnClickListener(this);
+//        root.findViewById(R.id.floatingbtntoaddfaq).setOnClickListener(this);
         root.findViewById(R.id.collegerelatedfaqcard).setOnClickListener(this);
         root.findViewById(R.id.examrelatedfaqcard).setOnClickListener(this);
         root.findViewById(R.id.hostelrelatedfaqcard).setOnClickListener(this);
         root.findViewById(R.id.admissionrelatedfaqcard).setOnClickListener(this);
         root.findViewById(R.id.scholarshiprelatedfaqcard).setOnClickListener(this);
         root.findViewById(R.id.tporelatedfaqcard).setOnClickListener(this);
-        root.findViewById(R.id.otherrelatedfaqcard).setOnClickListener(this);
-        root.findViewById(R.id.unansweredrelatedfaqcard).setOnClickListener(this);
+//        root.findViewById(R.id.otherrelatedfaqcard).setOnClickListener(this);
+//        root.findViewById(R.id.unansweredrelatedfaqcard).setOnClickListener(this);
         return root;
 
     }
@@ -36,9 +36,9 @@ public class MainFAQFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.floatingbtntoaddfaq:
-                ((MainActivityWithLogin) getActivity()).replaceFragment(new FaqAddFragment());
-                break;
+//            case R.id.floatingbtntoaddfaq:
+//                ((MainActivityWithLogin) getActivity()).replaceFragment(new FaqAddFragment());
+//                break;
             case R.id.collegerelatedfaqcard:
                 startActivity(new Intent(mcontext, FAQShowingActivity.class).putExtra("name", "college"));
                 break;
@@ -57,12 +57,12 @@ public class MainFAQFragment extends Fragment implements View.OnClickListener {
             case R.id.tporelatedfaqcard:
                 startActivity(new Intent(mcontext, FAQShowingActivity.class).putExtra("name", "tpo"));
                 break;
-            case R.id.otherrelatedfaqcard:
-                startActivity(new Intent(mcontext, FAQShowingActivity.class).putExtra("name", "other"));
-                break;
-            case R.id.unansweredrelatedfaqcard:
-                startActivity(new Intent(mcontext, FAQShowingActivity.class).putExtra("name", "unanswered"));
-                break;
+//            case R.id.otherrelatedfaqcard:
+//                startActivity(new Intent(mcontext, FAQShowingActivity.class).putExtra("name", "other"));
+//                break;
+//            case R.id.unansweredrelatedfaqcard:
+//                startActivity(new Intent(mcontext, FAQShowingActivity.class).putExtra("name", "unanswered"));
+//                break;
         }
     }
 }

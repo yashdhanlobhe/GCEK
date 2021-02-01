@@ -5,181 +5,183 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainDrawer.ShowIDTab.ShowID">
-
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="10dp"
-        android:layout_margin="15dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp">
+            android:elevation="10dp"
+            android:layout_margin="15dp">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <ImageView
-                android:id="@+id/userBarcodeId"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
-                android:src="@drawable/barcode"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="GCEK E-ID"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="Full Name"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userBarcodeId" />
+                <ImageView
+                    android:id="@+id/userBarcodeId"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:src="@drawable/barcode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-            <TextView
-                android:id="@+id/FullNameID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="NA"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GCEK E-ID"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/idid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="ID"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/FullNameID"
-                app:layout_constraintTop_toBottomOf="@+id/FullNameID" />
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="25dp"
+                    android:text="Full Name"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userBarcodeId" />
 
-            <TextView
-                android:id="@+id/gcekID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="NA"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/idid"
-                app:layout_constraintTop_toBottomOf="@+id/idid" />
+                <TextView
+                    android:id="@+id/FullNameID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="NA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-            <TextView
-                android:id="@+id/idclass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="10dp"
-                android:text="Batch"
-                android:textSize="14dp"
-                app:layout_constraintStart_toEndOf="@+id/idid"
-                app:layout_constraintTop_toBottomOf="@+id/FullNameID" />
+                <TextView
+                    android:id="@+id/idid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="ID"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@+id/FullNameID"
+                    app:layout_constraintTop_toBottomOf="@+id/FullNameID" />
 
-            <TextView
-                android:id="@+id/passoutId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="NA"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/idclass"
-                app:layout_constraintTop_toBottomOf="@+id/idclass" />
+                <TextView
+                    android:id="@+id/gcekID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="NA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/idid"
+                    app:layout_constraintTop_toBottomOf="@+id/idid" />
 
-            <TextView
-                android:id="@+id/IDBranch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Branch"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/gcekID"
-                app:layout_constraintTop_toBottomOf="@+id/gcekID" />
+                <TextView
+                    android:id="@+id/idclass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Batch"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toEndOf="@+id/idid"
+                    app:layout_constraintTop_toBottomOf="@+id/FullNameID" />
 
-            <TextView
-                android:id="@+id/BrachID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="NA"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/IDBranch"
-                app:layout_constraintTop_toBottomOf="@+id/IDBranch" />
+                <TextView
+                    android:id="@+id/passoutId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="NA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/idclass"
+                    app:layout_constraintTop_toBottomOf="@+id/idclass" />
 
-            <TextView
-                android:id="@+id/IDdob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Phone"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/passoutId"
-                app:layout_constraintTop_toBottomOf="@+id/passoutId" />
+                <TextView
+                    android:id="@+id/IDBranch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Branch"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@+id/gcekID"
+                    app:layout_constraintTop_toBottomOf="@+id/gcekID" />
 
-            <TextView
-                android:id="@+id/PhoneNumberID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="NA"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/IDdob"
-                app:layout_constraintTop_toBottomOf="@+id/IDdob" />
+                <TextView
+                    android:id="@+id/BrachID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="NA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/IDBranch"
+                    app:layout_constraintTop_toBottomOf="@+id/IDBranch" />
 
-            <TextView
-                android:id="@+id/PhoneNumberIDtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Email"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/BrachID"
-                app:layout_constraintTop_toBottomOf="@+id/BrachID" />
+                <TextView
+                    android:id="@+id/IDdob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Phone"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@+id/passoutId"
+                    app:layout_constraintTop_toBottomOf="@+id/passoutId" />
 
-            <TextView
-                android:id="@+id/EmailID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="NA"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/PhoneNumberIDtext"
-                app:layout_constraintTop_toBottomOf="@+id/PhoneNumberIDtext" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/PhoneNumberID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="NA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/IDdob"
+                    app:layout_constraintTop_toBottomOf="@+id/IDdob" />
 
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/PhoneNumberIDtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Email"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@+id/BrachID"
+                    app:layout_constraintTop_toBottomOf="@+id/BrachID" />
 
+                <TextView
+                    android:id="@+id/EmailID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="NA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/PhoneNumberIDtext"
+                    app:layout_constraintTop_toBottomOf="@+id/PhoneNumberIDtext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+    <!-- TODO: Update blank fragment layout -->
 </FrameLayout>

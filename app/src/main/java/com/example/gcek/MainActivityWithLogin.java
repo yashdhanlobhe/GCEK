@@ -57,6 +57,8 @@ public class MainActivityWithLogin extends AppCompatActivity {
     FrameLayout frameLayout;
     public static String email;
     FirebaseFirestore db;
+    Fragment temp ;
+    int currentfragmentid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +74,10 @@ public class MainActivityWithLogin extends AppCompatActivity {
             Fragment temp ;
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+                currentfragmentid = item.getItemId();
                 switch (item.getItemId()){
                     case R.id.nav_home:
+
                         temp = new HomeFragment();
                         replaceFragment(temp);
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -221,19 +224,25 @@ public class MainActivityWithLogin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(mcontext)
-                .setMessage("Do you want to exit?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        MainActivityWithLogin.super.onBackPressed();
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        if(currentfragmentid==R.id.nav_home){
+            new AlertDialog.Builder(mcontext)
+                    .setMessage("Do you want to exit?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivityWithLogin.super.onBackPressed();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            }
-        }).show();
+                }
+            }).show();
+        }
+        else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
+            currentfragmentid=R.id.nav_home;
+        }
     }
     private void confirmsignout() {
         new android.app.AlertDialog.Builder(mcontext)

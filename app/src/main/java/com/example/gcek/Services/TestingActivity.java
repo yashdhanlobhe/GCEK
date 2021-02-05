@@ -40,14 +40,7 @@ public class TestingActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==PICKimg && requestCode == PICKimg){
             uri = data.getData();
-//
-//            try {
-////                Uri by = compressimage(mcontext , uri , getContentResolver());
-////                Log.d("TESTINGACTIVITY" , uri.toString());
-//////                Log.d("TESTINGACTIVITY" , String.valueOf(by.length));
-//            } catch (IOException | URISyntaxException e) {
-//                e.printStackTrace();
-//            }
+
         }
     }
 }

@@ -33,23 +33,21 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        new GetStartingDataOfUser().execute();
+        new InitiateApp().execute();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(getApplicationContext() , MainActivityWithoutLogin.class));
                 finish();
                 overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-
-
             }
         }, 2000);
     }
 
-    private class GetStartingDataOfUser extends AsyncTask<Void, Void, Void> {
+    private class InitiateApp extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
+            InitiateAppData.startFirebaseServices();
             getHomePosterData();
             return null;
         }

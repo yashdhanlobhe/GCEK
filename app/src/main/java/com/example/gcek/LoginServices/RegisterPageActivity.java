@@ -36,6 +36,7 @@ import static com.example.gcek.Services.CompressImage.compressimage;
 
 public class RegisterPageActivity extends AppCompatActivity  {
     //working yd
+
     EditText fullname , rollNo , email , phoneNO , password;
     ImageView imageView;
     Button sendmail;

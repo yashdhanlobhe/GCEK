@@ -39,6 +39,10 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(getApplicationContext() , MainActivityWithoutLogin.class));
+                finish();
+                overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+
+
             }
         }, 2000);
     }

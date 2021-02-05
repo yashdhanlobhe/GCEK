@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,17 @@ public class LoginFragmentWTO extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity().getApplicationContext() , LoginPageActivity.class));
+                getActivity().finish();
+
             }
         });
         return root;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+
 }

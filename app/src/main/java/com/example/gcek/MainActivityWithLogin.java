@@ -125,7 +125,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
                     case R.id.nav_private_notifications:
                         temp = new PrivateMessagesFragment();
                         replaceFragment(temp);
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        drawerLayout.closeDrawer(GravityCompat.START  , true);
                         break;
                     case R.id.nav_Signout:
                         confirmsignout();
@@ -179,7 +179,10 @@ public class MainActivityWithLogin extends AppCompatActivity {
         frameLayout= findViewById(R.id.main_frame_layout);
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
         navigationView.setCheckedItem(R.id.nav_home);
+        animateNavigationDrawer();
 
+
+        currentfragmentid = R.id.nav_home;
         toggleButton = new ActionBarDrawerToggle(this , drawerLayout , toolbar , R.string.open , R.string.close);
         toggleButton.syncState();
         toggleButton.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
@@ -213,18 +216,16 @@ public class MainActivityWithLogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-//            try {
-//                ImageView userImage = findViewById(R.id.imageView);
-//                userImage.setImageBitmap(MainActivityWithLogin.userImage);
-//            }catch (Exception e){
-//
-//            }
+
         }
     }
 
     @Override
     public void onBackPressed() {
-        if(currentfragmentid==R.id.nav_home){
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else if(currentfragmentid==R.id.nav_home){
             new AlertDialog.Builder(mcontext)
                     .setMessage("Do you want to exit?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -259,5 +260,30 @@ public class MainActivityWithLogin extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
             }
         }).show();
+    }
+
+    private void animateNavigationDrawer() {
+         final float END_SCALE = 0.7f;
+        View contentView = findViewById(R.id.contentview);
+        //Add any color or remove it to use the default one!
+        //To make it transparent use Color.Transparent in side setScrimColor();
+        //drawerLayout.setScrimColor(Color.TRANSPARENT);
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                // Scale the View based on current slide offset
+                final float diffScaledOffset = slideOffset * (1 - END_SCALE);
+                final float offsetScale = 1 - diffScaledOffset;
+                contentView.setScaleX(offsetScale);
+                contentView.setScaleY(offsetScale);
+
+                // Translate the View, accounting for the scaled width
+                final float xOffset = drawerView.getWidth() * slideOffset;
+                final float xOffsetDiff = contentView.getWidth() * diffScaledOffset / 2;
+                final float xTranslation = xOffset - xOffsetDiff;
+                contentView.setTranslationX(xTranslation);
+            }
+        });
+
     }
 }

@@ -39,8 +39,6 @@ public class LoginPageActivity extends AppCompatActivity {
                     putExtra("email" , mAuth.getCurrentUser().getEmail()).
                     setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             overridePendingTransition(R.anim.slide_out_to_left, R.anim.slide_in_from_right);
-
-
         }
         register_yourself = (TextView)findViewById(R.id.register_text);
         email =(EditText)findViewById(R.id.loginemail);

@@ -33,6 +33,7 @@ import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
 import com.example.gcek.MainDrawer.ShowIDTab.ShowID;
 import com.example.gcek.MainDrawer.EventsTab.UpcomingFragment;
 import com.example.gcek.MainDrawer.SettingTab.SettingFragment;
+import com.example.gcek.MainDrawer.publicForum.publicForumFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -108,7 +109,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_event:
-                        temp = new UpcomingFragment();
+                        temp = new publicForumFragment();
                         replaceFragment(temp);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

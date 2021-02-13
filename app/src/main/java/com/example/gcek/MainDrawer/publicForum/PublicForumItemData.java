@@ -1,19 +1,42 @@
 package com.example.gcek.MainDrawer.publicForum;
 
+import android.util.Log;
+
+import java.util.Comparator;
+
 import javax.net.ssl.SSLContext;
 
 public class PublicForumItemData {
     String from , title , description , reply ;
-    String time;
+    String time ,  tag;
+    int upvotes ;
     public PublicForumItemData() {
     }
 
-    public PublicForumItemData(String from, String title, String description, String reply, String time) {
+    public int getUpvotes() {
+        return upvotes;
+    }
+
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public PublicForumItemData(String from, String title, String description, String reply, String time, int upvotes, String tag) {
         this.from = from;
         this.title = title;
         this.description = description;
         this.reply = reply;
         this.time = time;
+        this.upvotes = upvotes;
+        this.tag = tag;
     }
 
     public String getFrom() {
@@ -56,5 +79,5 @@ public class PublicForumItemData {
         this.reply = reply;
     }
 
-
 }
+

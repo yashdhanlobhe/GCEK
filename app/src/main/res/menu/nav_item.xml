@@ -31,7 +31,7 @@
 <!--        android:id="@+id/nav_club"-->
 <!--        android:icon="@drawable/ic_study"/>-->
     <item
-        android:title="Events"
+        android:title="Public Forum"
         android:id="@+id/nav_event"
         android:icon="@drawable/ic_event24"/>
     <item

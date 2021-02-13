@@ -37,4 +37,10 @@
         <item>2022-23</item>
         <item>2023-24</item>
     </string-array>
+    <string-array name="TagForPublicForum">
+        <item>TPO</item>
+        <item>Admission</item>
+        <item>IT</item>
+        <item>ENTC</item>
+    </string-array>
 </resources>

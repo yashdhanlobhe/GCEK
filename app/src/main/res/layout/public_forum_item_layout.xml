@@ -15,12 +15,31 @@
         android:padding="10dp"
         >
 
+        <ImageView
+            android:id="@+id/uparrowimagepublicforum"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_arrow_drop_up_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
         <TextView
+            android:id="@+id/numberofupvotescardviewpublicforum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            app:layout_constraintEnd_toEndOf="@+id/uparrowimagepublicforum"
+            app:layout_constraintStart_toStartOf="@+id/uparrowimagepublicforum"
+            app:layout_constraintTop_toBottomOf="@+id/uparrowimagepublicforum" />
+
+        <TextView
+            android:layout_marginHorizontal="5dp"
             android:id="@+id/publicForumfromInCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="From"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/uparrowimagepublicforum"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -32,7 +51,7 @@
             android:textColor="@color/s1"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/publicForumfromInCardView"
             app:layout_constraintTop_toBottomOf="@+id/publicForumfromInCardView" />
 
         <TextView
@@ -41,18 +60,37 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:text="Description"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/TitleCardviewPublicForum"
             app:layout_constraintTop_toBottomOf="@+id/TitleCardviewPublicForum" />
 
         <TextView
-            android:layout_marginVertical="5dp"
-            android:textStyle="bold"
-            android:textColor="@color/s1"
             android:id="@+id/publicForumReplyInCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
             android:text="No Reply Yet"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/s1"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/publicForumDescriptionInCardView"
             app:layout_constraintTop_toBottomOf="@+id/publicForumDescriptionInCardView" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:text="tag:  "
+            app:layout_constraintStart_toStartOf="@+id/publicForumReplyInCardView"
+            app:layout_constraintTop_toBottomOf="@+id/publicForumReplyInCardView" />
+
+        <TextView
+            android:id="@+id/publicforumtagtextview"
+            android:layout_marginVertical="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YD"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/publicForumReplyInCardView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -8,14 +8,14 @@ import com.google.firebase.storage.FirebaseStorage;
 
 public  class InitiateAppData {
     public  static FirebaseAuth mfirebaseauth;
-    public  static FirebaseDatabase mfirebaseDatabase;
+//    public  static FirebaseDatabase mfirebaseDatabase;
     public  static FirebaseFirestore mfirebasefirestore;
     public  static FirebaseStorage mfirebasestorage;
     public static FirebaseMessaging mfirebaseMessaging;
 
     public static  void startFirebaseServices(){
         mfirebaseauth = FirebaseAuth.getInstance();
-        mfirebaseDatabase = FirebaseDatabase.getInstance();
+//        mfirebaseDatabase = FirebaseDatabase.getInstance();
         mfirebasefirestore = FirebaseFirestore.getInstance();
         mfirebasestorage = FirebaseStorage.getInstance();
         mfirebaseMessaging = FirebaseMessaging.getInstance();

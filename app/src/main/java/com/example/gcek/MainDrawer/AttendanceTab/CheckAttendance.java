@@ -31,8 +31,7 @@ public class CheckAttendance extends Fragment {
 
         mRecyclerView = root.findViewById(R.id.attendancerecyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
-        FirebaseFirestore.getInstance().collection("Attendance").document("IT")
-                .collection("FY").document("total").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY").document("total").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 TotalAttendanceData= documentSnapshot.getData();
@@ -41,7 +40,8 @@ public class CheckAttendance extends Fragment {
             }
         });
         FirebaseFirestore.getInstance().collection("Attendance").document("IT")
-                .collection("FY").document(userData.getGCEKID().substring(6 , 7)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                .collection("FY").document(userData.getGCEKID().substring(6 , 7)).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                      MarkedAttendace = documentSnapshot.getData();

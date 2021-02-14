@@ -110,7 +110,6 @@ public class RegisterPageActivity extends AppCompatActivity  {
 
                 })
                 .addOnFailureListener(exception -> pb.dismiss());
-
     }
 
 

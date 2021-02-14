@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,15 @@ import android.widget.LinearLayout;
 
 import com.example.gcekhost.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -45,9 +53,24 @@ public class TakeAttendaceActivity extends AppCompatActivity {
     }
 
     private void initAttendacebtns() {
+        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY");
+        collectionReference.document("total").update("2401" , FieldValue.increment(1));
+
         attendace= new ArrayList<>();
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.LinearLayoutTakeAttendace);
         for (int i = 1; i <= 60; i++) {
+//            HashMap<String , Integer> update = new HashMap<>();
+//            update.put("2401" , 0);
+//            update.put("2402" , 0);
+//            update.put("2403" , 0);
+//            update.put("2405" , 0);
+//            update.put("2406" , 0);
+//            update.put("2407" , 0);
+//            update.put("2408" , 0);
+//            DocumentReference reference = FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY").document("total");
+//            reference.set(update);
+
+
             LayoutInflater inflater = getLayoutInflater();
             Button btnTag = (Button) inflater.inflate(R.layout.button, null, false);
             btnTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -60,13 +83,27 @@ public class TakeAttendaceActivity extends AppCompatActivity {
             btnTag.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+//                    HashMap<String , Integer> update = new HashMap<>();
+//                    update.put("2401" , 0);
+//                    update.put("2402" , 0);
+//                    update.put("2403" , 0);
+//                    update.put("2405" , 0);
+//                    update.put("2406" , 0);
+//                    update.put("2407" , 0);
+//                    update.put("2408" , 0);
+                    DocumentReference reference = collectionReference.document(Integer.toString(view.getId()));
+
                     if(attendace.contains(view.getId())){
                         btnTag.setBackgroundColor(Color.BLACK);
                         attendace.remove((Object)view.getId());
+                        reference.update("2401" , FieldValue.increment(-1));
+
                     }
                     else {
                         btnTag.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.green));
                         attendace.add(view.getId());
+//                        reference.set(update);
+                        reference.update("2401" , FieldValue.increment(1));
                     }
                 }
             });

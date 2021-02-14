@@ -23,6 +23,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.gcek.MainDrawer.AttendanceTab.CheckAttendance;
 import com.example.gcek.MainDrawer.DiscoverCollegeTab.AboutFragment;
 import com.example.gcek.MainDrawer.ContributeTab.ContributeFragment;
 import com.example.gcek.MainDrawer.FAQTab.MainFAQFragment;
@@ -114,7 +115,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_contribute:
-                        temp = new ContributeFragment();
+                        temp = new CheckAttendance();
                         replaceFragment(temp);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

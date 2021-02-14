@@ -113,6 +113,6 @@ public class publicForumFragment extends Fragment implements PublicForumFirebase
 
     @Override
     public void makeToast(String toast) {
-        Toast.makeText(getContext().getApplicationContext() , toast , Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext().getApplicationContext() , toast , Toast.LENGTH_SHORT).show();
     }
 }

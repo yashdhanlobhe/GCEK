@@ -42,6 +42,15 @@ public class Login_page extends AppCompatActivity {
         pb = new ProgressDialog(this);
         Context context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
+
+
+        if(mAuth.getCurrentUser()!= null && mAuth.getCurrentUser().isEmailVerified()){
+            Toast.makeText(getApplicationContext() , email.getText().toString() + "  Loged In",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext() , MainActivity.class)
+                    .putExtra("email" , mAuth.getCurrentUser().getEmail())
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        }
+
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

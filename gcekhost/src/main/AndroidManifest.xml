@@ -14,12 +14,13 @@
         android:roundIcon="@mipmap/gcek_host_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".FAQ.answerFAQ"></activity>
+        <activity android:name=".Attendace.TakeAttendaceActivity">
+        </activity>
+        <activity android:name=".FAQ.answerFAQ" />
         <activity android:name=".FAQ.FAQunanswerd" />
         <activity android:name=".functions.SendPrivateNotifiaction" />
         <activity android:name=".functions.DeleteUser" />
         <activity android:name=".Notification.AddPosterHomeTab" />
-
         <service android:name=".serviceNotifiaciton.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />

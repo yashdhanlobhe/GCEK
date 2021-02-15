@@ -1,5 +1,6 @@
 package com.example.gcek.MainDrawer.AttendanceTab;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Map;
 
 public class CheckAttendaceAdapter extends RecyclerView.Adapter<CheckAttendaceAdapter.mViewHoder> {
-    Map<String, Object> totalAttendanceData, markedAttendace;
+    Map<String, Object>  markedAttendace;
 
-    public CheckAttendaceAdapter(Map<String, Object> totalAttendanceData, Map<String, Object> markedAttendace) {
+    public CheckAttendaceAdapter( Map<String, Object> markedAttendace) {
         this.markedAttendace = markedAttendace;
-        this.totalAttendanceData = totalAttendanceData;
 
     }
 
@@ -32,8 +32,21 @@ public class CheckAttendaceAdapter extends RecyclerView.Adapter<CheckAttendaceAd
     @Override
     public void onBindViewHolder(@NonNull mViewHoder holder, int position) {
         String key = markedAttendace.keySet().toArray()[position].toString();
-        Float totalattended = Float.parseFloat(markedAttendace.get(key).toString()) ;
-        Float total =  Float.parseFloat((String) totalAttendanceData.get(key).toString());
+        String value = markedAttendace.get(key).toString();
+
+        if (value.equals("0")){
+            value = "000000";
+        }else if (value.length()==4){
+            value="00"+value;
+        }else if (value.length()==5){
+            value = "0" +value;
+        }
+
+        Log.d("xyz" , markedAttendace.toString());
+        Log.d("xyz" , value);
+
+        Float totalattended = Float.parseFloat(value.substring(3,6)) ;
+        Float total =  Float.parseFloat(value.substring(0,3));
 
         Float per = (totalattended/total)*100;
         String formattedPersentage = String.format("%.0f", per);
@@ -50,7 +63,7 @@ public class CheckAttendaceAdapter extends RecyclerView.Adapter<CheckAttendaceAd
 
     @Override
     public int getItemCount() {
-        return totalAttendanceData.size();
+        return markedAttendace.size();
     }
 
     class  mViewHoder extends RecyclerView.ViewHolder{

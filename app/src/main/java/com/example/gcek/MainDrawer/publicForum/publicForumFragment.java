@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.gcek.InitiateAppData.mfirebaseauth;
@@ -73,26 +74,31 @@ public class publicForumFragment extends Fragment implements PublicForumFirebase
     }
 
     private void initRecyclerView(View root) {
-        FirebaseFirestore.getInstance().collection("publicForumUpvotes").document(mfirebaseauth.getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Map<String , Object> x = documentSnapshot.getData();
-                startRecyclerView(x);
-            }
 
-            private void startRecyclerView(Map<String, Object> x) {
-                Query query = FirebaseFirestore.getInstance()
-                        .collection("PublicForum")
-                        .orderBy("upvotes", Query.Direction.DESCENDING);
-                FirestoreRecyclerOptions<PublicForumItemData> options = new FirestoreRecyclerOptions.Builder<PublicForumItemData>()
-                        .setQuery(query, PublicForumItemData.class)
-                        .build();
-                publicForumFirebaseAdapter = new PublicForumFirebaseAdapter(options , x , publicForumAdapterListner);
-                recyclerView.setAdapter(publicForumFirebaseAdapter);
-                publicForumFirebaseAdapter.startListening();
-            }
-        });
+        try{
+            FirebaseFirestore.getInstance().collection("publicForumUpvotes").document(mfirebaseauth.getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    Map<String, Object> x = documentSnapshot.getData();
+                    startRecyclerView(x);
+                }
+            });
+        }catch (Exception e){
+            Map<String, Object> x = new HashMap<>();
+            startRecyclerView(x);
+        }
 
+    }
+    private void startRecyclerView(Map<String, Object> x) {
+        Query query = FirebaseFirestore.getInstance()
+                .collection("PublicForum")
+                .orderBy("upvotes", Query.Direction.DESCENDING);
+        FirestoreRecyclerOptions<PublicForumItemData> options = new FirestoreRecyclerOptions.Builder<PublicForumItemData>()
+                .setQuery(query, PublicForumItemData.class)
+                .build();
+        publicForumFirebaseAdapter = new PublicForumFirebaseAdapter(options , x , publicForumAdapterListner);
+        recyclerView.setAdapter(publicForumFirebaseAdapter);
+        publicForumFirebaseAdapter.startListening();
     }
 
     @Override

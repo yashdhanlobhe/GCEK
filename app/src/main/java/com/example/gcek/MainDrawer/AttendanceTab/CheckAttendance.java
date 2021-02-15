@@ -23,7 +23,7 @@ import static com.example.gcek.MainActivityWithLogin.userData;
 
 public class CheckAttendance extends Fragment {
     RecyclerView mRecyclerView;
-    Map<String, Object> TotalAttendanceData , MarkedAttendace;
+    Map<String, Object>  MarkedAttendace;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,21 +31,13 @@ public class CheckAttendance extends Fragment {
 
         mRecyclerView = root.findViewById(R.id.attendancerecyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
-        FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY").document("total").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY").document(userData.getGCEKID().substring(6 , 8)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                TotalAttendanceData= documentSnapshot.getData();
-//                Log.d("ydCheck" , TotalAttendanceData.toString());
-                FirebaseFirestore.getInstance().collection("Attendance").document("IT")
-                        .collection("FY").document(userData.getGCEKID().substring(6 , 7)).get()
-                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                MarkedAttendace = documentSnapshot.getData();
-                                CheckAttendaceAdapter mAdapter = new CheckAttendaceAdapter(TotalAttendanceData , MarkedAttendace);
-                                mRecyclerView.setAdapter(mAdapter);
-                            }
-                        });
+                Log.d("xyz" , userData.getGCEKID().substring(7 , 8));
+                MarkedAttendace= documentSnapshot.getData();
+                CheckAttendaceAdapter mAdapter = new CheckAttendaceAdapter(MarkedAttendace);
+                mRecyclerView.setAdapter(mAdapter);
             }
         });
 

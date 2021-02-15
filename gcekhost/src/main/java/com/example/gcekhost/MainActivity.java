@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.gcekhost.Attendace.ChooseClass;
 import com.example.gcekhost.Attendace.TakeAttendaceActivity;
 import com.example.gcekhost.FAQ.FAQunanswerd;
 import com.example.gcekhost.Notification.AddNotification;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this , FAQunanswerd.class));
                 break;
             case R.id.takeAttendacecardView:
-                startActivity(new Intent(this , TakeAttendaceActivity.class));
+                startActivity(new Intent(this , ChooseClass.class));
                 break;
         }
     }

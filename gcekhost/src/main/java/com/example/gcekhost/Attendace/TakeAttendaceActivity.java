@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.io.FileOutputStream;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,10 +34,20 @@ import java.util.List;
 
 public class TakeAttendaceActivity extends AppCompatActivity {
     ArrayList<Integer> attendace;
+    String year,branch,start,end,subject;
+    CollectionReference collectionReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        year=getIntent().getStringExtra("year");
+        branch=getIntent().getStringExtra("branch");
+        start=getIntent().getStringExtra("start");
+        end=getIntent().getStringExtra("end");
+        subject=getIntent().getStringExtra("subject");
+
+
         initAttendacebtns();
 
         findViewById(R.id.sendEmailBtn).setOnClickListener(new View.OnClickListener() {
@@ -53,12 +65,14 @@ public class TakeAttendaceActivity extends AppCompatActivity {
     }
 
     private void initAttendacebtns() {
-        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY");
-        collectionReference.document("total").update("2401" , FieldValue.increment(1));
+       collectionReference = FirebaseFirestore.getInstance().collection("Attendance").document(branch).collection(year);
+
 
         attendace= new ArrayList<>();
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.LinearLayoutTakeAttendace);
-        for (int i = 1; i <= 60; i++) {
+        int last= Integer.parseInt(end);
+        int starting = Integer.parseInt(start);
+        for (int i = starting; i <=last; i++) {
 //            HashMap<String , Integer> update = new HashMap<>();
 //            update.put("2401" , 0);
 //            update.put("2402" , 0);
@@ -70,6 +84,7 @@ public class TakeAttendaceActivity extends AppCompatActivity {
 //            DocumentReference reference = FirebaseFirestore.getInstance().collection("Attendance").document("IT").collection("FY").document("total");
 //            reference.set(update);
 
+            new AddTotalAttendance().execute(String.valueOf(i));
 
             LayoutInflater inflater = getLayoutInflater();
             Button btnTag = (Button) inflater.inflate(R.layout.button, null, false);
@@ -96,17 +111,25 @@ public class TakeAttendaceActivity extends AppCompatActivity {
                     if(attendace.contains(view.getId())){
                         btnTag.setBackgroundColor(Color.BLACK);
                         attendace.remove((Object)view.getId());
-                        reference.update("2401" , FieldValue.increment(-1));
-
+                        reference.update(subject , FieldValue.increment(-1));
                     }
                     else {
                         btnTag.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.green));
                         attendace.add(view.getId());
 //                        reference.set(update);
-                        reference.update("2401" , FieldValue.increment(1));
+                        reference.update(subject , FieldValue.increment(1));
                     }
                 }
             });
         }
     }
+    class AddTotalAttendance extends AsyncTask<String , String ,String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            collectionReference.document(strings[0]).update(subject , FieldValue.increment(1000));
+            return null;
+        }
+    }
 }
+

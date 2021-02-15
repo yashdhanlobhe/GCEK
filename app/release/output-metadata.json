@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.gcekhost",
+  "applicationId": "com.example.gcek",
   "variantName": "processReleaseResources",
   "elements": [
     {
@@ -12,7 +12,7 @@
       "filters": [],
       "versionCode": 1,
       "versionName": "1.0",
-      "outputFile": "gcekhost-release.apk"
+      "outputFile": "app-release.apk"
     }
   ]
 }

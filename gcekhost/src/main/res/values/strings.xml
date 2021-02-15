@@ -18,4 +18,30 @@
         <item>tpo</item>
         <item>other</item>
     </string-array>
+
+    <string-array name="Branches">
+        <item>IT</item>
+        <item>MECH</item>
+        <item>CIVIL</item>
+        <item>ENTC</item>
+        <item>ELECTRICAL</item>
+    </string-array>
+
+    <string-array name="Year">
+        <item>FY</item>
+        <item>SY</item>
+        <item>TY</item>
+        <item>LY</item>
+    </string-array>
+
+    <string-array name="FySubject">
+        <item>2401</item>
+        <item>2402</item>
+        <item>2403</item>
+        <item>2404</item>
+        <item>2405</item>
+        <item>2406</item>
+        <item>2407</item>
+        <item>2408</item>
+    </string-array>
 </resources>

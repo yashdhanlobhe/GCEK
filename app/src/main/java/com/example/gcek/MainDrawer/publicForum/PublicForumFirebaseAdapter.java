@@ -38,6 +38,9 @@ public class PublicForumFirebaseAdapter extends FirestoreRecyclerAdapter<PublicF
     public PublicForumFirebaseAdapter(@NonNull FirestoreRecyclerOptions<PublicForumItemData> options, Map<String, Object> x, publicForumAdapterListner publicForumAdapterListner) {
         super(options);
         this.x = x;
+        if(this.x == null){
+            this.x = new HashMap<>();
+        }
         this.publicForumAdapterListner = publicForumAdapterListner;
     }
 
@@ -49,8 +52,12 @@ public class PublicForumFirebaseAdapter extends FirestoreRecyclerAdapter<PublicF
         holder.from.setText(model.from);
         holder.upvotes.setText(Integer.toString(model.upvotes));
         holder.tag.setText(model.tag);
-        if(x.containsKey(model.time)){
-            holder.upvoteimg.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24_light);
+        try{
+            if (x.containsKey(model.time)) {
+                holder.upvoteimg.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24_light);
+            }
+        }catch (Exception e){
+
         }
     }
 

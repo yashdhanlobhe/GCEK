@@ -36,19 +36,19 @@ public class CheckAttendance extends Fragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 TotalAttendanceData= documentSnapshot.getData();
 //                Log.d("ydCheck" , TotalAttendanceData.toString());
+                FirebaseFirestore.getInstance().collection("Attendance").document("IT")
+                        .collection("FY").document(userData.getGCEKID().substring(6 , 7)).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                MarkedAttendace = documentSnapshot.getData();
+                                CheckAttendaceAdapter mAdapter = new CheckAttendaceAdapter(TotalAttendanceData , MarkedAttendace);
+                                mRecyclerView.setAdapter(mAdapter);
+                            }
+                        });
+            }
+        });
 
-            }
-        });
-        FirebaseFirestore.getInstance().collection("Attendance").document("IT")
-                .collection("FY").document(userData.getGCEKID().substring(6 , 7)).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                     MarkedAttendace = documentSnapshot.getData();
-                     CheckAttendaceAdapter mAdapter = new CheckAttendaceAdapter(TotalAttendanceData , MarkedAttendace);
-                     mRecyclerView.setAdapter(mAdapter);
-            }
-        });
         return root;
     }
 }

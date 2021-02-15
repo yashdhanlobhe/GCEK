@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gcek.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;
 
@@ -18,7 +19,6 @@ public class CheckAttendaceAdapter extends RecyclerView.Adapter<CheckAttendaceAd
     public CheckAttendaceAdapter(Map<String, Object> totalAttendanceData, Map<String, Object> markedAttendace) {
         this.markedAttendace = markedAttendace;
         this.totalAttendanceData = totalAttendanceData;
-
 
     }
 
@@ -32,8 +32,20 @@ public class CheckAttendaceAdapter extends RecyclerView.Adapter<CheckAttendaceAd
     @Override
     public void onBindViewHolder(@NonNull mViewHoder holder, int position) {
         String key = markedAttendace.keySet().toArray()[position].toString();
-        holder.attendance.setText(markedAttendace.get(key).toString());
+        Float totalattended = Float.parseFloat(markedAttendace.get(key).toString()) ;
+        Float total =  Float.parseFloat((String) totalAttendanceData.get(key).toString());
+
+        Float per = (totalattended/total)*100;
+        String formattedPersentage = String.format("%.0f", per);
+
+        if(total == 0.0){
+            formattedPersentage="100";
+        }
         holder.title.setText(key);
+        holder.attendance.setText(String.format("%.0f", totalattended));
+        holder.total.setText(String.format("%.0f", total));
+        holder.persentage.setText(formattedPersentage + "%");
+
     }
 
     @Override
@@ -42,11 +54,13 @@ public class CheckAttendaceAdapter extends RecyclerView.Adapter<CheckAttendaceAd
     }
 
     class  mViewHoder extends RecyclerView.ViewHolder{
-    TextView title , attendance ;
+    TextView title , attendance , total , persentage ;
     public mViewHoder(@NonNull View itemView) {
         super(itemView);
         title = itemView.findViewById(R.id.coursenameattendace);
-        attendance = itemView.findViewById(R.id.courseattendance);
+        attendance = itemView.findViewById(R.id.courseattendedtextview);
+        total = itemView.findViewById(R.id.totalattendedtextview);
+        persentage = itemView.findViewById(R.id.attendacepersentagetextview);
     }
 }
 }

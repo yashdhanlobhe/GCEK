@@ -43,7 +43,7 @@
         android:id="@+id/nav_faq"
         android:icon="@drawable/ic_baseline_help_24"/>
     <item
-        android:title="Contribute"
+        android:title="Attendance"
         android:id="@+id/nav_contribute"
         android:icon="@drawable/ic_baseline_people_24"/>
     <item

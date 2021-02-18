@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,17 +24,24 @@ import androidx.fragment.app.Fragment;
 
 import com.example.gcek.MainDrawer.AttendanceTab.CheckAttendance;
 import com.example.gcek.MainDrawer.DiscoverCollegeTab.AboutFragment;
-import com.example.gcek.MainDrawer.ContributeTab.ContributeFragment;
+import com.example.gcek.MainDrawer.DiscoverCollegeTab.DiscoverActivity;
+import com.example.gcek.MainDrawer.EventsTab.EventFragment;
+import com.example.gcek.MainDrawer.FAQTab.FAQActivity;
 import com.example.gcek.MainDrawer.FAQTab.MainFAQFragment;
 import com.example.gcek.MainDrawer.MainHomeTab.HomeFragment;
 import com.example.gcek.MainDrawer.PrivateMessages.PrivateMessagesFragment;
+import com.example.gcek.MainDrawer.SettingTab.SettingActivity;
+import com.example.gcek.MainDrawer.ShowIDTab.ProfileActivity;
+import com.example.gcek.MainDrawer.WerbsiteLoginsTab.LoginsActivity;
 import com.example.gcek.MainDrawer.WerbsiteLoginsTab.VariousCollegeLoginFragment;
 import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
 import com.example.gcek.MainDrawer.ShowIDTab.ShowID;
-import com.example.gcek.MainDrawer.EventsTab.UpcomingFragment;
 import com.example.gcek.MainDrawer.SettingTab.SettingFragment;
+import com.example.gcek.MainDrawer.WithouLogin.CollegeNoticeWithoutLogin;
+import com.example.gcek.MainDrawer.WithouLogin.LoginFragmentWTO;
 import com.example.gcek.MainDrawer.publicForum.publicForumFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -79,56 +85,61 @@ public class MainActivityWithLogin extends AppCompatActivity {
                 currentfragmentid = item.getItemId();
                 switch (item.getItemId()){
                     case R.id.nav_home:
-
-                        temp = new HomeFragment();
-                        replaceFragment(temp);
-                        drawerLayout.closeDrawer(GravityCompat.START);
+//                        temp = new HomeFragment();
+//                        replaceFragment(temp);
+//                        startActivity(new Intent(mcontext , MainActivityWithLogin.class));
+//                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.nav_notifications:
-                        temp = new NotificationFragment();
-                        replaceFragment(temp);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+//                    case R.id.nav_notifications:
+////                        temp = new NotificationFragment();
+////                        replaceFragment(temp);
+//                        drawerLayout.closeDrawer(GravityCompat.START);
+//                        break;
                     case R.id.nav_showid:
-                        temp = new ShowID();
-                        replaceFragment(temp);
+//                        temp = new ShowID();
+//                        replaceFragment(temp);
+                        startActivity(new Intent(mcontext , ProfileActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_about:
-                        temp = new AboutFragment();
-                        replaceFragment(temp);
+//                        temp = new AboutFragment();
+//                        replaceFragment(temp);
+                        startActivity(new Intent(mcontext , DiscoverActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_login:
-                        temp = new VariousCollegeLoginFragment();
-                        replaceFragment(temp);
+//                        temp = new VariousCollegeLoginFragment();
+//                        replaceFragment(temp);
+                        startActivity(new Intent(mcontext , LoginsActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_setting:
-                        temp = new SettingFragment();
-                        replaceFragment(temp);
+//                        temp = new SettingFragment();
+//                        replaceFragment(temp);
+                        startActivity(new Intent(mcontext , SettingActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.nav_event:
-                        temp = new publicForumFragment();
-                        replaceFragment(temp);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_contribute:
-                        temp = new CheckAttendance();
-                        replaceFragment(temp);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+//                    case R.id.nav_publicForum:
+////                        temp = new publicForumFragment();
+////                        replaceFragment(temp);
+//                        drawerLayout.closeDrawer(GravityCompat.START);
+//                        break;
+//                    case R.id.nav_attendace:
+////                        temp = new CheckAttendance();
+////                        replaceFragment(temp);
+//                        drawerLayout.closeDrawer(GravityCompat.START);
+//                        break;
                     case R.id.nav_faq:
-                        temp = new MainFAQFragment();
-                        replaceFragment(temp);
+//                        temp = new MainFAQFragment();
+//                        replaceFragment(temp);
+                        startActivity(new Intent(mcontext , FAQActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.nav_private_notifications:
-                        temp = new PrivateMessagesFragment();
-                        replaceFragment(temp);
-                        drawerLayout.closeDrawer(GravityCompat.START  , true);
-                        break;
+//                    case R.id.nav_private_notifications:
+////                        temp = new PrivateMessagesFragment();
+////                        replaceFragment(temp);
+//                        drawerLayout.closeDrawer(GravityCompat.START  , true);
+//                        break;
                     case R.id.nav_Signout:
                         confirmsignout();
                         break;
@@ -179,10 +190,12 @@ public class MainActivityWithLogin extends AppCompatActivity {
         navigationView =findViewById(R.id.main_nav_view);
         drawerLayout = findViewById(R.id.drawerlayout);
         frameLayout= findViewById(R.id.main_frame_layout);
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
-        navigationView.setCheckedItem(R.id.nav_home);
-        animateNavigationDrawer();
 
+//        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
+        navigationView.setCheckedItem(R.id.nav_home);
+//        animateNavigationDrawer();
+
+        addBottomNavigationView();
 
         currentfragmentid = R.id.nav_home;
         toggleButton = new ActionBarDrawerToggle(this , drawerLayout , toolbar , R.string.open , R.string.close);
@@ -198,6 +211,37 @@ public class MainActivityWithLogin extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+    }
+
+    private void addBottomNavigationView() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.MainActivityBottomNavView);
+        replaceFragment(new HomeFragment());
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
+                switch (item.getItemId()){
+                    case R.id.nav_home:
+                        fragment = new HomeFragment();
+                        break;
+                    case R.id.nav_notifications:
+                        fragment = new NotificationFragment();
+                        break;
+                    case R.id.nav_publicForum:
+                        fragment = new publicForumFragment();
+                        break;
+                    case R.id.nav_attendace:
+                        fragment = new CheckAttendance();
+                        break;
+                    case R.id.nav_events:
+                        fragment = new EventFragment();
+                        break;
+                }
+                replaceFragment(fragment);
+                return true;
+            }
+        });
     }
 
     private class DownloadImageTask extends AsyncTask<Void, Void, Void> {

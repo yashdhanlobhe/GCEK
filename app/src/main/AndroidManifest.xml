@@ -15,8 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_gcek_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".MainDrawer.publicForum.AddPublicForumActivity"></activity>
-        <activity android:name=".Services.TestingActivity"></activity>
+        <activity android:name=".MainDrawer.SettingTab.SettingActivity"></activity>
+        <activity android:name=".MainDrawer.WerbsiteLoginsTab.LoginsActivity" />
+        <activity android:name=".MainDrawer.ShowIDTab.ProfileActivity" />
+        <activity android:name=".MainDrawer.FAQTab.FAQActivity" />
+        <activity android:name=".MainDrawer.DiscoverCollegeTab.DiscoverActivity" />
+        <activity android:name=".MainDrawer.publicForum.AddPublicForumActivity" />
+        <activity android:name=".Services.TestingActivity" />
         <activity android:name=".MainDrawer.SettingTab.SettingTabExtraActivity" />
         <activity android:name=".TPO.TPOMain" />
         <activity android:name=".MainDrawer.FAQTab.FAQShowingActivity" />

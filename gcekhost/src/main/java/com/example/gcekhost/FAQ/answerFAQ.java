@@ -33,6 +33,7 @@ public class answerFAQ extends AppCompatActivity {
 
         TextView tit = findViewById(R.id.answerfaqtitle);
         TextView desc = findViewById(R.id.answerfaqdes);
+
         EditText editText = findViewById(R.id.answerforfaq);
 
 

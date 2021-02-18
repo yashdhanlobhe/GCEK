@@ -6,4 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainDrawer.FAQTab.FAQActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/faqactivitytoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/s1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
+
+    <FrameLayout
+        android:id="@+id/FAQframeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/faqactivitytoolbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

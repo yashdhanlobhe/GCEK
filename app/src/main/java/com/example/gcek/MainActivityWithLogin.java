@@ -23,22 +23,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.gcek.MainDrawer.AttendanceTab.CheckAttendance;
-import com.example.gcek.MainDrawer.DiscoverCollegeTab.AboutFragment;
 import com.example.gcek.MainDrawer.DiscoverCollegeTab.DiscoverActivity;
 import com.example.gcek.MainDrawer.EventsTab.EventFragment;
 import com.example.gcek.MainDrawer.FAQTab.FAQActivity;
-import com.example.gcek.MainDrawer.FAQTab.MainFAQFragment;
 import com.example.gcek.MainDrawer.MainHomeTab.HomeFragment;
-import com.example.gcek.MainDrawer.PrivateMessages.PrivateMessagesFragment;
+import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
 import com.example.gcek.MainDrawer.SettingTab.SettingActivity;
 import com.example.gcek.MainDrawer.ShowIDTab.ProfileActivity;
+import com.example.gcek.MainDrawer.SignOut.SignOut;
 import com.example.gcek.MainDrawer.WerbsiteLoginsTab.LoginsActivity;
-import com.example.gcek.MainDrawer.WerbsiteLoginsTab.VariousCollegeLoginFragment;
-import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
-import com.example.gcek.MainDrawer.ShowIDTab.ShowID;
-import com.example.gcek.MainDrawer.SettingTab.SettingFragment;
-import com.example.gcek.MainDrawer.WithouLogin.CollegeNoticeWithoutLogin;
-import com.example.gcek.MainDrawer.WithouLogin.LoginFragmentWTO;
 import com.example.gcek.MainDrawer.publicForum.publicForumFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -55,109 +48,68 @@ import static com.example.gcek.Services.GetBarcode.getBarcodeFromString;
 
 
 public class MainActivityWithLogin extends AppCompatActivity {
-    public  static  UserData userData;
-    public  static Drawable userimagedrawable;
-    public Context  mcontext;
-    DrawerLayout drawerLayout ;
-    public  static Bitmap userImage ,BarcodeImage;
-    ActionBarDrawerToggle toggleButton ;
-    NavigationView navigationView ;
-    FrameLayout frameLayout;
+    public static UserData userData;
+    public static Drawable userimagedrawable;
+    public static Bitmap userImage, BarcodeImage;
     public static String email;
+    public Context mcontext;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggleButton;
+    NavigationView navigationView;
+    FrameLayout frameLayout;
     FirebaseFirestore db;
-    Fragment temp ;
     int currentfragmentid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mcontext = this;
         initUI();
         getUserData();
-
-        mcontext = this ;
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            Fragment temp ;
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 currentfragmentid = item.getItemId();
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_home:
-//                        temp = new HomeFragment();
-//                        replaceFragment(temp);
-//                        startActivity(new Intent(mcontext , MainActivityWithLogin.class));
-//                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-//                    case R.id.nav_notifications:
-////                        temp = new NotificationFragment();
-////                        replaceFragment(temp);
-//                        drawerLayout.closeDrawer(GravityCompat.START);
-//                        break;
                     case R.id.nav_showid:
-//                        temp = new ShowID();
-//                        replaceFragment(temp);
-                        startActivity(new Intent(mcontext , ProfileActivity.class));
+                        startActivity(new Intent(mcontext, ProfileActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_about:
-//                        temp = new AboutFragment();
-//                        replaceFragment(temp);
-                        startActivity(new Intent(mcontext , DiscoverActivity.class));
+                        startActivity(new Intent(mcontext, DiscoverActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_login:
-//                        temp = new VariousCollegeLoginFragment();
-//                        replaceFragment(temp);
-                        startActivity(new Intent(mcontext , LoginsActivity.class));
+                        startActivity(new Intent(mcontext, LoginsActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_setting:
-//                        temp = new SettingFragment();
-//                        replaceFragment(temp);
-                        startActivity(new Intent(mcontext , SettingActivity.class));
+                        startActivity(new Intent(mcontext, SettingActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-//                    case R.id.nav_publicForum:
-////                        temp = new publicForumFragment();
-////                        replaceFragment(temp);
-//                        drawerLayout.closeDrawer(GravityCompat.START);
-//                        break;
-//                    case R.id.nav_attendace:
-////                        temp = new CheckAttendance();
-////                        replaceFragment(temp);
-//                        drawerLayout.closeDrawer(GravityCompat.START);
-//                        break;
                     case R.id.nav_faq:
-//                        temp = new MainFAQFragment();
-//                        replaceFragment(temp);
-                        startActivity(new Intent(mcontext , FAQActivity.class));
+                        startActivity(new Intent(mcontext, FAQActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-//                    case R.id.nav_private_notifications:
-////                        temp = new PrivateMessagesFragment();
-////                        replaceFragment(temp);
-//                        drawerLayout.closeDrawer(GravityCompat.START  , true);
-//                        break;
                     case R.id.nav_Signout:
-                        confirmsignout();
+                        SignOut.confirmsignout(mcontext);
                         break;
                 }
                 return false;
             }
         });
     }
-    public void replaceFragment(Fragment temp) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , temp).commit();
-    }
+
 
     private void getUserData() {
         db.collection("StudentUsers").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                userData =  documentSnapshot.toObject(UserData.class);
+                userData = documentSnapshot.toObject(UserData.class);
                 FirebaseMessaging.getInstance().subscribeToTopic(userData.getGCEKID());
                 BarcodeImage = getBarcodeFromString(userData.getGCEKID());
                 setHeaderViewData();
@@ -182,23 +134,16 @@ public class MainActivityWithLogin extends AppCompatActivity {
     }
 
     private void initUI() {
-        androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.main_toolbar);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-
         email = getIntent().getStringExtra("email");
-
-        navigationView =findViewById(R.id.main_nav_view);
+        navigationView = findViewById(R.id.main_nav_view);
         drawerLayout = findViewById(R.id.drawerlayout);
-        frameLayout= findViewById(R.id.main_frame_layout);
-
-//        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
+        frameLayout = findViewById(R.id.main_frame_layout);
         navigationView.setCheckedItem(R.id.nav_home);
-//        animateNavigationDrawer();
-
         addBottomNavigationView();
-
         currentfragmentid = R.id.nav_home;
-        toggleButton = new ActionBarDrawerToggle(this , drawerLayout , toolbar , R.string.open , R.string.close);
+        toggleButton = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         toggleButton.syncState();
         toggleButton.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
@@ -221,7 +166,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_home:
                         fragment = new HomeFragment();
                         break;
@@ -244,34 +189,11 @@ public class MainActivityWithLogin extends AppCompatActivity {
         });
     }
 
-    private class DownloadImageTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Log.d("UserImage" , "Starting Downloading");
-            try {
-                userImage= Picasso.get().load(userData.getProfileImage()).get();
-                userimagedrawable = new BitmapDrawable(getResources(), userImage);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Log.d("UserImage" , "Downloaded");
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-        }
-    }
-
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else if(currentfragmentid==R.id.nav_home){
+        } else if (currentfragmentid == R.id.nav_home) {
             new AlertDialog.Builder(mcontext)
                     .setMessage("Do you want to exit?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -285,51 +207,37 @@ public class MainActivityWithLogin extends AppCompatActivity {
 
                 }
             }).show();
-        }
-        else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout , new HomeFragment()).commit();
-            currentfragmentid=R.id.nav_home;
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, new HomeFragment()).commit();
+            currentfragmentid = R.id.nav_home;
         }
     }
-    private void confirmsignout() {
-        new android.app.AlertDialog.Builder(mcontext)
-                .setMessage("Do you want to sign out ?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(mcontext , MainActivityWithoutLogin.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        }).show();
+
+
+
+    public void replaceFragment(Fragment temp) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, temp).commit();
     }
 
-    private void animateNavigationDrawer() {
-         final float END_SCALE = 0.7f;
-        View contentView = findViewById(R.id.contentview);
-        //Add any color or remove it to use the default one!
-        //To make it transparent use Color.Transparent in side setScrimColor();
-        //drawerLayout.setScrimColor(Color.TRANSPARENT);
-        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                // Scale the View based on current slide offset
-                final float diffScaledOffset = slideOffset * (1 - END_SCALE);
-                final float offsetScale = 1 - diffScaledOffset;
-                contentView.setScaleX(offsetScale);
-                contentView.setScaleY(offsetScale);
+    private class DownloadImageTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Log.d("UserImage", "Starting Downloading");
+            try {
+                userImage = Picasso.get().load(userData.getProfileImage()).get();
+                userimagedrawable = new BitmapDrawable(getResources(), userImage);
 
-                // Translate the View, accounting for the scaled width
-                final float xOffset = drawerView.getWidth() * slideOffset;
-                final float xOffsetDiff = contentView.getWidth() * diffScaledOffset / 2;
-                final float xTranslation = xOffset - xOffsetDiff;
-                contentView.setTranslationX(xTranslation);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+            Log.d("UserImage", "Downloaded");
+            return null;
+        }
 
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+        }
     }
 }

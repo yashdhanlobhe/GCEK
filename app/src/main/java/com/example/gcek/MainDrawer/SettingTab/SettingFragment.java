@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.gcek.MainActivityWithoutLogin;
 import com.example.gcek.MainActivityWithLogin;
+import com.example.gcek.MainDrawer.SignOut.SignOut;
 import com.example.gcek.R;
 import com.example.gcek.LoginServices.ChangePasswordActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.SignoutSettingbtn:
-                confirmsignout();
+                SignOut.confirmsignout(v.getContext());
                 break;
             case  R.id.notifationsetting:
                 startActivity(new Intent(getActivity().getApplicationContext(), SettingTabExtraActivity.class));
@@ -43,22 +44,5 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity().getApplicationContext(), ChangePasswordActivity.class));
                 break;
         }
-    }
-
-    private void confirmsignout() {
-        new AlertDialog.Builder(getContext())
-                .setMessage("Do you want to sign out ?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getActivity().getApplicationContext() , MainActivityWithoutLogin.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        }).show();
     }
 }

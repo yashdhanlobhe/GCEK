@@ -21,7 +21,6 @@
         <activity android:name=".MainDrawer.FAQTab.FAQActivity" />
         <activity android:name=".MainDrawer.DiscoverCollegeTab.DiscoverActivity" />
         <activity android:name=".MainDrawer.publicForum.AddPublicForumActivity" />
-        <activity android:name=".Services.TestingActivity" />
         <activity android:name=".MainDrawer.SettingTab.SettingTabExtraActivity" />
         <activity android:name=".TPO.TPOMain" />
         <activity android:name=".MainDrawer.FAQTab.FAQShowingActivity" />
@@ -37,7 +36,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainDrawer.DiscoverCollegeTab.DepartmentActivity" />
-        <activity android:name=".MainActivityWithoutLogin" />
         <activity android:name=".Notification.SeeNoticeImageActivity" />
         <activity android:name=".LoginServices.RegisterPageActivity" />
         <activity android:name=".LoginServices.LoginPageActivity" />

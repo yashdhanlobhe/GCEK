@@ -15,7 +15,6 @@ public  class InitiateAppData {
 
     public static  void startFirebaseServices(){
         mfirebaseauth = FirebaseAuth.getInstance();
-//        mfirebaseDatabase = FirebaseDatabase.getInstance();
         mfirebasefirestore = FirebaseFirestore.getInstance();
         mfirebasestorage = FirebaseStorage.getInstance();
         mfirebaseMessaging = FirebaseMessaging.getInstance();

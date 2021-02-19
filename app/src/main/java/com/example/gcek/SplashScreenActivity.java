@@ -8,9 +8,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.gcek.LoginServices.LoginPageActivity;
 import com.example.gcek.MainDrawer.MainHomeTab.PosterData;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,9 +40,18 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext() , MainActivityWithoutLogin.class));
-                finish();
-                overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                if(FirebaseAuth.getInstance().getCurrentUser()!= null && FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                    Toast.makeText(getApplicationContext() , "Loged In "+ FirebaseAuth.getInstance().getCurrentUser().getEmail() ,Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext() , MainActivityWithLogin.class).
+                            setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                }
+                else {
+                    startActivity(new Intent(getApplicationContext() , LoginPageActivity.class));
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                }
             }
         }, 2000);
     }

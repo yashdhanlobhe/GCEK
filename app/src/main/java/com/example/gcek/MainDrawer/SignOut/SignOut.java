@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.example.gcek.LoginServices.LoginPageActivity;
-import com.example.gcek.MainActivityWithoutLogin;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignOut {

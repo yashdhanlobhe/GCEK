@@ -8,7 +8,6 @@ import com.google.firebase.storage.FirebaseStorage;
 
 public  class InitiateAppData {
     public  static FirebaseAuth mfirebaseauth;
-//    public  static FirebaseDatabase mfirebaseDatabase;
     public  static FirebaseFirestore mfirebasefirestore;
     public  static FirebaseStorage mfirebasestorage;
     public static FirebaseMessaging mfirebaseMessaging;

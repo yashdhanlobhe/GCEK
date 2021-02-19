@@ -25,8 +25,8 @@ Toolbar toolbar ;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         String[] data =getIntent().getStringArrayExtra("data");
-
         toolbar.setTitle(data[0]);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

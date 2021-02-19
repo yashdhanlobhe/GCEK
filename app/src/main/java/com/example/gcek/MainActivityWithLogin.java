@@ -58,7 +58,14 @@ public class MainActivityWithLogin extends AppCompatActivity {
     NavigationView navigationView;
     FrameLayout frameLayout;
     FirebaseFirestore db;
+    BottomNavigationView bottomNavigationView;
     int currentfragmentid;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,26 +83,27 @@ public class MainActivityWithLogin extends AppCompatActivity {
                         break;
                     case R.id.nav_showid:
                         startActivity(new Intent(mcontext, ProfileActivity.class));
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                     case R.id.nav_about:
                         startActivity(new Intent(mcontext, DiscoverActivity.class));
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                     case R.id.nav_login:
                         startActivity(new Intent(mcontext, LoginsActivity.class));
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                     case R.id.nav_setting:
                         startActivity(new Intent(mcontext, SettingActivity.class));
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                     case R.id.nav_faq:
                         startActivity(new Intent(mcontext, FAQActivity.class));
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                     case R.id.nav_Signout:
                         SignOut.confirmsignout(mcontext);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                 }
                 return false;
@@ -141,6 +149,8 @@ public class MainActivityWithLogin extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerlayout);
         frameLayout = findViewById(R.id.main_frame_layout);
         navigationView.setCheckedItem(R.id.nav_home);
+
+
         addBottomNavigationView();
         currentfragmentid = R.id.nav_home;
         toggleButton = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
@@ -151,6 +161,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceFragment(new HomeFragment());
+                bottomNavigationView.setSelectedItemId(R.id.nav_home);
             }
         });
 
@@ -159,7 +170,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
     }
 
     private void addBottomNavigationView() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.MainActivityBottomNavView);
+        bottomNavigationView = findViewById(R.id.MainActivityBottomNavView);
         replaceFragment(new HomeFragment());
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

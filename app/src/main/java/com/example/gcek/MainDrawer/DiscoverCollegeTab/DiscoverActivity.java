@@ -84,4 +84,10 @@ public class DiscoverActivity extends AppCompatActivity {
        findViewById(R.id.officialWebsiteCardView).setOnClickListener(DepartmentClickListner);
         findViewById(R.id.TPOCardView).setOnClickListener(DepartmentClickListner);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+    }
 }

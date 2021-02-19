@@ -14,26 +14,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/white" />
-
-    <FrameLayout
-        android:id="@+id/DiscoverframeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/discoveractivitytoolbar" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/discoveractivitytoolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/s1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/white" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -43,7 +23,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
                 android:id="@+id/discoverPhotoRelativeLayout"
                 android:layout_width="match_parent"

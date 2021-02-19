@@ -45,9 +45,7 @@ public class ShowID extends Fragment {
             userBarcode.setImageBitmap(MainActivityWithLogin.BarcodeImage);
 
             ImageView userImage = root.findViewById(R.id.imageView);
-//            Picasso.get().load(userData.getProfileImage()).centerCrop().into(userImage);
             userImage.setImageDrawable(userimagedrawable);
-//            userImage.setImageBitmap(MainActivityWithLogin.userImage);
         } catch (Exception e) {
             e.printStackTrace();
         }

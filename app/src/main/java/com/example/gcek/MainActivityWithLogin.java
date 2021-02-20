@@ -27,6 +27,7 @@ import com.example.gcek.MainDrawer.DiscoverCollegeTab.DiscoverActivity;
 import com.example.gcek.MainDrawer.EventsTab.EventFragment;
 import com.example.gcek.MainDrawer.FAQTab.FAQActivity;
 import com.example.gcek.MainDrawer.MainHomeTab.HomeFragment;
+import com.example.gcek.MainDrawer.NotificationTab.NewNotificationFragment;
 import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
 import com.example.gcek.MainDrawer.SettingTab.SettingActivity;
 import com.example.gcek.MainDrawer.ShowIDTab.ProfileActivity;
@@ -182,7 +183,7 @@ public class MainActivityWithLogin extends AppCompatActivity {
                         fragment = new HomeFragment();
                         break;
                     case R.id.nav_notifications:
-                        fragment = new NotificationFragment();
+                        fragment = new NewNotificationFragment();
                         break;
                     case R.id.nav_publicForum:
                         fragment = new publicForumFragment();

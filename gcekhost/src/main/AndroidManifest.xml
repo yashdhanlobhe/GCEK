@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/gcek_host_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".Attendace.ChooseClass"></activity>
-        <activity android:name=".Attendace.TakeAttendaceActivity"></activity>
+        <activity android:name=".AddEvent.AddEvent"></activity>
+        <activity android:name=".Attendace.ChooseClass" />
+        <activity android:name=".Attendace.TakeAttendaceActivity" />
         <activity android:name=".FAQ.answerFAQ" />
         <activity android:name=".FAQ.FAQunanswerd" />
         <activity android:name=".functions.SendPrivateNotifiaction" />

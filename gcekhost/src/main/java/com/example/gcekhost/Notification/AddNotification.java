@@ -44,26 +44,32 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
     Button send_btn , seeNotifiacationBtn ,selectIMGbtn;
     Spinner spinner;
     ImageView imageView;
-    EditText notification_title , notification_description , authority ;
+    EditText notification_title , notification_description ;
     ProgressDialog pd;
 
     String NoticeClass;
     private static final int  PICKimg = 100;
-    Uri uri ; String DownloadURI ;
+    Uri uri ;
+    String DownloadURI ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addnotifcation);
+
+        //initiate firebase database
         database = FirebaseDatabase.getInstance();
         mStorageRef = FirebaseStorage.getInstance().getReference().child("Notices");
 
+        //initiate UI
         intiUi();
+
         selectIMGbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenGallery();
             }
         });
+
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +89,10 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
     }
 
     private void intiUi() {
-
+        //Progress dialog while Uploading
         pd= new ProgressDialog(this);
+
+        //making variable of every element
         send_btn = (Button)findViewById(R.id.send_btn_notifiacaiton);
         seeNotifiacationBtn = (Button)findViewById(R.id.see_notifiaction_btn);
         imageView = findViewById(R.id.uploadingimage);
@@ -98,8 +106,6 @@ public class AddNotification extends AppCompatActivity implements AdapterView.On
 
         spinner.setOnItemSelectedListener(this);
         spinner.setAdapter(spinneradapter);
-
-
     }
 
     private void uploadDataAndImage(String id ) {

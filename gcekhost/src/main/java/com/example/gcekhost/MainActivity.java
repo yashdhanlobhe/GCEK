@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.gcekhost.AddEvent.AddEvent;
 import com.example.gcekhost.Attendace.ChooseClass;
 import com.example.gcekhost.Attendace.TakeAttendaceActivity;
 import com.example.gcekhost.FAQ.FAQunanswerd;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.sendNoficaionSpecificuser).setOnClickListener(this);
         findViewById(R.id.answerfaqmaintab).setOnClickListener(this);
         findViewById(R.id.takeAttendacecardView).setOnClickListener(this);
-
+        findViewById(R.id.addEvent).setOnClickListener(this::onClick);
     }
 
     @Override
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.takeAttendacecardView:
                 startActivity(new Intent(this , ChooseClass.class));
+                break;
+            case R.id.addEvent:
+                startActivity(new Intent(this , AddEvent.class));
                 break;
         }
     }

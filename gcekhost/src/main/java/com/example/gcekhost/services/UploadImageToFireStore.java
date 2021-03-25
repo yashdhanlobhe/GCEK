@@ -10,7 +10,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class UploadImageToFireStore {
+public class  UploadImageToFireStore {
     private static String DownloadURI;
     private static StorageReference mStorageRef;
     public static String uploadImageToFirestore(Uri UploadLocalUri , String uploadPathInFireStorewithExtention ){

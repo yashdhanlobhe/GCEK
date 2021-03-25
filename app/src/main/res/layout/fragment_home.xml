@@ -58,37 +58,11 @@
                 app:icvp_min_page_scale="0.55"
                 app:icvp_min_page_scale_offset="5dp"
                 app:icvp_scroll_duration="400" />
-            <RelativeLayout
-                android:id="@+id/aboutcollgeHome"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_below="@id/HomeTabViewPager"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:id="@+id/abouttextHometab"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="About"
-                    />
-                <TextView
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:layout_below="@id/abouttextHometab"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="The Government of Maharashtra with the aim and vision to spread Technical Education in rural and tribal areas of the state of Maharashtra founded Government College Of Engineering, Karad in 1960.The College is affiliated to Shivaji University, Kolhapur and is acting as a vital education center for many years. Over the years the college has produced about 7200 engineers and more than 300 computer professionals through Master of Computer Application course which is unique in Engineering faculty under Shivaji University. "/>
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_below="@id/aboutcollgeHome"
+                android:layout_below="@id/HomeTabViewPager"
                 android:gravity="center"
                 android:orientation="horizontal">
 

@@ -23,6 +23,7 @@ public class EventDescription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_description);
+        overridePendingTransition(R.anim.slide_in_from_right , R.anim.slide_out_to_left);
         Toolbar toolbar = findViewById(R.id.EventDescToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,5 +51,11 @@ public class EventDescription extends AppCompatActivity {
                 Picasso.get().load(value.get("subPoster").toString()).into(imageView);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_from_left , R.anim.slide_out_to_right);
     }
 }

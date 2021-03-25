@@ -9,6 +9,6 @@
     <ImageView
         android:id="@+id/event_item_image_view"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
-        android:layout_height="250dp" />
+        android:scaleType="fitXY"
+        android:layout_height="200dp" />
 </androidx.cardview.widget.CardView>

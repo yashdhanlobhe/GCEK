@@ -24,7 +24,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         String type;
         switch (position){
             case 1 :
-                type = "tpo";
+                type = "TPO";
                 break;
             case 2 :
                 type = "fy";

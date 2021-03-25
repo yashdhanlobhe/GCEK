@@ -22,6 +22,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.gcek.Department.DepartmentMain;
 import com.example.gcek.MainDrawer.AttendanceTab.CheckAttendance;
 import com.example.gcek.MainDrawer.DiscoverCollegeTab.DiscoverActivity;
 import com.example.gcek.MainDrawer.EventsTab.EventFragment;
@@ -104,6 +105,10 @@ public class MainActivityWithLogin extends AppCompatActivity {
                         break;
                     case R.id.nav_Signout:
                         SignOut.confirmsignout(mcontext);
+                        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+                        break;
+                    case R.id.nav_department:
+                        startActivity(new Intent(mcontext, DepartmentMain.class));
                         overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
                         break;
                 }

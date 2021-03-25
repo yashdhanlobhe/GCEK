@@ -6,129 +6,159 @@
     android:layout_height="match_parent"
     tools:context=".MainDrawer.DiscoverCollegeTab.DepartmentActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/DepartmentActivityToolbar"
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/DepartmentActivityToolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/s1"-->
+<!--        app:title="Department"-->
+<!--        app:titleTextColor="@color/white"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+<!--    <ScrollView-->
+<!--        android:layout_below="@+id/DepartmentActivityToolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/DepartmentActivityToolbar">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/toolbar">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/collegedideview" />-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_margin="20dp">-->
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:elevation="15dp">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/DepartmentActivityHodPic"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:layout_marginStart="24dp"-->
+<!--                        android:src="@color/black"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/textView5" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView5"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:text="HOD"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/DepartmentActivityHodName"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:text="Full Name"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.502"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/DepartmentActivityHodPic"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/textView5" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/DepartmentActivityHodDegree"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:text="Degree"-->
+<!--                        android:textSize="14dp"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/DepartmentActivityHodPic"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/DepartmentActivityHodName" />-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="About"-->
+<!--                android:textSize="24dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/DepartmentActivityAbout"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:text="Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy-->
+<!--            Information Technology discipline was started in 2002 with an intake capacity of 60 students per year. The starting aim was to implement the Engineering Graduate Programme in Information Technology. This department is affiliated to Shivaji University, Kolhapur." />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Vision"-->
+<!--                android:textSize="24dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/DepartmentActivityVision"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_marginBottom="100dp"-->
+<!--                android:text="To provide value based high quality IT education by empowering every student to be innovative and employable IT professional" />-->
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/tabLayoutdepartment"
         android:background="@color/s1"
-        app:title="Department"
-        app:titleTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.appcompat.widget.Toolbar>
+        app:tabTextColor="@color/black"
+        app:tabIndicatorColor="@color/white"
+        app:tabSelectedTextColor="@color/white"
+        >
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timetable "
+            android:id="@+id/collegeTabNotification"
+            />
 
-    <ScrollView
-        android:layout_below="@+id/DepartmentActivityToolbar"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts"
+            android:id="@+id/classTabNotification"
+            />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@+id/tabLayoutdepartment"
+        android:id="@+id/viewPagerNotification"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DepartmentActivityToolbar">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/collegedideview" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_margin="20dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:elevation="15dp">
-
-                    <ImageView
-                        android:id="@+id/DepartmentActivityHodPic"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="24dp"
-                        android:src="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="HOD"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/DepartmentActivityHodName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Full Name"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.502"
-                        app:layout_constraintStart_toEndOf="@+id/DepartmentActivityHodPic"
-                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-                    <TextView
-                        android:id="@+id/DepartmentActivityHodDegree"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Degree"
-                        android:textSize="14dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/DepartmentActivityHodPic"
-                        app:layout_constraintTop_toBottomOf="@+id/DepartmentActivityHodName" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="About"
-                android:textSize="24dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/DepartmentActivityAbout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Since when has the world of computer software design keen about what people want? This is a simple question of evolution. The day is not so far when every knee will bow down to a silicon fist, and you will all beg your binary Gods for mercy
-            Information Technology discipline was started in 2002 with an intake capacity of 60 students per year. The starting aim was to implement the Engineering Graduate Programme in Information Technology. This department is affiliated to Shivaji University, Kolhapur." />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vision"
-                android:textSize="24dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/DepartmentActivityVision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="100dp"
-                android:text="To provide value based high quality IT education by empowering every student to be innovative and employable IT professional" />
-        </LinearLayout>
-    </ScrollView>
 </RelativeLayout>

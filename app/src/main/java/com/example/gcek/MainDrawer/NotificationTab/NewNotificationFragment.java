@@ -31,7 +31,6 @@ public class NewNotificationFragment extends Fragment {
         tabLayout = root.findViewById(R.id.tabLayoutNotification);
         pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager() , tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
-
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

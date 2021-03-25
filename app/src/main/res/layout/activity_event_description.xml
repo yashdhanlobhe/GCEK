@@ -8,35 +8,47 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/EventDescToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/s1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white" />
+
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/imageViewEventSub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/dias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/EventDescToolbar" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/EventTitleDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DIAS Concave"
+            android:layout_marginTop="20dp"
+            android:text="Event"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewEventSub" />
 
         <TextView
+            android:id="@+id/EventDescDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Price includes a $30 ATT, T-Mobile, Sprint, or Verizon discount. Requires activation with carrier. Monthly pricing: Available to qualified customers and requires 0% APR, 24-month installment loan with Citizens One or Apple Card Monthly Installments and iPhone activation with AT, Sprint, T-Mobile, or Verizon for purchases in an Apple Store. Taxes and shipping not included. Additional Apple Card Monthly Installments and iPhone Payments terms apply."
+            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/EventTitleDesc" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

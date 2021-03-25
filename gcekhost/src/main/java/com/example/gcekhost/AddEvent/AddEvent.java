@@ -23,13 +23,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddEvent extends AppCompatActivity  {
-    Uri mainPoster , subPoster;
+    Uri mainPoster  , subPoster;
     ImageView mainPosterIMG , subPosterIMG;
-
+    Uri downloadUriMain , downloadUriSub;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -75,30 +76,41 @@ public class AddEvent extends AppCompatActivity  {
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    mStorageMain.getDownloadUrl().addOnSuccessListener(uri -> {
+                                         downloadUriMain = uri;
+                                    });
                                     StorageReference mStorageSub = FirebaseStorage.getInstance().getReference().child(path + "_subPoster.jpg");
                                     mStorageSub.putFile(subPoster).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                         @Override
                                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            Map<String , String> eventDetails = new HashMap<>();
-                                            eventDetails.put("title" , title.getText().toString());
-                                            eventDetails.put("des" , description.getText().toString());
+                                            mStorageSub.getDownloadUrl().addOnSuccessListener(uri -> {
+                                                 downloadUriSub = uri;
+                                                Map<String , String> eventDetails = new HashMap<>();
+                                                eventDetails.put("title" , title.getText().toString());
+                                                eventDetails.put("des" , description.getText().toString());
+                                                eventDetails.put("mainPoster" , downloadUriMain.toString());
+                                                eventDetails.put("subPoster" , downloadUriSub.toString());
 
-                                             FirebaseFirestore.getInstance().collection("Events")
-                                                    .document(title.getText().toString())
-                                                    .set(eventDetails)
-                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void aVoid) {
-                                                            title.setText("");
-                                                            description.setText("");
-                                                            findViewById(R.id.eventAddProgressBar).setVisibility(View.INVISIBLE);
-                                                        }
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
+                                                FirebaseFirestore.getInstance().collection("Events")
+                                                        .document(title.getText().toString())
+                                                        .set(eventDetails)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                FirebaseDatabase.getInstance().getReference().child("Events").child(title.getText().toString()).child("title").setValue(title.getText().toString());
+                                                                FirebaseDatabase.getInstance().getReference().child("Events").child(title.getText().toString()).child("uri").setValue(downloadUriMain.toString());
 
-                                                        }
-                                                    });
+                                                                title.setText("");
+                                                                description.setText("");
+                                                                findViewById(R.id.eventAddProgressBar).setVisibility(View.INVISIBLE);
+                                                            }
+                                                        }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+
+                                                    }
+                                                });
+                                            });
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override

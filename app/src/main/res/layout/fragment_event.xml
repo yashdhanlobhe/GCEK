@@ -5,21 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainDrawer.EventsTab.EventFragment">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/imageView1111"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="20dp"
-        >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/spirituality" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        android:layout_height="match_parent"
+        android:id="@+id/eventRecylclerView"
+        />
 </FrameLayout>

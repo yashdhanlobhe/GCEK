@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gcek.EventDescription;
 import com.example.gcek.R;
 import com.squareup.picasso.Picasso;
 

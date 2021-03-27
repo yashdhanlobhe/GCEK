@@ -29,7 +29,6 @@ import com.example.gcek.MainDrawer.EventsTab.EventFragment;
 import com.example.gcek.MainDrawer.FAQTab.FAQActivity;
 import com.example.gcek.MainDrawer.MainHomeTab.HomeFragment;
 import com.example.gcek.MainDrawer.NotificationTab.NewNotificationFragment;
-import com.example.gcek.MainDrawer.NotificationTab.NotificationFragment;
 import com.example.gcek.MainDrawer.SettingTab.SettingActivity;
 import com.example.gcek.MainDrawer.ShowIDTab.ProfileActivity;
 import com.example.gcek.MainDrawer.SignOut.SignOut;

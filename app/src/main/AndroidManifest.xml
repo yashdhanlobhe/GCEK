@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_gcek_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GCEK">
-        <activity android:name=".EventDescription"></activity>
+        <activity android:name=".MainDrawer.EventsTab.EventDescription"></activity>
         <activity android:name=".Department.DepartmentMain" />
         <activity android:name=".MainDrawer.SettingTab.SettingActivity" />
         <activity android:name=".MainDrawer.WerbsiteLoginsTab.LoginsActivity" />
